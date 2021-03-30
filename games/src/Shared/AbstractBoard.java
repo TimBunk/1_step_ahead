@@ -2,11 +2,19 @@ package Shared;
 
 public abstract class AbstractBoard {
 
-    private char[] board;
+    protected char[] board = null;
+
+    public void initializeBoard(int size) {
+        board = new char[size];
+    }
+
+    public int length() {
+        return board.length;
+    }
+
+    public abstract AbstractBoard clone();
 
     public abstract boolean isMoveValid(int move);
-
-    public abstract void initializeBoard(int size);
 
     public abstract boolean doesCharacterWin(char c);
 
@@ -14,6 +22,6 @@ public abstract class AbstractBoard {
 
     public abstract void printBoard();
 
-    public abstract void placeMove(int move);
+    public abstract void placeMove(int move, char c);
 
 }
