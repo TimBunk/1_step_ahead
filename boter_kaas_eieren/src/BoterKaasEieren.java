@@ -119,8 +119,7 @@ public class BoterKaasEieren {
     }
 
     private int minimax(char[] board_state, int depth, boolean maximizing) {
-        int evaluation = maximizing ? Integer.MAX_VALUE : Integer.MIN_VALUE;
-        evaluation = 0;
+        int evaluation = 0;
         // Als de evaluation zegt dat er een winnaar is dan geven we de evaluation terug
         // of als de diepte 0 is bereikt of als er geen tiles meer vrij zijn
         if ((evaluation = evaluation(board_state, !maximizing)) != 0 || depth == 0 || anyTilesAvailable(board_state) == false) {
