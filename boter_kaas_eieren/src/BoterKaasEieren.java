@@ -189,52 +189,30 @@ public class BoterKaasEieren {
     }
 
     private boolean doesCharacterWinHorizontally(char[] board, char c) {
-        for (int i = 0; i < 3; i++) {
-            boolean win = true;
-            for (int j = 0; j < 3; j++) {
-                if (board[j * 3 + i] != c) {
-                    win = false;
-                    break;
-                }
+        for(int i = 0; i < board.length; i += 3){
+            if(board[i] == board[i+1] && board[i+1] == board[i+2] && board[i] == c){
+                return true;
             }
-            if (win) { return true; }
         }
         return false;
     }
 
     private boolean doesCharacterWinVertically(char[] board, char c) {
-        for (int i = 0; i < 3; i++) {
-            boolean win = true;
-            for (int j = 0; j < 3; j++) {
-                if (board[i * 3 + j] != c) {
-                    win = false;
-                    break;
-                }
+        for(int i = 0; i < 3; i++){
+            if(board[i] == board[i+3] && board[i+3] == board[i+6] && board[i+6] == c){
+                return true;
             }
-            if (win) { return true; }
         }
         return false;
     }
 
     private boolean doesCharacterWinDiagonally(char[] board, char c) {
-        boolean win = true;
-        // Check voor een diagonale overwinnen van linksboven naar rechtsonder
-        for (int i = 0; i < 3; i++) {
-            if (board[i*4] != c) {
-                win = false;
-                break;
-            }
+        if(board[0] == board[4] && board[4] == board[8] && board[8] == c){
+            return true;
         }
-        if (win) { return true; }
-        win = true;
-        // Check voor een diagonale overwinnen van rechtsboven naar linksonder
-        for (int i = 0; i < 3; i++) {
-            if (board[2 + i*2] != c) {
-                win = false;
-                break;
-            }
+        if(board[2] == board[4] && board[4] == board[6] && board[6] == c){
+            return true;
         }
-        if (win) { return true; }
         return false;
     }
 
