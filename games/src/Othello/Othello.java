@@ -59,6 +59,5 @@ public class Othello {
         }
         //display final board
         //display winner
-
     }
 }

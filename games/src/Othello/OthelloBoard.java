@@ -62,7 +62,7 @@ public class OthelloBoard extends AbstractBoard {
         board[move] = c;
     }
 
-    private boolean isGameOver(){
+    public boolean isGameOver(){
         for(char position : board){
             if(position == '.'){
                 return false;
@@ -71,7 +71,7 @@ public class OthelloBoard extends AbstractBoard {
         return true;
     }
 
-    private int[] findValidMoves(char characterToMove){
+    public int[] findValidMoves(char characterToMove){
         boolean[] moves = new boolean[64];
         int validMovesCount = 0;
         for(int position : board){
@@ -94,7 +94,7 @@ public class OthelloBoard extends AbstractBoard {
         return validMoves;
     }
 
-    private boolean isValidMove(char characterToMove, int position){
+    public boolean isValidMove(char characterToMove, int position){
         return isValidMoveLeft(characterToMove,position) || isValidMoveRight(characterToMove, position) || isValidMoveUp(characterToMove, position) || isValidMoveDown(characterToMove, position) || isValidMoveLeftUp(characterToMove, position) || isValidMoveRightUp(characterToMove, position) || isValidMoveLeftDown(characterToMove, position) || isValidMoveRightDown(characterToMove, position);
     }
 
@@ -238,76 +238,76 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private void turnStones(char[] board, int position, char charToPlace){
+    public void turnStones(int position, char charToPlace){
         if(isValidMoveLeft(charToPlace, position)){
-            turnStonesLeft(board, position, charToPlace);
+            turnStonesLeft(position, charToPlace);
         }
         if(isValidMoveRight(charToPlace, position)){
-            turnStonesRight(board, position, charToPlace);
+            turnStonesRight(position, charToPlace);
         }
         if(isValidMoveUp(charToPlace, position)){
-            turnStonesUp(board, position, charToPlace);
+            turnStonesUp(position, charToPlace);
         }
         if(isValidMoveDown(charToPlace, position)){
-            turnStonesDown(board, position, charToPlace);
+            turnStonesDown(position, charToPlace);
         }
         if(isValidMoveLeftUp(charToPlace, position)){
-            turnStonesLeftUp(board, position, charToPlace);
+            turnStonesLeftUp(position, charToPlace);
         }
         if(isValidMoveRightUp(charToPlace, position)){
-            turnStonesRightUp(board, position, charToPlace);
+            turnStonesRightUp(position, charToPlace);
         }
         if(isValidMoveLeftDown(charToPlace, position)){
-            turnStonesLeftDown(board, position, charToPlace);
+            turnStonesLeftDown(position, charToPlace);
         }
         if(isValidMoveRightDown(charToPlace, position)){
-            turnStonesRightDown(board, position, charToPlace);
+            turnStonesRightDown(position, charToPlace);
         }
     }
 
-    private void turnStonesLeft(char[] board, int position, char charToPlace){
+    private void turnStonesLeft(int position, char charToPlace){
         for(int i = position - 1; board[i] == charToPlace; i--){
             board[i] = charToPlace;
         }
     }
 
-    private void turnStonesRight(char[] board, int position, char charToPlace){
+    private void turnStonesRight(int position, char charToPlace){
         for(int i = position + 1; board[i] == charToPlace; i++){
             board[i] = charToPlace;
         }
     }
 
-    private void turnStonesUp(char[] board, int position, char charToPlace){
+    private void turnStonesUp(int position, char charToPlace){
         for(int i = position - 8; board[i] == charToPlace; i-=8){
             board[i] = charToPlace;
         }
     }
 
-    private void turnStonesDown(char[] board, int position, char charToPlace){
+    private void turnStonesDown(int position, char charToPlace){
         for(int i = position + 8; board[i] == charToPlace; i+=8){
             board[i] = charToPlace;
         }
     }
 
-    private void turnStonesLeftUp(char[] board, int position, char charToPlace){
+    private void turnStonesLeftUp(int position, char charToPlace){
         for(int i = position - 9; board[i] == charToPlace; i-=9){
             board[i] = charToPlace;
         }
     }
 
-    private void turnStonesRightUp(char[] board, int position, char charToPlace){
+    private void turnStonesRightUp(int position, char charToPlace){
         for(int i = position - 7; board[i] == charToPlace; i-=7){
             board[i] = charToPlace;
         }
     }
 
-    private void turnStonesLeftDown(char[] board, int position, char charToPlace){
+    private void turnStonesLeftDown(int position, char charToPlace){
         for(int i = position + 7; board[i] == charToPlace; i+=7){
             board[i] = charToPlace;
         }
     }
 
-    private void turnStonesRightDown(char[] board, int position, char charToPlace){
+    private void turnStonesRightDown(int position, char charToPlace){
         for(int i = position + 9; board[i] == charToPlace; i+=9){
             board[i] = charToPlace;
         }
