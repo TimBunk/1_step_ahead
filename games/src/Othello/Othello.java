@@ -60,18 +60,24 @@ public class Othello {
             if (playersTurn) {
                 if(board.findValidMoves(player.getCharacter()).length != 0){
                     int move = player.doMove(board);
+                    System.out.println("Player placed: " + move);
                     board.placeMove(move, player.getCharacter());
                 }
                 else{
+                    System.out.println("Player passed");
                     playerPassed = true;
                 }
             }
             else {
                 if(board.findValidMoves(computer.getCharacter()).length != 0){
                     int move = computer.doMove(board);
+                    System.out.println("Computer placed: " + move);
                     board.placeMove(move, computer.getCharacter());
                 }
-                computerPassed = true;
+                else {
+                    System.out.println("Computer passed");
+                    computerPassed = true;
+                }
             }
             playersTurn = !playersTurn;
 
