@@ -54,12 +54,16 @@ public class OthelloBoard extends AbstractBoard {
     public void printBoard() {
         String boardString = "";
         for (int i = 0; i < board.length; i++) {
-            boardString += board[i];
-            if (i < 10) {
-                boardString += "0" + i + " ";
+            if (board[i] == '.') {
+                if (i < 10 && board[i] != 'Z' && board[i] != 'W') {
+                    boardString += "0" + i + " ";
+                }
+                if (i >= 10 && board[i] != 'Z' && board[i] != 'W') {
+                    boardString += i + " ";
+                }
             }
-            if (i >= 10) {
-                boardString += i + " ";
+            else {
+                boardString += board[i] + "  ";
             }
             if (i % 8 == 7) {
                 boardString += "\n";
