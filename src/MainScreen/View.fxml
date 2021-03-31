@@ -21,25 +21,27 @@
                         <Font name="Arial Bold Italic" size="28.0" />
                      </font>
                   </Label>
-                  <Button fx:id="volume" layoutX="475.0" layoutY="20.0" minWidth="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;">
-                     <graphic>
-                        <ImageView fitHeight="22.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@sound.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button onAction="#naarNetwerk" layoutX="536.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;" />
-                  <ImageView fitHeight="50.0" fitWidth="21.0" layoutX="554.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@vraag.png" />
-                     </image>
-                  </ImageView>
+                   <Button layoutX="475.0" layoutY="20.0" minWidth="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;">
+                       <graphic>
+                           <ImageView fitHeight="22.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                               <image>
+                                   <Image url="@Afbeeldingen/sound.png" />
+                               </image>
+                           </ImageView>
+                       </graphic>
+                   </Button>
+                   <Button layoutX="536.0" layoutY="20.0" mnemonicParsing="false" onAction="#naarNetwerk" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;">
+                       <graphic>
+                           <ImageView fitHeight="50.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                               <image>
+                                   <Image url="@Afbeeldingen/vraag.png" />
+                               </image>
+                           </ImageView>
+                       </graphic></Button>
                   <Label fx:id="usernameLabel" layoutX="47.0" layoutY="23.0" text="Gebruikersnaam" />
                   <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="11.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@profile-user.png" />
+                        <Image url="@Afbeeldingen/profile-user.png" />
                      </image>
                   </ImageView>
                </children>
@@ -58,7 +60,7 @@
                               <Label layoutX="48.0" layoutY="72.0" text="Tegenstander" />
                               <ImageView fitHeight="48.0" fitWidth="65.0" layoutX="13.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Desktop/AI_Afbeeldingen/reversi_128_2x.png" />
+                                    <Image url="@Afbeeldingen/reversi.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -73,7 +75,7 @@
                               <Label layoutX="54.0" layoutY="72.0" text="Tegenstander" />
                               <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@tic-tac-toe_39453.png" />
+                                    <Image url="@Afbeeldingen/tictactoe.png" />
                                  </image>
                               </ImageView>
                            </children>

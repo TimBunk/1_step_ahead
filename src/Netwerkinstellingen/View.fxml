@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Netwerkinstellingen.Controller">
     <children>
         <Label layoutX="16.0" layoutY="12.0" text="Netwerkinstellingen" underline="true">
             <font>
@@ -15,6 +15,6 @@
         <Label layoutX="19.0" layoutY="151.0" text="Te verbinden Port nummer:" />
         <TextField fx:id="IPinvoer" layoutX="24.0" layoutY="96.0" promptText="192.168.0.1" />
         <TextField fx:id="Portinvoer" layoutX="23.0" layoutY="175.0" promptText="4556" />
-        <Button layoutX="68.0" layoutY="250.0" mnemonicParsing="false" text="Opslaan" />
+        <Button onAction="#naarMain" layoutX="68.0" layoutY="250.0" mnemonicParsing="false" text="Opslaan" />
     </children>
 </Pane>
