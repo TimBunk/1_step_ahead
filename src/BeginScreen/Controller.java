@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import Game.Player;
+import Game.PlayerData;
 import java.io.IOException;
 
 public class Controller {
@@ -29,7 +29,7 @@ public class Controller {
     @FXML
     void next(ActionEvent event) throws IOException {
         System.out.println("gelikt op doorgaan...");
-        Player player = new Player(usernameField.getText());
+        PlayerData player = new PlayerData(usernameField.getText());
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));

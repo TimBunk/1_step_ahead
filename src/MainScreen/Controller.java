@@ -1,6 +1,6 @@
 package MainScreen;
 
-import Game.Player;
+import Game.PlayerData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -12,14 +12,14 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     @FXML
     private Label usernameLabel;
-    private Player player;
+    private PlayerData player;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Main scherm geladen");
     }
 
-    public void setPlayer(Player player){
+    public void setPlayer(PlayerData player){
         this.player = player;
         usernameLabel.setText(player.getUsername());
     }
