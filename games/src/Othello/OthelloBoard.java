@@ -7,8 +7,11 @@ import java.util.Arrays;
 
 public class OthelloBoard extends AbstractBoard {
 
+    private char[] oldBoard;
+    
     public void initializeBoard(int size) {
         super.initializeBoard(size);
+        oldBoard = new char[board.length];
         Arrays.fill(board, '.');
         board[27] = 'Z';
         board[28] = 'W';
@@ -70,7 +73,17 @@ public class OthelloBoard extends AbstractBoard {
 
     @Override
     public void placeMove(int move, char c) {
+        for (int i = 0; i < board.length; i++) {
+            oldBoard[i] = board[i];
+        }
         board[move] = c;
+        turnStones(move, c);
+    }
+
+    public void undoLastMove() {
+        for (int i = 0; i < board.length; i++) {
+            board[i] = oldBoard[i];
+        }
     }
 
     @Override
