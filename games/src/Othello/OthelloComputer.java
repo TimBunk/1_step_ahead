@@ -21,7 +21,7 @@ public class OthelloComputer extends AbstractComputer {
 
     public int doMove0(AbstractBoard board) {
         int[] validMoves = board.findValidMoves(getCharacter());
-        int rndmMove = ThreadLocalRandom.current().nextInt(0, validMoves.length);
+        int rndmMove = validMoves[ThreadLocalRandom.current().nextInt(0, validMoves.length)];
         return rndmMove;
     }
 

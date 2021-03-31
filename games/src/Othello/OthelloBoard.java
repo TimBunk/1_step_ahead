@@ -90,7 +90,7 @@ public class OthelloBoard extends AbstractBoard {
     public int[] findValidMoves(char characterToMove) {
         boolean[] moves = new boolean[64];
         int validMovesCount = 0;
-        for(int position : board){
+        for(int position = 0; position < board.length; position++){
             if(isValidMove(characterToMove, position)){
                 moves[position] = true;
                 validMovesCount++;
