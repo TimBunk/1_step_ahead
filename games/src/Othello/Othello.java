@@ -61,5 +61,4 @@ public class Othello {
         //display winner
 
     }
-
 }
