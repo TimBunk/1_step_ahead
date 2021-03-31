@@ -44,7 +44,7 @@ public class Othello {
         //speler met Zwarte stenen begint
         boolean playersTurn = (playerCharacter=='Z');
 
-        int turnCount = 0;
+        int turnCount = 1;
         boolean gameOver = false;
         boolean playerPassed = false;
         boolean computerPassed = false;
@@ -55,9 +55,55 @@ public class Othello {
             //if a player passes, change the relevant variable
             //if both pass, the game is over
             //if the other player makes a move, set the variable back to false
-            gameOver = isGameOver();
+
+            board.printBoard();
+            System.out.println("Ronde: " + turnCount);
+
+            if (playersTurn) {
+                if(board.findValidMoves(playerCharacter).length != 0){
+                    int move = player.doMove(board);
+                    board.placeMove(move, playerCharacter);
+                }
+                else{
+                    playerPassed = true;
+                }
+            }
+            else {
+                if(board.findValidMoves(computerCharacter).length != 0){
+                    int move = computer.doMove(board);
+                    board.placeMove(move, computerCharacter);
+                }
+                computerPassed = true;
+            }
+            playersTurn = !playersTurn;
+
+            turnCount++;
+
+            gameOver = board.isGameOver();
         }
         //display final board
         //display winner
+        board.printBoard();
+
+        int playerPoints = 0;
+        int computerPoints = 0;
+        for(char character : board.getBoard()){
+            if(character == playerCharacter){
+                playerPoints++;
+            }
+            else if(character == computerCharacter){
+                computerPoints++;
+            }
+        }
+
+        if(playerPoints > computerPoints){
+            System.out.println("Je hebt gewonnen met een score van " + playerPoints + " tegen " + computerPoints + "!\nGefeliciteerd!");
+        }
+        else if(computerPoints > playerPoints){
+            System.out.println("Je hebt verloren met een score van " + playerPoints + " tegen " + computerPoints + ".\nVolgende keer beter!");
+        }
+        else{
+            System.out.println("Je hebt gelijkgespeeld met een score van " + playerPoints + " tegen " + computerPoints + "!\nBijna gewonnen!");
+        }
     }
 }

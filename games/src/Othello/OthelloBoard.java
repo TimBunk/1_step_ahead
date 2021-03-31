@@ -12,6 +12,10 @@ public class OthelloBoard extends AbstractBoard {
         Arrays.fill(board, '.');
     }
 
+    public char[] getBoard(){
+        return board;
+    }
+
     @Override
     public AbstractBoard clone() {
         BKEboard b = new BKEboard();
