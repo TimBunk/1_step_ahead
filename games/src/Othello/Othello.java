@@ -83,16 +83,8 @@ public class Othello {
         //display winner
         board.printBoard();
 
-        int playerPoints = 0;
-        int computerPoints = 0;
-        for(char character : board.getBoard()){
-            if(character == player.getCharacter()){
-                playerPoints++;
-            }
-            else if(character == computer.getCharacter()){
-                computerPoints++;
-            }
-        }
+        int playerPoints = board.count(player.getCharacter());
+        int computerPoints = board.count(computer.getCharacter());
 
         if(playerPoints > computerPoints){
             System.out.println("Je hebt gewonnen met een score van " + playerPoints + " tegen " + computerPoints + "!\nGefeliciteerd!");
