@@ -291,50 +291,50 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     private void turnStonesLeft(int position, char charToPlace){
-        for(int i = position - 1; board[i] == charToPlace; i--){
+        for(int i = position - 1; board[i] != charToPlace; i--){
             board[i] = charToPlace;
         }
     }
 
     private void turnStonesRight(int position, char charToPlace){
-        for(int i = position + 1; board[i] == charToPlace; i++){
+        for(int i = position + 1; board[i] != charToPlace; i++){
             board[i] = charToPlace;
         }
     }
 
     private void turnStonesUp(int position, char charToPlace){
-        for(int i = position - 8; board[i] == charToPlace; i-=8){
+        for(int i = position - 8; board[i] != charToPlace; i-=8){
             board[i] = charToPlace;
         }
     }
 
     private void turnStonesDown(int position, char charToPlace){
-        for(int i = position + 8; board[i] == charToPlace; i+=8){
+        for(int i = position + 8; board[i] != charToPlace; i+=8){
             board[i] = charToPlace;
         }
     }
 
     private void turnStonesLeftUp(int position, char charToPlace){
-        for(int i = position - 9; board[i] == charToPlace; i-=9){
+        for(int i = position - 9; board[i] != charToPlace; i-=9){
             board[i] = charToPlace;
         }
     }
 
     private void turnStonesRightUp(int position, char charToPlace){
-        for(int i = position - 7; board[i] == charToPlace; i-=7){
+        for(int i = position - 7; board[i] != charToPlace; i-=7){
             board[i] = charToPlace;
         }
     }
 
     private void turnStonesLeftDown(int position, char charToPlace){
-        for(int i = position + 7; board[i] == charToPlace; i+=7){
+        for(int i = position + 7; board[i] != charToPlace; i+=7){
             board[i] = charToPlace;
         }
     }
 
     private void turnStonesRightDown(int position, char charToPlace){
-        for(int i = position + 9; board[i] == charToPlace; i+=9){
-            board[i] = charToPlace;
+        for(int i = position + 9; board[i] != charToPlace; i+=9){
+            board[i] = charToPlace;37
         }
     }
 }
