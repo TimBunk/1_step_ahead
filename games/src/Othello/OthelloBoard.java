@@ -323,7 +323,7 @@ public class OthelloBoard extends AbstractBoard {
 
     private void turnStonesRightDown(int position, char charToPlace){
         for(int i = position + 9; board[i] != charToPlace; i+=9){
-            board[i] = charToPlace;37
+            board[i] = charToPlace;
         }
     }
 }
