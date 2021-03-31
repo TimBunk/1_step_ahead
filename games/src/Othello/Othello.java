@@ -15,8 +15,6 @@ public class Othello {
     private OthelloPlayer player;
     private OthelloComputer computer;
 
-    private char playerCharacter;
-    private char computerCharacter;
     private final int PLAYER_NUMBER = 1;
     private final int COMPUTER_NUMBER = 2;
     Random rand = new Random();
@@ -31,18 +29,18 @@ public class Othello {
 
         //Bepaal wie Witte en Zwarte stenen krijgt
         if(rand.nextInt(2) == 0){
-            playerCharacter = 'W';
-            computerCharacter = 'Z';
+            player.setCharacter('W');
+            computer.setCharacter('Z');
         }
         else{
-            playerCharacter = 'Z';
-            computerCharacter = 'W';
+            player.setCharacter('Z');
+            computer.setCharacter('W');
         }
     }
 
     public void start(){
         //speler met Zwarte stenen begint
-        boolean playersTurn = (playerCharacter=='Z');
+        boolean playersTurn = (player.getCharacter()=='Z');
 
         int turnCount = 0;
         boolean gameOver = false;
@@ -55,7 +53,7 @@ public class Othello {
             //if a player passes, change the relevant variable
             //if both pass, the game is over
             //if the other player makes a move, set the variable back to false
-            gameOver = isGameOver();
+            gameOver = board.isGameOver();
         }
         //display final board
         //display winner

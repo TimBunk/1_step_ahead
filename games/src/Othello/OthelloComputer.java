@@ -3,15 +3,34 @@ package Othello;
 import Shared.AbstractBoard;
 import Shared.AbstractComputer;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class OthelloComputer extends AbstractComputer {
 
     @Override
-    protected int minimax(AbstractBoard board, int depth, boolean maximizing) {
-        return 0;
+    public int doMove(AbstractBoard board) {
+        switch (this.getDifficulty()) {
+            default:
+                return doMove0(board); // Random moves
+            case 0:
+                return doMove0(board); // Random moves
+            case 1:
+                return doMove1(board); // Minimax moves
+        }
+    }
+
+    public int doMove0(AbstractBoard board) {
+        int[] validMoves = board.findValidMoves(getCharacter());
+        int rndmMove = ThreadLocalRandom.current().nextInt(0, validMoves.length);
+        return rndmMove;
+    }
+
+    public int doMove1(AbstractBoard board) {
+        return 0; // Voer minimax uit
     }
 
     @Override
-    public int doMove(AbstractBoard board) {
+    protected int minimax(AbstractBoard board, int depth, boolean maximizing) {
         return 0;
     }
 

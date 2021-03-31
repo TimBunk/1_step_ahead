@@ -63,6 +63,11 @@ public class BKEboard extends AbstractBoard {
     }
 
     @Override
+    public int[] findValidMoves(char c) {
+        return new int[0];
+    }
+
+    @Override
     public boolean doesCharacterWin(char c) {
         // Check alle mogelijke win scenarios
         if (doesCharacterWinHorizontally(c) || doesCharacterWinVertically(c) || doesCharacterWinDiagonally(c)) {
