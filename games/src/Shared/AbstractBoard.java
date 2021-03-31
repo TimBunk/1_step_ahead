@@ -12,6 +12,16 @@ public abstract class AbstractBoard {
         return board.length;
     }
 
+    public int count(char c) {
+        int counter = 0;
+        for (int i = 0; i < board.length; i++) {
+            if (board[i] == c) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
     public abstract AbstractBoard clone();
 
     public abstract boolean isMoveValid(int move);
