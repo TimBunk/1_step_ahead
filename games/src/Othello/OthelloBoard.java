@@ -69,16 +69,8 @@ public class OthelloBoard extends AbstractBoard {
         board[move] = c;
     }
 
-    public boolean isGameOver(){
-        for(char position : board){
-            if(position == '.'){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public int[] findValidMoves(char characterToMove){
+    @Override
+    public int[] findValidMoves(char characterToMove) {
         boolean[] moves = new boolean[64];
         int validMovesCount = 0;
         for(int position : board){
@@ -99,6 +91,15 @@ public class OthelloBoard extends AbstractBoard {
             }
         }
         return validMoves;
+    }
+
+    public boolean isGameOver(){
+        for(char position : board){
+            if(position == '.'){
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isValidMove(char characterToMove, int position){

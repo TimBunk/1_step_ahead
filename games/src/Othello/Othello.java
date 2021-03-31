@@ -15,8 +15,6 @@ public class Othello {
     private OthelloPlayer player;
     private OthelloComputer computer;
 
-    private char playerCharacter;
-    private char computerCharacter;
     private final int PLAYER_NUMBER = 1;
     private final int COMPUTER_NUMBER = 2;
     Random rand = new Random();
@@ -31,18 +29,18 @@ public class Othello {
 
         //Bepaal wie Witte en Zwarte stenen krijgt
         if(rand.nextInt(2) == 0){
-            playerCharacter = 'W';
-            computerCharacter = 'Z';
+            player.setCharacter('W');
+            computer.setCharacter('Z');
         }
         else{
-            playerCharacter = 'Z';
-            computerCharacter = 'W';
+            player.setCharacter('Z');
+            computer.setCharacter('W');
         }
     }
 
     public void start(){
         //speler met Zwarte stenen begint
-        boolean playersTurn = (playerCharacter=='Z');
+        boolean playersTurn = (player.getCharacter()=='Z');
 
         int turnCount = 1;
         boolean gameOver = false;
@@ -60,18 +58,18 @@ public class Othello {
             System.out.println("Ronde: " + turnCount);
 
             if (playersTurn) {
-                if(board.findValidMoves(playerCharacter).length != 0){
+                if(board.findValidMoves(player.getCharacter()).length != 0){
                     int move = player.doMove(board);
-                    board.placeMove(move, playerCharacter);
+                    board.placeMove(move, player.getCharacter());
                 }
                 else{
                     playerPassed = true;
                 }
             }
             else {
-                if(board.findValidMoves(computerCharacter).length != 0){
+                if(board.findValidMoves(computer.getCharacter()).length != 0){
                     int move = computer.doMove(board);
-                    board.placeMove(move, computerCharacter);
+                    board.placeMove(move, computer.getCharacter());
                 }
                 computerPassed = true;
             }
@@ -88,10 +86,10 @@ public class Othello {
         int playerPoints = 0;
         int computerPoints = 0;
         for(char character : board.getBoard()){
-            if(character == playerCharacter){
+            if(character == player.getCharacter()){
                 playerPoints++;
             }
-            else if(character == computerCharacter){
+            else if(character == computer.getCharacter()){
                 computerPoints++;
             }
         }

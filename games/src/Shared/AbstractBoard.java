@@ -24,4 +24,5 @@ public abstract class AbstractBoard {
 
     public abstract void placeMove(int move, char c);
 
+    public abstract int[] findValidMoves(char c);
 }
