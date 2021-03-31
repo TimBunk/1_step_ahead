@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Controller">
+<Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Controller">
    <children>
       <SplitPane dividerPositions="0.1670854271356784" layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
         <items>
@@ -21,7 +21,7 @@
                         <Font name="Arial Bold Italic" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="475.0" layoutY="20.0" minWidth="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;">
+                  <Button fx:id="volume" layoutX="475.0" layoutY="20.0" minWidth="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;">
                      <graphic>
                         <ImageView fitHeight="22.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -30,7 +30,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="536.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;" />
+                  <Button onAction="#naarNetwerk" layoutX="536.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;" />
                   <ImageView fitHeight="50.0" fitWidth="21.0" layoutX="554.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@vraag.png" />
