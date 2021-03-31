@@ -32,6 +32,12 @@ public class BKEboard extends AbstractBoard {
     }
 
     @Override
+    public boolean isMoveValid(int move, char c) {
+        // Of een move valid is hangt niet af van het character dat je wilt plaatsen
+        return isMoveValid(move);
+    }
+
+    @Override
     public boolean anyTilesAvailable() {
         // Zolang er nog '#' op het board staat is het board nog niet leeg
         for (char c : board) {

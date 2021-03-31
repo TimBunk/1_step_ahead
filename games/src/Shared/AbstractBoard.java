@@ -40,6 +40,8 @@ public abstract class AbstractBoard {
 
     public abstract boolean isMoveValid(int move);
 
+    public abstract boolean isMoveValid(int move, char c);
+
     public abstract boolean doesCharacterWin(char c);
 
     public abstract boolean anyTilesAvailable();

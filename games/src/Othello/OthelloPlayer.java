@@ -13,11 +13,20 @@ public class OthelloPlayer extends AbstractPlayer {
         int move;
         do {
             // Lees wat de player intypt
-            System.out.print("Voer een nummer van 0 tot en met 63 in: ");
+            int[] validMoves = board.findValidMoves(getCharacter());
+            System.out.print("De volgende zetten zijn geldig: ");
+            for(int i = 0; i < validMoves.length; i++){
+                if(i != validMoves.length-1){
+                    System.out.print(validMoves[i] + ", ");
+                }
+                else{
+                    System.out.print( "en " + validMoves[i] + ".\nVoer één van deze zetten in: ");
+                }
+            }
             move = sc.nextInt();
             System.out.println(move);
             // En check of de player een valid move kiest om te spelen anders vraag de speler nogmaals een nummer in te vullen
-        } while (!board.isMoveValid(move));
+        } while (!board.isMoveValid(move, getCharacter()));
         return move;
     }
 }

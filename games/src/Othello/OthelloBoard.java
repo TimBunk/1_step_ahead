@@ -32,8 +32,8 @@ public class OthelloBoard extends AbstractBoard {
 
     @Override
     public boolean isMoveValid(int move) {
-        // De move is valid wanneer die 0 is of lager dan de lengte van de board
-        // Ook moet er nog niks geplaatst zijn op die tile van het board. '#' geeft een lege tile aan
+        // De move is valid wanneer die op een lege plaats wordt gedaan
+        // Daarnaast moet er door de move minstens 1 steen worden omgedraaid
         if (move >= 0 && move < board.length && board[move] == '.') {
             return true;
         }
@@ -80,7 +80,7 @@ public class OthelloBoard extends AbstractBoard {
         boolean[] moves = new boolean[64];
         int validMovesCount = 0;
         for(int position = 0; position < board.length; position++){
-            if(isValidMove(characterToMove, position)){
+            if(isMoveValid(position, characterToMove)){
                 moves[position] = true;
                 validMovesCount++;
             }
@@ -108,11 +108,11 @@ public class OthelloBoard extends AbstractBoard {
         return true;
     }
 
-    public boolean isValidMove(char characterToMove, int position){
-        return isValidMoveLeft(characterToMove,position) || isValidMoveRight(characterToMove, position) || isValidMoveUp(characterToMove, position) || isValidMoveDown(characterToMove, position) || isValidMoveLeftUp(characterToMove, position) || isValidMoveRightUp(characterToMove, position) || isValidMoveLeftDown(characterToMove, position) || isValidMoveRightDown(characterToMove, position);
+    public boolean isMoveValid(int position, char characterToMove){
+        return isMoveValidLeft(characterToMove,position) || isMoveValidRight(characterToMove, position) || isMoveValidUp(characterToMove, position) || isMoveValidDown(characterToMove, position) || isMoveValidLeftUp(characterToMove, position) || isMoveValidRightUp(characterToMove, position) || isMoveValidLeftDown(characterToMove, position) || isMoveValidRightDown(characterToMove, position);
     }
 
-    private boolean isValidMoveLeft(char characterToMove, int position){
+    private boolean isMoveValidLeft(char characterToMove, int position){
         if(position % 8 > 1){
             if(board[position-1] != characterToMove && board[position-1] != '.'){
                 for(int i = position - 2; i >= position / 8 * 8; i--){
@@ -128,7 +128,7 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private boolean isValidMoveRight(char characterToMove, int position){
+    private boolean isMoveValidRight(char characterToMove, int position){
         if(position % 8 < 6){
             if(board[position+1] != characterToMove && board[position+1] != '.'){
                 for(int i = position + 2; i < ((position/8)+1)*8; i++){
@@ -144,7 +144,7 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private boolean isValidMoveUp(char characterToMove, int position){
+    private boolean isMoveValidUp(char characterToMove, int position){
         if(position > 15){
             if(board[position-8] != characterToMove && board[position-8] != '.'){
                 for(int i = position - 16; i > 0; i-=8){
@@ -160,7 +160,7 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private boolean isValidMoveDown(char characterToMove, int position){
+    private boolean isMoveValidDown(char characterToMove, int position){
         if(position < 48){
             if(board[position+8] != characterToMove && board[position+8] != '.'){
                 for(int i = position + 16; i < 64; i+=8){
@@ -176,7 +176,7 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private boolean isValidMoveLeftUp(char characterToMove, int position){
+    private boolean isMoveValidLeftUp(char characterToMove, int position){
         if(position > 17){
             if(board[position-9] != characterToMove && board[position-9] != '.'){
                 for(int i = position - 18; i > 0; i-=9){
@@ -195,7 +195,7 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private boolean isValidMoveRightUp(char characterToMove, int position){
+    private boolean isMoveValidRightUp(char characterToMove, int position){
         if(position % 8 < 6 && position > 15){
             if(board[position-7] != characterToMove && board[position-7] != '.'){
                 for(int i = position - 14; i > 0; i-=7){
@@ -214,7 +214,7 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private boolean isValidMoveLeftDown(char characterToMove, int position){
+    private boolean isMoveValidLeftDown(char characterToMove, int position){
         if(position % 8 > 1 && position < 48){
             if(board[position+7] != characterToMove && board[position+7] != '.'){
                 for(int i = position + 14; i < 64; i++){
@@ -233,7 +233,7 @@ public class OthelloBoard extends AbstractBoard {
         return false;
     }
 
-    private boolean isValidMoveRightDown(char characterToMove, int position){
+    private boolean isMoveValidRightDown(char characterToMove, int position){
         if(position % 8 < 6 && position < 48){
             if (board[position+9] != characterToMove && board[position+9] != '.'){
                 for(int i = position + 18; i < 64; i+=9){
@@ -253,28 +253,28 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     public void turnStones(int position, char charToPlace){
-        if(isValidMoveLeft(charToPlace, position)){
+        if(isMoveValidLeft(charToPlace, position)){
             turnStonesLeft(position, charToPlace);
         }
-        if(isValidMoveRight(charToPlace, position)){
+        if(isMoveValidRight(charToPlace, position)){
             turnStonesRight(position, charToPlace);
         }
-        if(isValidMoveUp(charToPlace, position)){
+        if(isMoveValidUp(charToPlace, position)){
             turnStonesUp(position, charToPlace);
         }
-        if(isValidMoveDown(charToPlace, position)){
+        if(isMoveValidDown(charToPlace, position)){
             turnStonesDown(position, charToPlace);
         }
-        if(isValidMoveLeftUp(charToPlace, position)){
+        if(isMoveValidLeftUp(charToPlace, position)){
             turnStonesLeftUp(position, charToPlace);
         }
-        if(isValidMoveRightUp(charToPlace, position)){
+        if(isMoveValidRightUp(charToPlace, position)){
             turnStonesRightUp(position, charToPlace);
         }
-        if(isValidMoveLeftDown(charToPlace, position)){
+        if(isMoveValidLeftDown(charToPlace, position)){
             turnStonesLeftDown(position, charToPlace);
         }
-        if(isValidMoveRightDown(charToPlace, position)){
+        if(isMoveValidRightDown(charToPlace, position)){
             turnStonesRightDown(position, charToPlace);
         }
     }
