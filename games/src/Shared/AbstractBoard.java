@@ -3,9 +3,11 @@ package Shared;
 public abstract class AbstractBoard {
 
     protected char[] board = null;
+    protected char[] oldBoard = null;
 
     public void initializeBoard(int size) {
         board = new char[size];
+        oldBoard = new char[size];
     }
 
     public int length() {
@@ -20,6 +22,18 @@ public abstract class AbstractBoard {
             }
         }
         return counter;
+    }
+
+    public void undoLastMove() {
+        for (int i = 0; i < board.length; i++) {
+            board[i] = oldBoard[i];
+        }
+    }
+
+    protected void saveBoard() {
+        for (int i = 0; i < board.length; i++) {
+            oldBoard[i] = board[i];
+        }
     }
 
     public abstract AbstractBoard clone();
