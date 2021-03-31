@@ -60,7 +60,7 @@ public class BKEcomputer extends AbstractComputer {
         // Als de evaluation zegt dat er een winnaar is dan geven we de evaluation terug
         // of als de diepte 0 is bereikt of als er geen tiles meer vrij zijn
         if ((evaluation = evaluation(board, !maximizing)) != 0 || depth == 0 || board.anyTilesAvailable() == false) {
-            return evaluation;
+            return evaluation + (maximizing ? -depth : depth); // Door de depth eraf te halen of erbij opte tellen kiest de computer de snelste route om te winnen
         }
 
         if (maximizing) {
@@ -74,8 +74,6 @@ public class BKEcomputer extends AbstractComputer {
                     cloneOfBoard.placeMove(i, BoterKaasEieren.COMPUTERS_CHAR);
                     // Voer recursief de minimax uit tot de base case is bereikt
                     evaluation = minimax(cloneOfBoard, depth-1, false);
-                    // Zorg ervoor dat de computer de snelste route kiest om te winnen door de depth bij de evaluation op te tellen als de evaluation grotes is dan 0
-                    evaluation = (evaluation > 0 ? evaluation + depth : evaluation);
                     // Als de evaluatie groter is dan de huidge max dan was dat dus een goede zet en vervangen we max met evaluation
                     if (evaluation > max) {
                         max = evaluation;
@@ -95,9 +93,7 @@ public class BKEcomputer extends AbstractComputer {
                     // Plaats de move op het board
                     cloneOfBoard.placeMove(i, BoterKaasEieren.PLAYERS_CHAR);
                     // Voer recursief de minimax uit tot de base case is bereikt
-                    evaluation = minimax(cloneOfBoard, depth-1, true) + depth;
-                    // Zorg ervoor dat de computer de snelste route kiest om te winnen door de depth van de evaluation af te trekken als de evaluation lager is dan 0
-                    evaluation = (evaluation < 0 ? evaluation - depth : evaluation);
+                    evaluation = minimax(cloneOfBoard, depth-1, true);
                     // Als de evaluatie kleiner is dan de huidge min dan was dat dus een goede zet en vervangen we min met evaluation
                     if (evaluation < min) {
                         min = evaluation;
