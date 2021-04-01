@@ -12,5 +12,5 @@ public abstract class AbstractComputer extends AbstractPlayer {
         return difficulty;
     }
 
-    protected abstract int minimax(AbstractBoard board, int depth, boolean maximizing);
+    protected abstract int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta);
 }

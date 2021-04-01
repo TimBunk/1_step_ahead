@@ -42,7 +42,7 @@ public class BKEcomputer extends AbstractComputer {
                 AbstractBoard cloneOfBoard = board.clone();
                 cloneOfBoard.placeMove(i, BoterKaasEieren.COMPUTERS_CHAR);
                 // Roep het minimax algoritme aan om te kijken hoe goed de move was
-                int evaluation = minimax(cloneOfBoard, 10, false);
+                int evaluation = minimax(cloneOfBoard, 10, false, 0, 0);
                 // Check of deze move beter was dan de laatste move die we hebben geprobeerd
                 if (evaluation > bestEvaluation) {
                     bestMove = i;
@@ -55,7 +55,7 @@ public class BKEcomputer extends AbstractComputer {
     }
 
     @Override
-    protected int minimax(AbstractBoard board, int depth, boolean maximizing) {
+    protected int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta) {
         int evaluation = 0;
         // Als de evaluation zegt dat er een winnaar is dan geven we de evaluation terug
         // of als de diepte 0 is bereikt of als er geen tiles meer vrij zijn
@@ -73,7 +73,7 @@ public class BKEcomputer extends AbstractComputer {
                     // Plaats de move op het board
                     cloneOfBoard.placeMove(i, BoterKaasEieren.COMPUTERS_CHAR);
                     // Voer recursief de minimax uit tot de base case is bereikt
-                    evaluation = minimax(cloneOfBoard, depth-1, false);
+                    evaluation = minimax(cloneOfBoard, depth-1, false, 0, 0);
                     // Als de evaluatie groter is dan de huidge max dan was dat dus een goede zet en vervangen we max met evaluation
                     if (evaluation > max) {
                         max = evaluation;
@@ -93,7 +93,7 @@ public class BKEcomputer extends AbstractComputer {
                     // Plaats de move op het board
                     cloneOfBoard.placeMove(i, BoterKaasEieren.PLAYERS_CHAR);
                     // Voer recursief de minimax uit tot de base case is bereikt
-                    evaluation = minimax(cloneOfBoard, depth-1, true);
+                    evaluation = minimax(cloneOfBoard, depth-1, true, 0, 0);
                     // Als de evaluatie kleiner is dan de huidge min dan was dat dus een goede zet en vervangen we min met evaluation
                     if (evaluation < min) {
                         min = evaluation;

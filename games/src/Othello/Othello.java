@@ -13,10 +13,8 @@ public class Othello {
 
     private OthelloBoard board;
     private OthelloPlayer player;
-    private OthelloComputer computer;
+    private OthelloComputer1 computer;
 
-    private final int PLAYER_NUMBER = 1;
-    private final int COMPUTER_NUMBER = 2;
     Random rand = new Random();
 
     public Othello(){
@@ -24,7 +22,7 @@ public class Othello {
         board = new OthelloBoard();
         board.initializeBoard(64);
         player = new OthelloPlayer();
-        computer = new OthelloComputer();
+        computer = new OthelloComputer1();
         computer.setDifficulty(2);
 
         //Bepaal wie Witte en Zwarte stenen krijgt
