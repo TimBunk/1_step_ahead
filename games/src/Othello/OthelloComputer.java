@@ -32,15 +32,15 @@ public class OthelloComputer extends AbstractComputer {
         int bestMove = 0;
         // Loop door alle tiles van het bord
         int[] validMoves = board.findValidMoves(getCharacter());
-        for (int i = 0; i < validMoves.length; i++) {
+        for (int move : validMoves) {
             // Maak een clone van het board en plaats de move erin
             AbstractBoard cloneOfBoard = board.clone();
-            cloneOfBoard.placeMove(i, getCharacter());
+            cloneOfBoard.placeMove(move, getCharacter());
             // Roep het minimax algoritme aan om te kijken hoe goed de move was
             int evaluation = minimax(cloneOfBoard, 10, false);
             // Check of deze move beter was dan de laatste move die we hebben geprobeerd
             if (evaluation > bestEvaluation) {
-                bestMove = i;
+                bestMove = move;
                 bestEvaluation = evaluation;
             }
         }
@@ -73,11 +73,11 @@ public class OthelloComputer extends AbstractComputer {
 
         if (maximizing) {
             int max = Integer.MIN_VALUE;
-            for (int i = 0; i < validMoves.length; i++) {
+            for (int move : validMoves) {
                 // Maak een clone van het board
                 AbstractBoard cloneOfBoard = board.clone();
                 // Plaats de move op het board
-                cloneOfBoard.placeMove(i, c);
+                cloneOfBoard.placeMove(move, c);
                 // Voer recursief de minimax uit tot de base case is bereikt
                 evaluation = minimax(cloneOfBoard, depth-1, false);
                 // Als de evaluatie groter is dan de huidge max dan was dat dus een goede zet en vervangen we max met evaluation
@@ -90,11 +90,11 @@ public class OthelloComputer extends AbstractComputer {
         }
         else {
             int min = Integer.MAX_VALUE;
-            for (int i = 0; i < validMoves.length; i++) {
+            for (int move : validMoves) {
                 // Maak een clone van het board
                 AbstractBoard cloneOfBoard = board.clone();
                 // Plaats de move op het board
-                cloneOfBoard.placeMove(i, c);
+                cloneOfBoard.placeMove(move, c);
                 // Voer recursief de minimax uit tot de base case is bereikt
                 evaluation = minimax(cloneOfBoard, depth-1, true);
                 // Als de evaluatie kleiner is dan de huidge min dan was dat dus een goede zet en vervangen we min met evaluation
