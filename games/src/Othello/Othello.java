@@ -20,6 +20,10 @@ public class Othello {
 
     Random rand = new Random();
 
+    /**
+     * @param player1 The first player
+     * @param player2 The second player
+     */
     public Othello(AbstractPlayer player1, AbstractPlayer player2) {
         // Initialiseer waardes
         board = new OthelloBoard();
@@ -39,6 +43,9 @@ public class Othello {
         }
     }
 
+    /**
+     * The game loop. This will repeat until the board is filled or both players pass.
+     */
     public void start(){
         //speler met Zwarte stenen begint
         boolean player1Turn = (player1.getCharacter()=='Z');

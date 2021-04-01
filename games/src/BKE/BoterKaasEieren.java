@@ -26,6 +26,9 @@ public class BoterKaasEieren {
         computer.setDifficulty(1); // Difficulty 0 = random moves, difficulty 1 = minimax
     }
 
+    /**
+     * The game loop. This will continue until the board is full or a player wins.
+     */
     public void start() {
         // Kies wie er eerst gaat
         boolean playersTurn = false;
@@ -78,8 +81,12 @@ public class BoterKaasEieren {
         }
     }
 
+    /**
+     * @param isComputer Whether the evaluating player is the computer
+     * @return How good the board is, evaluated as 1 for victory, -1 for defeat, 0 otherwise.
+     */
     private int evaluation(boolean isComputer) {
-        // Pak de juiste character om te evaluaren op het board
+        // Pak het juiste character om te evalueren op het board
         char c = isComputer ? COMPUTERS_CHAR : PLAYERS_CHAR;
         // Check of die character kan heeft gewonnen
         if (board.doesCharacterWin(c)) {

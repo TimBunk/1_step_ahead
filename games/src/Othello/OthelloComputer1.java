@@ -5,6 +5,10 @@ import Shared.AbstractComputer;
 
 public class OthelloComputer1 extends AbstractComputer {
 
+    /**
+     * @param board The board on which the move is placed
+     * @return The place on the board where we want to do a move
+     */
     @Override
     public int doMove(AbstractBoard board) {
         // De computer maximaliseert
@@ -28,6 +32,14 @@ public class OthelloComputer1 extends AbstractComputer {
         return bestMove;
     }
 
+    /**
+     * @param board The board the algorithm should consider
+     * @param depth How many iterations the algorithm should look
+     * @param maximizing Whether the player whose move is considered wants a maximal or minimal result
+     * @param alpha Helper argument for pruning
+     * @param beta Helper argument for pruning
+     * @return The evaluation of the moves used
+     */
     @Override
     protected int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta) {
         int evaluation = 0;
@@ -99,6 +111,10 @@ public class OthelloComputer1 extends AbstractComputer {
         }
     }
 
+    /**
+     * @param board The board to be evaluated
+     * @return How good the board is, evaluated as how many stones more are controlled than by the opponent
+     */
     private int eval(AbstractBoard board){
         int computerPoints = board.count(getCharacter());
         int emptyPlaces = board.count('.');

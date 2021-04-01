@@ -4,6 +4,9 @@ import Shared.AbstractBoard;
 
 public class BKEboard extends AbstractBoard {
 
+    /**
+     * @param size The desired size of the board. Since this board is for Tic-Tac-Toe, this should be 9.
+     */
     public void initializeBoard(int size) {
         super.initializeBoard(size);
         for (int i = 0; i < size; i++) {
@@ -11,6 +14,9 @@ public class BKEboard extends AbstractBoard {
         }
     }
 
+    /**
+     * @return Another instance of the board
+     */
     @Override
     public AbstractBoard clone() {
         BKEboard b = new BKEboard();
@@ -21,6 +27,10 @@ public class BKEboard extends AbstractBoard {
         return b;
     }
 
+    /**
+     * @param move The move whose validity should be checked
+     * @return Whether the move is valid
+     */
     @Override
     public boolean isMoveValid(int move) {
         // De move is valid wanneer die 0 is of lager dan de lengte van de board
@@ -31,12 +41,21 @@ public class BKEboard extends AbstractBoard {
         return false;
     }
 
+    /**
+     * @param move The move whose validity should be checked
+     * @param c The character for which we want to check the move's validity
+     * @return Whether the move is valid
+     * Validity is independent of character for Tic-Tac-Toe, so isMoveValid(int move) should be use instead.
+     */
     @Override
     public boolean isMoveValid(int move, char c) {
         // Of een move valid is hangt niet af van het character dat je wilt plaatsen
         return isMoveValid(move);
     }
 
+    /**
+     * @return If there are no free places on the board, the game is over
+     */
     @Override
     public boolean isGameOver() {
         // Zolang er nog '#' op het board staat is het board nog niet leeg
@@ -48,6 +67,9 @@ public class BKEboard extends AbstractBoard {
         return false;
     }
 
+    /**
+     * Prints the state of the board to the screen
+     */
     @Override
     public void printBoard() {
         String boardString = "";
@@ -63,16 +85,27 @@ public class BKEboard extends AbstractBoard {
         System.out.println(boardString);
     }
 
+    /**
+     * @param move Where the move is to be placed
+     * @param c    The character to be placed
+     */
     @Override
     public void placeMove(int move, char c) {
         board[move] = c;
     }
 
+    /**
+     * Not supported for Tic-Tac-Toe
+     */
     @Override
     public int[] findValidMoves(char c) {
         return new int[0];
     }
 
+    /**
+     * @param c The character to be checked
+     * @return Whether the player using that character has won
+     */
     @Override
     public boolean doesCharacterWin(char c) {
         // Check alle mogelijke win scenarios
@@ -82,6 +115,10 @@ public class BKEboard extends AbstractBoard {
         return false;
     }
 
+    /**
+     * @param c The character to be checked
+     * @return Whether the player using that character has won horizontally
+     */
     private boolean doesCharacterWinHorizontally(char c) {
         for(int i = 0; i < board.length; i += 3){
             if(board[i] == board[i+1] && board[i+1] == board[i+2] && board[i] == c){
@@ -91,6 +128,10 @@ public class BKEboard extends AbstractBoard {
         return false;
     }
 
+    /**
+     * @param c The character to be checked
+     * @return Whether the player using that character has won vertically
+     */
     private boolean doesCharacterWinVertically(char c) {
         for(int i = 0; i < 3; i++){
             if(board[i] == board[i+3] && board[i+3] == board[i+6] && board[i+6] == c){
@@ -100,6 +141,10 @@ public class BKEboard extends AbstractBoard {
         return false;
     }
 
+    /**
+     * @param c The character to be checked
+     * @return Whether the player using that character has won diagonally
+     */
     private boolean doesCharacterWinDiagonally(char c) {
         if(board[0] == board[4] && board[4] == board[8] && board[8] == c){
             return true;

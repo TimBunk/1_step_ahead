@@ -7,6 +7,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class BKEcomputer extends AbstractComputer {
 
+    /**
+     * @param board The board on which the move is placed
+     * @return The place on the board where we want to do a move
+     */
     @Override
     public int doMove(AbstractBoard board) {
         switch (this.getDifficulty()) {
@@ -21,7 +25,7 @@ public class BKEcomputer extends AbstractComputer {
 
     public int doMove0(AbstractBoard board) {
         int rndmMove = ThreadLocalRandom.current().nextInt(0, board.length());
-        while (board.isMoveValid(rndmMove) == false) {
+        while (!board.isMoveValid(rndmMove)) {
             rndmMove++;
             if (rndmMove >= board.length()) {
                 rndmMove = 0;
@@ -54,12 +58,20 @@ public class BKEcomputer extends AbstractComputer {
         return bestMove;
     }
 
+    /**
+     * @param board      The board the algorithm should consider
+     * @param depth      How many iterations the algorithm should look
+     * @param maximizing Whether the player whose move is considered wants a maximal or minimal result
+     * @param alpha      Helper argument for pruning
+     * @param beta       Helper argument for pruning
+     * @return           The evaluation of the moves used
+     */
     @Override
     protected int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta) {
         int evaluation = 0;
         // Als de evaluation zegt dat er een winnaar is dan geven we de evaluation terug
         // of als de diepte 0 is bereikt of als er geen tiles meer vrij zijn
-        if ((evaluation = evaluation(board, !maximizing)) != 0 || depth == 0 || board.isGameOver() == false) {
+        if ((evaluation = evaluation(board, !maximizing)) != 0 || depth == 0 || !board.isGameOver()) {
             return evaluation + (maximizing ? -depth : depth); // Door de depth eraf te halen of erbij opte tellen kiest de computer de snelste route om te winnen
         }
 
@@ -105,8 +117,13 @@ public class BKEcomputer extends AbstractComputer {
         }
     }
 
+    /**
+     * @param board The board to be evaluated
+     * @param isComputer Whether the evaluating player is the computer
+     * @return How good the board is, evaluated as 1 for victory, -1 for defeat, 0 otherwise.
+     */
     private int evaluation(AbstractBoard board, boolean isComputer) {
-        // Pak de juiste character om te evaluaren op het board
+        // Pak het juiste character om te evalueren op het board
         char c = isComputer ? BoterKaasEieren.COMPUTERS_CHAR : BoterKaasEieren.PLAYERS_CHAR;
         // Check of die character kan heeft gewonnen
         if (board.doesCharacterWin(c)) {
