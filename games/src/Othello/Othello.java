@@ -1,5 +1,7 @@
 package Othello;
 
+import Shared.AbstractPlayer;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -7,47 +9,47 @@ import java.util.Scanner;
 public class Othello {
 
     public static void main(String[] args) {
-        Othello othello = new Othello();
+        Othello othello = new Othello(new OthelloComputer0(), new OthelloComputer1());
         othello.start();
     }
 
     private OthelloBoard board;
-    private OthelloPlayer player;
-    private OthelloComputer computer;
 
-    private final int PLAYER_NUMBER = 1;
-    private final int COMPUTER_NUMBER = 2;
+    private AbstractPlayer player1;
+    private AbstractPlayer player2;
+
     Random rand = new Random();
 
-    public Othello(){
+    public Othello(AbstractPlayer player1, AbstractPlayer player2) {
         // Initialiseer waardes
         board = new OthelloBoard();
         board.initializeBoard(64);
-        player = new OthelloPlayer();
-        computer = new OthelloComputer();
-        computer.setDifficulty(2);
+
+        this.player1 = player1;
+        this.player2 = player2;
 
         //Bepaal wie Witte en Zwarte stenen krijgt
-        if(rand.nextInt(2) == 0){
-            player.setCharacter('W');
-            computer.setCharacter('Z');
+        if (rand.nextInt(2) == 0) {
+            player1.setCharacter('W');
+            player2.setCharacter('Z');
         }
-        else{
-            player.setCharacter('Z');
-            computer.setCharacter('W');
+        else {
+            player1.setCharacter('Z');
+            player2.setCharacter('W');
         }
     }
 
     public void start(){
         //speler met Zwarte stenen begint
-        boolean playersTurn = (player.getCharacter()=='Z');
+        boolean player1Turn = (player1.getCharacter()=='Z');
+        boolean player2Turn = (player2.getCharacter()=='Z');
 
         int turnCount = 1;
         boolean gameOver = false;
-        boolean playerPassed = false;
-        boolean computerPassed = false;
+        boolean player1Passed = false;
+        boolean player2Passed = false;
 
-        while(!gameOver && !(playerPassed && computerPassed)){
+        while(!gameOver && !(player1Passed && player2Passed)){
             //players do moves
             //fill up the board
             //if a player passes, change the relevant variable
@@ -57,29 +59,29 @@ public class Othello {
             board.printBoard();
             System.out.println("Ronde: " + turnCount);
 
-            if (playersTurn) {
-                if(board.findValidMoves(player.getCharacter()).length != 0){
-                    int move = player.doMove(board);
-                    System.out.println("Player placed: " + move);
-                    board.placeMove(move, player.getCharacter());
+            if (player1Turn) {
+                if(board.findValidMoves(player1.getCharacter()).length != 0){
+                    int move = player1.doMove(board);
+                    System.out.println("Player1 placed: " + move);
+                    board.placeMove(move, player1.getCharacter());
                 }
                 else{
-                    System.out.println("Player passed");
-                    playerPassed = true;
+                    System.out.println("Player1 passed");
+                    player1Passed = true;
+                }
+            } else {
+                if(board.findValidMoves(player2.getCharacter()).length != 0){
+                    int move = player2.doMove(board);
+                    System.out.println("Player2 placed: " + move);
+                    board.placeMove(move, player2.getCharacter());
+                }
+                else{
+                    System.out.println("Player2 passed");
+                    player2Passed = true;
                 }
             }
-            else {
-                if(board.findValidMoves(computer.getCharacter()).length != 0){
-                    int move = computer.doMove(board);
-                    System.out.println("Computer placed: " + move);
-                    board.placeMove(move, computer.getCharacter());
-                }
-                else {
-                    System.out.println("Computer passed");
-                    computerPassed = true;
-                }
-            }
-            playersTurn = !playersTurn;
+
+            player1Turn = !player1Turn;
 
             turnCount++;
 
@@ -89,17 +91,17 @@ public class Othello {
         //display winner
         board.printBoard();
 
-        int playerPoints = board.count(player.getCharacter());
-        int computerPoints = board.count(computer.getCharacter());
+        int player1Points = board.count(player1.getCharacter());
+        int player2Points = board.count(player2.getCharacter());
 
-        if(playerPoints > computerPoints){
-            System.out.println("Je hebt gewonnen met een score van " + playerPoints + " tegen " + computerPoints + "!\nGefeliciteerd!");
+        if(player1Points > player2Points){
+            System.out.println("Player1 wint met " + player1Points + " tegen " + player2Points);
         }
-        else if(computerPoints > playerPoints){
-            System.out.println("Je hebt verloren met een score van " + playerPoints + " tegen " + computerPoints + ".\nVolgende keer beter!");
+        else if(player2Points > player1Points){
+            System.out.println("Player2 wint met " + player2Points + " tegen " + player1Points);
         }
-        else{
-            System.out.println("Je hebt gelijkgespeeld met een score van " + playerPoints + " tegen " + computerPoints + "!\nBijna gewonnen!");
+        else {
+            System.out.println("Gelijkspel met een score van " + player1Points);
         }
     }
 }
