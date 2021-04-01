@@ -4,85 +4,147 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Controller">
-   <children>
-      <SplitPane dividerPositions="0.1670854271356784" layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="598.0">
-               <children>
-                  <Label layoutX="214.0" layoutY="17.0" text="1-Step-Ahead">
-                     <font>
-                        <Font name="Arial Bold Italic" size="28.0" />
-                     </font>
-                  </Label>
-                   <Button layoutX="475.0" layoutY="20.0" minWidth="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;">
-                       <graphic>
-                           <ImageView fitHeight="22.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
-                               <image>
-                                   <Image url="@Afbeeldingen/sound.png" />
-                               </image>
-                           </ImageView>
-                       </graphic>
-                   </Button>
-                   <Button layoutX="536.0" layoutY="20.0" mnemonicParsing="false" onAction="#naarNetwerk" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 20px; -fx-background-color: lightblue;">
-                       <graphic>
-                           <ImageView fitHeight="50.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                               <image>
-                                   <Image url="@Afbeeldingen/vraag.png" />
-                               </image>
-                           </ImageView>
-                       </graphic></Button>
-                  <Label fx:id="usernameLabel" layoutX="47.0" layoutY="23.0" text="Gebruikersnaam" />
-                  <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="11.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Afbeeldingen/profile-user.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <SplitPane dividerPositions="0.5" layoutX="1.0" layoutY="1.0" prefHeight="328.0" prefWidth="598.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <Button layoutX="123.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Start" />
-                              <Label layoutX="119.0" layoutY="18.0" text="Othello" underline="true" />
-                              <ChoiceBox fx:id="OthelloDifficulty" layoutX="182.0" layoutY="100.0" prefHeight="4.0" prefWidth="104.0" />
-                              <ChoiceBox fx:id="OthelloOpponent" layoutX="182.0" layoutY="68.0" prefHeight="4.0" prefWidth="104.0" />
-                              <Label layoutX="34.0" layoutY="104.0" text="Moeilijkheidsgraad" />
-                              <Label layoutX="48.0" layoutY="72.0" text="Tegenstander" />
-                              <ImageView fitHeight="48.0" fitWidth="65.0" layoutX="13.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Afbeeldingen/reversi.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane prefHeight="256.0" prefWidth="227.0">
-                           <children>
-                              <Button layoutX="120.0" layoutY="272.0" mnemonicParsing="false" onAction="#TicTacToeStart" style="-fx-background-color: lightblue;" text="Start" />
-                              <Label layoutX="97.0" layoutY="17.0" text="Boter-Kaas-Eieren" underline="true" />
-                              <ChoiceBox fx:id="TicTacToeDifficulty" layoutX="182.0" layoutY="100.0" prefHeight="4.0" prefWidth="104.0" />
-                              <Label layoutX="41.0" layoutY="104.0" text="Moeilijkheidsgraad" />
-                              <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Afbeeldingen/tictactoe.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Controller">
+    <children>
+        <SplitPane layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="598.0">
+                    <children>
+                        <Button layoutX="462.0" layoutY="21.0" minWidth="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" style="-fx-background-radius: 20px; -fx-background-color: #40a3ff#40a3ff;">
+                            <graphic>
+                                <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Afbeeldingen/sound.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button layoutX="523.0" layoutY="20.0" mnemonicParsing="false" onAction="#naarNetwerk" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 20px; -fx-background-color: #40a3ff#40a3ff;">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Afbeeldingen/vraag.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic></Button>
+                        <Label fx:id="usernameLabel" layoutX="53.0" layoutY="25.0" text="Gebruikersnaam" />
+                        <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Afbeeldingen/profile-user.png" />
+                            </image>
+                        </ImageView>
+                        <Pane layoutY="73.0" prefHeight="325.0" prefWidth="303.0">
+                            <children>
+                                <Label layoutX="23.0" layoutY="80.0" text="Tegenstander">
+                                    <font>
+                                        <Font size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="22.0" layoutY="110.0" text="Moeilijkheidsgraad">
+                                    <font>
+                                        <Font size="12.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="OthelloOpponent" layoutX="173.0" layoutY="75.0" prefHeight="4.0" prefWidth="104.0" />
+                                <ChoiceBox fx:id="OthelloDifficulty" layoutX="173.0" layoutY="105.0" prefHeight="4.0" prefWidth="104.0" />
+                                <Button layoutX="114.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: #40a3ff#40a3ff;" text="Start" />
+                                <TextArea layoutX="16.0" layoutY="151.0" prefHeight="107.0" prefWidth="258.0" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" height="56.0" layoutX="15.0" stroke="BLACK" strokeType="INSIDE" width="267.0">
+                                    <fill>
+                                        <LinearGradient endX="1.0" endY="1.0">
+                                            <stops>
+                                                <Stop>
+                                                    <color>
+                                                        <Color red="0.250980406999588" green="0.6392157077789307" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                    <color>
+                                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                            </stops>
+                                        </LinearGradient>
+                                    </fill>
+                                </Rectangle>
+                                <ImageView fitHeight="48.0" fitWidth="65.0" layoutX="19.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Afbeeldingen/reversi.png" />
+                                    </image>
+                                </ImageView>
+                                <Label layoutX="112.0" layoutY="14.0" text="Othello">
+                                    <font>
+                                        <Font name="Verdana" size="22.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="295.0" layoutY="73.0" prefHeight="325.0" prefWidth="303.0">
+                            <children>
+                                <Label layoutX="22.0" layoutY="96.0" text="Moeilijkheidsgraad">
+                                    <font>
+                                        <Font size="12.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="TicTacToeDifficulty" layoutX="188.0" layoutY="91.0" prefHeight="4.0" prefWidth="104.0" />
+                                <Button fx:id="startTTT" onAction="#TicTacToeStart" layoutX="139.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-color: #40a3ff#40a3ff;" text="Start" />
+                                <Line endX="-8.64501953125" endY="1.0" layoutX="11.0" layoutY="325.0" startX="-8.64501953125" startY="-332.24627685546875" strokeWidth="2.0" />
+                                <TextArea layoutX="28.0" layoutY="152.0" prefHeight="107.0" prefWidth="258.0" text="Boter-kaas-en-eieren wordt gespeeld op&#10;3 bij 3 velden. Bij het begin zijn alle &#10;velden leeg. De ene speler zet een 'kruis'&#10;en de andere speler een 'rondje'. Degene &#10;die drie van zijn eigen tekens op een rij &#10;heeft, dat mag diagonaal, verticaal of &#10;horizontaal zijn, heeft gewonnen.">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </TextArea>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" height="56.0" layoutX="23.0" stroke="BLACK" strokeType="INSIDE" width="267.0">
+                                    <fill>
+                                        <LinearGradient endX="1.0" endY="1.0">
+                                            <stops>
+                                                <Stop>
+                                                    <color>
+                                                        <Color red="0.250980406999588" green="0.6392157077789307" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                    <color>
+                                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                            </stops>
+                                        </LinearGradient>
+                                    </fill>
+                                </Rectangle>
+                                <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="24.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Afbeeldingen/tictactoe.png" />
+                                    </image>
+                                </ImageView>
+                                <Label layoutX="82.0" layoutY="14.0" text="Boter-Kaas-Eieren">
+                                    <font>
+                                        <Font name="Verdana" size="22.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <Line endX="505.0" layoutX="92.0" layoutY="64.0" startX="-100.0" strokeWidth="3.0" />
+                        <ImageView fitHeight="45.0" fitWidth="236.0" layoutX="183.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Afbeeldingen/logoTransparant.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </Pane>
