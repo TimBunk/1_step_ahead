@@ -12,42 +12,60 @@ public class Othello {
     }
 
     private OthelloBoard board;
-    private OthelloPlayer player;
+    private OthelloPlayer player1;
+    private OthelloPlayer player2;
     private OthelloComputer computer;
 
     private final int PLAYER_NUMBER = 1;
     private final int COMPUTER_NUMBER = 2;
     Random rand = new Random();
 
-    public Othello(){
+    public Othello() {
         // Initialiseer waardes
         board = new OthelloBoard();
         board.initializeBoard(64);
-        player = new OthelloPlayer();
+        player1 = new OthelloPlayer();
+        player2 = new OthelloPlayer();
         computer = new OthelloComputer();
         computer.setDifficulty(2);
 
-        //Bepaal wie Witte en Zwarte stenen krijgt
-        if(rand.nextInt(2) == 0){
-            player.setCharacter('W');
-            computer.setCharacter('Z');
+        //Bepaal of het speler tegen speler is of speler tegen computer
+        if (rand.nextInt(2) == 0) {
+            //Bepaal wie Witte en Zwarte stenen krijgt
+            if (rand.nextInt(2) == 0) {
+                player1.setCharacter('W');
+                player2.setCharacter('Z');
+            }
+            else {
+                player1.setCharacter('Z');
+                player2.setCharacter('W');
+            }
         }
-        else{
-            player.setCharacter('Z');
-            computer.setCharacter('W');
+        else {
+            //Bepaal wie Witte en Zwarte stenen krijgt
+            if(rand.nextInt(2) == 0) {
+                player1.setCharacter('W');
+                computer.setCharacter('Z');
+            }
+            else {
+                player1.setCharacter('Z');
+                computer.setCharacter('W');
+            }
         }
     }
 
     public void start(){
         //speler met Zwarte stenen begint
-        boolean playersTurn = (player.getCharacter()=='Z');
+        boolean player1Turn = (player1.getCharacter()=='Z');
+        boolean player2Turn = (player2.getCharacter()=='Z');
 
         int turnCount = 1;
         boolean gameOver = false;
-        boolean playerPassed = false;
+        boolean player1Passed = false;
+        boolean player2Passed = false;
         boolean computerPassed = false;
 
-        while(!gameOver && !(playerPassed && computerPassed)){
+        while(!gameOver && !(player1Passed && computerPassed || player2Passed)){
             //players do moves
             //fill up the board
             //if a player passes, change the relevant variable
@@ -57,15 +75,25 @@ public class Othello {
             board.printBoard();
             System.out.println("Ronde: " + turnCount);
 
-            if (playersTurn) {
-                if(board.findValidMoves(player.getCharacter()).length != 0){
-                    int move = player.doMove(board);
+            if (player1Turn) {
+                if(board.findValidMoves(player1.getCharacter()).length != 0){
+                    int move = player1.doMove(board);
                     System.out.println("Player placed: " + move);
-                    board.placeMove(move, player.getCharacter());
+                    board.placeMove(move, player1.getCharacter());
                 }
                 else{
                     System.out.println("Player passed");
-                    playerPassed = true;
+                    player1Passed = true;
+                }
+            } else if (player2Turn) {
+                if(board.findValidMoves(player2.getCharacter()).length != 0){
+                    int move = player2.doMove(board);
+                    System.out.println("Player placed: " + move);
+                    board.placeMove(move, player2.getCharacter());
+                }
+                else{
+                    System.out.println("Player passed");
+                    player2Passed = true;
                 }
             }
             else {
@@ -79,7 +107,7 @@ public class Othello {
                     computerPassed = true;
                 }
             }
-            playersTurn = !playersTurn;
+            player1Turn = !player1Turn;
 
             turnCount++;
 
@@ -89,17 +117,27 @@ public class Othello {
         //display winner
         board.printBoard();
 
-        int playerPoints = board.count(player.getCharacter());
+        int player1Points = board.count(player1.getCharacter());
+        int player2Points = board.count(player2.getCharacter());
         int computerPoints = board.count(computer.getCharacter());
 
-        if(playerPoints > computerPoints){
-            System.out.println("Je hebt gewonnen met een score van " + playerPoints + " tegen " + computerPoints + "!\nGefeliciteerd!");
+        if(player1Points > computerPoints && computerPoints > 0){
+            System.out.println("Je hebt gewonnen met een score van " + player1Points + " tegen " + computerPoints + "!\nGefeliciteerd!");
         }
-        else if(computerPoints > playerPoints){
-            System.out.println("Je hebt verloren met een score van " + playerPoints + " tegen " + computerPoints + ".\nVolgende keer beter!");
+        else if(player1Points > player2Points && player2Points > 0){
+            System.out.println("Je hebt gewonnen met een score van " + player1Points + " tegen " + player2Points + "!\nGefeliciteerd!");
         }
-        else{
-            System.out.println("Je hebt gelijkgespeeld met een score van " + playerPoints + " tegen " + computerPoints + "!\nBijna gewonnen!");
+        else if(computerPoints > player1Points){
+            System.out.println("Je hebt verloren met een score van " + player1Points + " tegen " + computerPoints + ".\nVolgende keer beter!");
+        }
+        else if(player2Points > player1Points){
+            System.out.println("Je hebt verloren met een score van " + player1Points + " tegen " + player2Points + "!\nVolgende keer beter!");
+        }
+        else if (player1Points == computerPoints){
+            System.out.println("Je hebt gelijkgespeeld met een score van " + player1Points + " tegen " + computerPoints + "!\nBijna gewonnen!");
+        }
+        else {
+            System.out.println("Je hebt gelijkgespeeld met een score van " + player1Points + " tegen " + player2Points + "!\nBijna gewonnen!");
         }
     }
 }
