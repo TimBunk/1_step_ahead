@@ -25,7 +25,7 @@ public class Othello {
         board.initializeBoard(64);
         player = new OthelloPlayer();
         computer = new OthelloComputer();
-        computer.setDifficulty(0);
+        computer.setDifficulty(1);
 
         //Bepaal wie Witte en Zwarte stenen krijgt
         if(rand.nextInt(2) == 0){

@@ -22,10 +22,11 @@ public class OthelloBoard extends AbstractBoard {
 
     @Override
     public AbstractBoard clone() {
-        BKEboard b = new BKEboard();
-        board = new char[board.length];
+        OthelloBoard b = new OthelloBoard();
+        b.board = new char[board.length];
+        b.oldBoard = new char[board.length];
         for (int i = 0; i < board.length; i++) {
-            board[i] = this.board[i];
+            b.board[i] = this.board[i];
         }
         return b;
     }
