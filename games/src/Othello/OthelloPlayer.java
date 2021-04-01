@@ -17,10 +17,13 @@ public class OthelloPlayer extends AbstractPlayer {
             int[] validMoves = board.findValidMoves(getCharacter());
             System.out.print("De volgende zetten zijn geldig: ");
             for(int i = 0; i < validMoves.length; i++){
-                if(i != validMoves.length-1){
+                if(validMoves.length == 1){
+                    System.out.print(validMoves[i] + ".\nVoer deze zet in: ");
+                }
+                else if(i != validMoves.length-1){
                     System.out.print(validMoves[i] + ", ");
                 }
-                else{
+                else {
                     System.out.print( "en " + validMoves[i] + ".\nVoer één van deze zetten in: ");
                 }
             }
