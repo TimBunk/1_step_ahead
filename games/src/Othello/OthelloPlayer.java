@@ -10,6 +10,7 @@ public class OthelloPlayer extends AbstractPlayer {
     @Override
     public int doMove(AbstractBoard board) {
         Scanner sc= new Scanner(System.in);
+        sc.useDelimiter("\n");
         int move = -1; // Always invalid
         do {
             // Lees wat de player intypt
