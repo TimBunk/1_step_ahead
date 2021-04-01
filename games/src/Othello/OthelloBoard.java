@@ -25,9 +25,7 @@ public class OthelloBoard extends AbstractBoard {
         OthelloBoard b = new OthelloBoard();
         b.board = new char[board.length];
         b.oldBoard = new char[board.length];
-        for (int i = 0; i < board.length; i++) {
-            b.board[i] = this.board[i];
-        }
+        System.arraycopy(this.board, 0, b.board, 0, board.length);
         return b;
     }
 

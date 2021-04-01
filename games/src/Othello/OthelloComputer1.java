@@ -33,7 +33,7 @@ public class OthelloComputer1 extends AbstractComputer {
         int evaluation = 0;
         // Pak de juiste character
         char c = getCharacter();
-        if (maximizing == false) {
+        if (!maximizing) {
             if (c == 'W') {
                 c = 'Z';
             }

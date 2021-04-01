@@ -42,7 +42,6 @@ public class Othello {
     public void start(){
         //speler met Zwarte stenen begint
         boolean player1Turn = (player1.getCharacter()=='Z');
-        boolean player2Turn = (player2.getCharacter()=='Z');
 
         int turnCount = 1;
         boolean gameOver = false;

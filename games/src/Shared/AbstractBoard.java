@@ -16,8 +16,8 @@ public abstract class AbstractBoard {
 
     public int count(char c) {
         int counter = 0;
-        for (int i = 0; i < board.length; i++) {
-            if (board[i] == c) {
+        for (char value : board) {
+            if (value == c) {
                 counter++;
             }
         }
@@ -25,15 +25,11 @@ public abstract class AbstractBoard {
     }
 
     public void undoLastMove() {
-        for (int i = 0; i < board.length; i++) {
-            board[i] = oldBoard[i];
-        }
+        System.arraycopy(oldBoard, 0, board, 0, board.length);
     }
 
     protected void saveBoard() {
-        for (int i = 0; i < board.length; i++) {
-            oldBoard[i] = board[i];
-        }
+        System.arraycopy(board, 0, oldBoard, 0, board.length);
     }
 
     public abstract AbstractBoard clone();
