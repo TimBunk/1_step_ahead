@@ -54,8 +54,8 @@
                            <children>
                               <Button layoutX="123.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Start" />
                               <Label layoutX="119.0" layoutY="18.0" text="Othello" underline="true" />
-                              <ChoiceBox layoutX="182.0" layoutY="100.0" prefHeight="4.0" prefWidth="104.0" />
-                              <ChoiceBox layoutX="182.0" layoutY="68.0" prefHeight="4.0" prefWidth="104.0" />
+                              <ChoiceBox fx:id="OthelloDifficulty" layoutX="182.0" layoutY="100.0" prefHeight="4.0" prefWidth="104.0" />
+                              <ChoiceBox fx:id="OthelloOpponent" layoutX="182.0" layoutY="68.0" prefHeight="4.0" prefWidth="104.0" />
                               <Label layoutX="34.0" layoutY="104.0" text="Moeilijkheidsgraad" />
                               <Label layoutX="48.0" layoutY="72.0" text="Tegenstander" />
                               <ImageView fitHeight="48.0" fitWidth="65.0" layoutX="13.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
@@ -67,12 +67,10 @@
                         </AnchorPane>
                       <AnchorPane prefHeight="256.0" prefWidth="227.0">
                            <children>
-                              <Button layoutX="120.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Start" />
+                              <Button layoutX="120.0" layoutY="272.0" mnemonicParsing="false" onAction="#TicTacToeStart" style="-fx-background-color: lightblue;" text="Start" />
                               <Label layoutX="97.0" layoutY="17.0" text="Boter-Kaas-Eieren" underline="true" />
-                              <ChoiceBox layoutX="182.0" layoutY="100.0" prefHeight="4.0" prefWidth="104.0" />
-                              <ChoiceBox layoutX="182.0" layoutY="68.0" prefHeight="4.0" prefWidth="104.0" />
+                              <ChoiceBox fx:id="TicTacToeDifficulty" layoutX="182.0" layoutY="100.0" prefHeight="4.0" prefWidth="104.0" />
                               <Label layoutX="41.0" layoutY="104.0" text="Moeilijkheidsgraad" />
-                              <Label layoutX="54.0" layoutY="72.0" text="Tegenstander" />
                               <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Afbeeldingen/tictactoe.png" />

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EndScreen.Controller">
+   <children>
+      <Label fx:id="statusLabel" alignment="CENTER" layoutX="2.0" layoutY="31.0" prefHeight="17.0" prefWidth="300.0" text="Je hebt...." />
+      <ChoiceBox fx:id="gameDifficulty" layoutX="75.0" layoutY="66.0" prefWidth="150.0" />
+      <Button layoutX="75.0" layoutY="115.0" mnemonicParsing="false" onAction="#stop" text="Stop" />
+      <Button layoutX="161.0" layoutY="115.0" mnemonicParsing="false" onAction="#again" text="Opnieuw" />
+   </children>
+</Pane>

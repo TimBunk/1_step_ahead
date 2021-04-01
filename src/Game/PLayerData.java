@@ -16,6 +16,14 @@ public class PlayerData {
         this.Portnumber = 7789;
     }
 
+    public void setPortnumber(int portnumber) {
+        Portnumber = portnumber;
+    }
+
+    public void setIpadres(String ipadres) {
+        Ipadres = ipadres;
+    }
+
     public String getUsername() {
         return username;
     }
