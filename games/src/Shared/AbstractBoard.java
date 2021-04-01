@@ -44,7 +44,7 @@ public abstract class AbstractBoard {
 
     public abstract boolean doesCharacterWin(char c);
 
-    public abstract boolean anyTilesAvailable();
+    public abstract boolean isGameOver();
 
     public abstract void printBoard();
 

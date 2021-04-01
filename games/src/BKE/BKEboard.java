@@ -38,7 +38,7 @@ public class BKEboard extends AbstractBoard {
     }
 
     @Override
-    public boolean anyTilesAvailable() {
+    public boolean isGameOver() {
         // Zolang er nog '#' op het board staat is het board nog niet leeg
         for (char c : board) {
             if (c == '#') {

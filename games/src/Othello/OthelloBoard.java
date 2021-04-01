@@ -46,11 +46,6 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     @Override
-    public boolean anyTilesAvailable() {
-        return false;
-    }
-
-    @Override
     public void printBoard() {
         String boardString = "";
         for (int i = 0; i < board.length; i++) {
@@ -103,6 +98,7 @@ public class OthelloBoard extends AbstractBoard {
         return validMoves;
     }
 
+    @Override
     public boolean isGameOver(){
         for(char position : board){
             if(position == '.'){

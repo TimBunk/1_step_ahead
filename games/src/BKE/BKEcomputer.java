@@ -59,7 +59,7 @@ public class BKEcomputer extends AbstractComputer {
         int evaluation = 0;
         // Als de evaluation zegt dat er een winnaar is dan geven we de evaluation terug
         // of als de diepte 0 is bereikt of als er geen tiles meer vrij zijn
-        if ((evaluation = evaluation(board, !maximizing)) != 0 || depth == 0 || board.anyTilesAvailable() == false) {
+        if ((evaluation = evaluation(board, !maximizing)) != 0 || depth == 0 || board.isGameOver() == false) {
             return evaluation + (maximizing ? -depth : depth); // Door de depth eraf te halen of erbij opte tellen kiest de computer de snelste route om te winnen
         }
 
