@@ -59,7 +59,7 @@
                                 </Label>
                                 <ChoiceBox fx:id="OthelloOpponent" layoutX="173.0" layoutY="75.0" prefHeight="4.0" prefWidth="104.0" />
                                 <ChoiceBox fx:id="OthelloDifficulty" layoutX="173.0" layoutY="105.0" prefHeight="4.0" prefWidth="104.0" />
-                                <Button layoutX="114.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;" text="Start" />
+                                <Button layoutX="114.0" layoutY="280.0" mnemonicParsing="false" onAction="#OthelloStart" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;" text="Start" />
                                 <TextArea layoutX="16.0" layoutY="151.0" prefHeight="107.0" prefWidth="258.0" text="Het doel van het spel is om meer schijven in&#10;jouw kleur te hebben dan je tegenstander aan&#10;het einde van het spel. Het bord bestaat uit&#10;8x8 vakjes. De opstelling van het bord heeft 2&#10;zwarte en 2 witte schijven in het midden.&#10;De stenen van dezelfde kleur bevinden zich op&#10;een diagonale lijn. Eén speler speelt met zwarte&#10;schijven en de ander speelt met witte. De speler&#10;met de zwarte schijven plaatst als eerste&#10;een schijf. Wanneer een speler een schijf&#10;plaatst, dan worden alle schijven van de&#10;tegenstander die horizontaal, verticaal of&#10;diagonaal tussen de geplaatste schijf en een&#10;andere schijf van de kleur van de speler liggen&#10;veranderd naar schijven van de kleur van de&#10;speler. Een speler mag alleen een schijf plaatsen&#10;naast een schijf die al op het bord ligt.&#10;Daarnaast mag een speler alleen een schijf&#10;plaatsen op zo'n manier dat minstens één schijf&#10;van de tegenstander van kleur verandert. Als&#10;een speler geen schijf kan plaatsen, gaat de&#10;beurt terug naar de andere speler.&#10;&#10;Het spel is afgelopen wanneer beide spelers&#10;geen geldige zetten meer kunnen doen of&#10;wanneer het bord vol is. De speler met&#10;de meeste schijven in zijn/haar kleur wint. ">
                                     <font>
                                         <Font size="11.0" />
@@ -103,7 +103,7 @@
                                     </font>
                                 </Label>
                                 <ChoiceBox fx:id="TicTacToeDifficulty" layoutX="188.0" layoutY="91.0" prefHeight="4.0" prefWidth="104.0" />
-                                <Button fx:id="startTTT" onAction="#TicTacToeStart" layoutX="139.0" layoutY="280.0" mnemonicParsing="false" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;" text="Start" />
+                                <Button fx:id="startTTT" layoutX="139.0" layoutY="280.0" mnemonicParsing="false" onAction="#TicTacToeStart" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;" text="Start" />
                                 <Line endX="-11.0" endY="-11.957550048828125" layoutX="16.0" layoutY="326.0" startX="-11.0" startY="-326.0" stroke="#a9a9a9" strokeWidth="2.0" />
                                 <TextArea layoutX="28.0" layoutY="152.0" prefHeight="107.0" prefWidth="258.0" text="Boter-kaas-en-eieren wordt gespeeld op 3 bij 3 &#10;velden. Bij het begin zijn alle velden leeg. De ene &#10;speler zet een 'kruis' en de andere speler een &#10;'rondje'. Degene die drie van zijn eigen tekens op &#10;een rij heeft, dat mag diagonaal, verticaal of &#10;horizontaal zijn, heeft gewonnen.">
                                     <font>
