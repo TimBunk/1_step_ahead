@@ -56,6 +56,7 @@ public class Controller{
             ticTacToeScreen.setdifficulty(gameDifficulty.getValue());
 
             Stage stage=new Stage();
+            stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.show();
 
