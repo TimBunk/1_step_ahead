@@ -13,6 +13,7 @@ public class PlayerData {
     public PlayerData(String username) {
         this.username = username;
         this.Ipadres = "145.33.225.170";
+        //this.Ipadres = "localhost";
         this.Portnumber = 7789;
     }
 
