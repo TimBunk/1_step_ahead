@@ -46,7 +46,7 @@ public class BKEcomputer extends AbstractComputer {
                 AbstractBoard cloneOfBoard = board.clone();
                 cloneOfBoard.placeMove(i, BoterKaasEieren.COMPUTERS_CHAR);
                 // Roep het minimax algoritme aan om te kijken hoe goed de move was
-                int evaluation = minimax(cloneOfBoard, 10, false, 0, 0);
+                int evaluation = minimax(cloneOfBoard, 10, false);
                 // Check of deze move beter was dan de laatste move die we hebben geprobeerd
                 if (evaluation > bestEvaluation) {
                     bestMove = i;
@@ -62,12 +62,9 @@ public class BKEcomputer extends AbstractComputer {
      * @param board      The board the algorithm should consider
      * @param depth      How many iterations the algorithm should look
      * @param maximizing Whether the player whose move is considered wants a maximal or minimal result
-     * @param alpha      Helper argument for pruning
-     * @param beta       Helper argument for pruning
      * @return           The evaluation of the moves used
      */
-    @Override
-    protected int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta) {
+    private int minimax(AbstractBoard board, int depth, boolean maximizing) {
         int evaluation = 0;
         // Als de evaluation zegt dat er een winnaar is dan geven we de evaluation terug
         // of als de diepte 0 is bereikt of als er geen tiles meer vrij zijn
@@ -85,7 +82,7 @@ public class BKEcomputer extends AbstractComputer {
                     // Plaats de move op het board
                     cloneOfBoard.placeMove(i, BoterKaasEieren.COMPUTERS_CHAR);
                     // Voer recursief de minimax uit tot de base case is bereikt
-                    evaluation = minimax(cloneOfBoard, depth-1, false, 0, 0);
+                    evaluation = minimax(cloneOfBoard, depth-1, false);
                     // Als de evaluatie groter is dan de huidge max dan was dat dus een goede zet en vervangen we max met evaluation
                     if (evaluation > max) {
                         max = evaluation;
@@ -105,7 +102,7 @@ public class BKEcomputer extends AbstractComputer {
                     // Plaats de move op het board
                     cloneOfBoard.placeMove(i, BoterKaasEieren.PLAYERS_CHAR);
                     // Voer recursief de minimax uit tot de base case is bereikt
-                    evaluation = minimax(cloneOfBoard, depth-1, true, 0, 0);
+                    evaluation = minimax(cloneOfBoard, depth-1, true);
                     // Als de evaluatie kleiner is dan de huidge min dan was dat dus een goede zet en vervangen we min met evaluation
                     if (evaluation < min) {
                         min = evaluation;

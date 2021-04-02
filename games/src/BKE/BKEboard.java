@@ -1,5 +1,6 @@
 package BKE;
 
+import Othello.OthelloBoard;
 import Shared.AbstractBoard;
 
 public class BKEboard extends AbstractBoard {
@@ -21,9 +22,7 @@ public class BKEboard extends AbstractBoard {
     public AbstractBoard clone() {
         BKEboard b = new BKEboard();
         b.board = new char[board.length];
-        for (int i = 0; i < board.length; i++) {
-             b.board[i] = this.board[i];
-        }
+        System.arraycopy(this.board, 0, b.board, 0, board.length);
         return b;
     }
 

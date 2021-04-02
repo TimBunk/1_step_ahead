@@ -18,10 +18,6 @@ public class OthelloBoard extends AbstractBoard {
         board[36] = 'Z';
     }
 
-    public char[] getBoard(){
-        return board;
-    }
-
     /**
      * @return Another instance of the board
      */
@@ -29,7 +25,6 @@ public class OthelloBoard extends AbstractBoard {
     public AbstractBoard clone() {
         OthelloBoard b = new OthelloBoard();
         b.board = new char[board.length];
-        b.oldBoard = new char[board.length];
         System.arraycopy(this.board, 0, b.board, 0, board.length);
         return b;
     }
@@ -87,7 +82,6 @@ public class OthelloBoard extends AbstractBoard {
      */
     @Override
     public void placeMove(int move, char c) {
-        saveBoard();
         board[move] = c;
         turnStones(move, c);
     }

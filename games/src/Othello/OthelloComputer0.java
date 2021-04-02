@@ -17,12 +17,4 @@ public class OthelloComputer0 extends AbstractComputer {
         int rndmMove = validMoves[ThreadLocalRandom.current().nextInt(0, validMoves.length)];
         return rndmMove;
     }
-
-    /**
-     * Not implemented. If you want the computer to use minimax to decide its moves, use a different class.
-     */
-    @Override
-    protected int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta) {
-        return 0;
-    }
 }

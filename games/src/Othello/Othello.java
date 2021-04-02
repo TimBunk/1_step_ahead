@@ -2,23 +2,18 @@ package Othello;
 
 import Shared.AbstractPlayer;
 
-import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Othello {
 
     public static void main(String[] args) {
-        Othello othello = new Othello(new OthelloComputer0(), new OthelloComputer1());
+        Othello othello = new Othello(new OthelloComputer0(), new OthelloComputer1(8, 9500));
         othello.start();
     }
 
     private OthelloBoard board;
-
     private AbstractPlayer player1;
     private AbstractPlayer player2;
-
-    Random rand = new Random();
 
     /**
      * @param player1 The first player
@@ -33,7 +28,7 @@ public class Othello {
         this.player2 = player2;
 
         //Bepaal wie Witte en Zwarte stenen krijgt
-        if (rand.nextInt(2) == 0) {
+        if (new Random().nextInt(2) == 0) {
             player1.setCharacter('W');
             player2.setCharacter('Z');
         }
@@ -43,10 +38,7 @@ public class Othello {
         }
     }
 
-    /**
-     * The game loop. This will repeat until the board is filled or both players pass.
-     */
-    public void start(){
+    public void start() {
         //speler met Zwarte stenen begint
         boolean player1Turn = (player1.getCharacter()=='Z');
 

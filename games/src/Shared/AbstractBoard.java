@@ -3,14 +3,19 @@ package Shared;
 public abstract class AbstractBoard {
 
     protected char[] board = null;
-    protected char[] oldBoard = null;
 
     /**
      * @param size The desired size of the board. This should usually be a square.
      */
     public void initializeBoard(int size) {
         board = new char[size];
-        oldBoard = new char[size];
+    }
+
+    /**
+     * @return Gives the actual data back that is being used for the board
+     */
+    public char[] getBoard(){
+        return board;
     }
 
     /**
@@ -32,14 +37,6 @@ public abstract class AbstractBoard {
             }
         }
         return counter;
-    }
-
-    public void undoLastMove() {
-        System.arraycopy(oldBoard, 0, board, 0, board.length);
-    }
-
-    protected void saveBoard() {
-        System.arraycopy(board, 0, oldBoard, 0, board.length);
     }
 
     /**
