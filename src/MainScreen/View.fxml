@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Controller">
    <children>
       <SplitPane dividerPositions="0.1670854271356784" layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
         <items>
@@ -52,7 +52,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Button layoutX="123.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: lightblue;" text="Start" />
+                              <Button layoutX="123.0" layoutY="272.0" mnemonicParsing="false" onAction="#OthelloStart" style="-fx-background-color: lightblue;" text="Start" />
                               <Label layoutX="119.0" layoutY="18.0" text="Othello" underline="true" />
                               <ChoiceBox fx:id="OthelloDifficulty" layoutX="182.0" layoutY="100.0" prefHeight="4.0" prefWidth="104.0" />
                               <ChoiceBox fx:id="OthelloOpponent" layoutX="182.0" layoutY="68.0" prefHeight="4.0" prefWidth="104.0" />

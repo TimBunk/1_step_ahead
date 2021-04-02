@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Lobby.Controller">
+    <children>
+        <SplitPane layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+            <items>
+                <AnchorPane fx:id="LobbyScreen" minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="598.0">
+                    <children>
+                        <Button layoutX="512.0" layoutY="17.0" minWidth="33.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                            <graphic>
+                                <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../Downloads/sound.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button layoutX="552.0" layoutY="17.0" mnemonicParsing="false" onAction="#naarNetwerk" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../../Downloads/vraag.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic></Button>
+                        <Label fx:id="usernameLabel" layoutX="53.0" layoutY="25.0" text="Gebruikersnaam" />
+                        <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../Downloads/profile-user.png" />
+                            </image>
+                        </ImageView>
+                        <Pane layoutX="412.0" layoutY="62.0" prefHeight="336.0" prefWidth="186.0">
+                            <children>
+                                <Line endX="-11.0" endY="-11.957550048828125" layoutX="11.0" layoutY="337.0" startX="-11.0" startY="-326.0" stroke="#a9a9a9" strokeWidth="2.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="74.0" layoutX="20.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="151.0" />
+                        <Label layoutX="28.0" layoutY="22.0" text="Spel:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="40.0" text="Mode:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="117.0" layoutY="22.0" text="Othello">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="123.0" layoutY="40.0" text="1 vs 1">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="58.0" layoutY="69.0" prefHeight="21.0" prefWidth="73.0" text="Multiplayer">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../AI_Afbeeldingen/reversi.png" />
+                           </image>
+                        </ImageView>
+                            </children>
+                        </Pane>
+                        <Line endX="505.0" layoutX="92.0" layoutY="60.0" startX="-100.0" stroke="#6d6d6d" strokeWidth="3.0" />
+                        <ImageView fitHeight="45.0" fitWidth="236.0" layoutX="183.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../AI_Afbeeldingen/logoTransparant.png" />
+                            </image>
+                        </ImageView>
+                  <Pane layoutY="62.0" prefHeight="336.0" prefWidth="405.0">
+                     <children>
+                        <ListView layoutX="31.0" layoutY="54.0" prefHeight="200.0" prefWidth="343.0" />
+                        <Button layoutX="330.0" layoutY="63.0" minWidth="33.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: darkgrey;">
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../AI_Afbeeldingen/reload.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="31.0" layoutY="12.0" text="Lobby" underline="true">
+                           <font>
+                              <Font name="Verdana" size="29.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="76.0" layoutY="270.0" minWidth="33.0" mnemonicParsing="false" onAction="#challange" prefHeight="26.0" prefWidth="73.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                           <graphic>
+                              <Label text="Daag uit!" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="166.0" layoutY="270.0" minWidth="33.0" mnemonicParsing="false" onAction="#automatic" prefHeight="26.0" prefWidth="168.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                           <graphic>
+                              <Label text="Vind automatisch een spel" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Button layoutX="472.0" layoutY="17.0" minWidth="33.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../AI_Afbeeldingen/back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</Pane>

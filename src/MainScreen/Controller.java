@@ -1,5 +1,6 @@
 package MainScreen;
 
+import Game.NetwerkConnection;
 import Game.PlayerData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,6 +74,57 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void OthelloStart(ActionEvent event) throws IOException {
+        if(OthelloOpponent.getValue().equals("Tegen de computer")){
+            Parent root;
+            try {
+                FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOffline/View.fxml"));
+                root = (Parent) loader.load();
+
+                //TicTacToeScreen.Controller ticTacToeScreen=loader.getController();
+                //ticTacToeScreen.setPlayer(player);
+                //ticTacToeScreen.setdifficulty(TicTacToeDifficulty.getValue());
+
+                Stage stage=new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Game.NetwerkConnection netwerkConnection = new NetwerkConnection();
+            netwerkConnection.startConnection(player.getIpadres(), player.getPortnumber());
+            netwerkConnection.sendMessage("Login " + player.getUsername());
+
+
+            Parent root;
+            try {
+                FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));
+                root = (Parent) loader.load();
+
+                Lobby.Controller lobby=loader.getController();
+                lobby.setPlayerData(player);
+                lobby.setNetwerkConnection(netwerkConnection);
+
+                Stage stage=new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+                ((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
+
     @FXML
     public void naarNetwerk(ActionEvent event) {
         System.out.println("Naar netwerkinstellingen...");
@@ -83,11 +135,9 @@ public class Controller implements Initializable {
             Netwerkinstellingen.Controller netwerkinstellingen=loader.getController();
             netwerkinstellingen.setPlayerData(player);
 
-
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-            //((Node)(event.getSource())).getScene().getWindow().hide();
         }
         catch (IOException e) {
             e.printStackTrace();
