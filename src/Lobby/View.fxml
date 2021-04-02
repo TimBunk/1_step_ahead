@@ -22,7 +22,7 @@
                             <graphic>
                                 <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../Downloads/sound.png" />
+                                        <Image url="@../MainScreen/Afbeeldingen/sound.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -31,14 +31,14 @@
                             <graphic>
                                 <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../Downloads/vraag.png" />
+                                        <Image url="@../MainScreen/Afbeeldingen/vraag.png" />
                                     </image>
                                 </ImageView>
                             </graphic></Button>
                         <Label fx:id="usernameLabel" layoutX="53.0" layoutY="25.0" text="Gebruikersnaam" />
                         <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../Downloads/profile-user.png" />
+                                <Image url="@../MainScreen/Afbeeldingen/profile-user.png" />
                             </image>
                         </ImageView>
                         <Pane layoutX="412.0" layoutY="62.0" prefHeight="336.0" prefWidth="186.0">
@@ -72,7 +72,7 @@
                         </Label>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../AI_Afbeeldingen/reversi.png" />
+                              <Image url="@../MainScreen/Afbeeldingen/reversi.png" />
                            </image>
                         </ImageView>
                             </children>
@@ -80,7 +80,7 @@
                         <Line endX="505.0" layoutX="92.0" layoutY="60.0" startX="-100.0" stroke="#6d6d6d" strokeWidth="3.0" />
                         <ImageView fitHeight="45.0" fitWidth="236.0" layoutX="183.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../AI_Afbeeldingen/logoTransparant.png" />
+                                <Image url="@../MainScreen/Afbeeldingen/logoTransparant.png" />
                             </image>
                         </ImageView>
                   <Pane layoutY="62.0" prefHeight="336.0" prefWidth="405.0">
@@ -90,7 +90,7 @@
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../AI_Afbeeldingen/reload.png" />
+                                    <Image url="@../MainScreen/Afbeeldingen/reload.png" />
                                  </image>
                               </ImageView>
                            </graphic>

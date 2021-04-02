@@ -79,8 +79,10 @@ public class Controller{
             MainScreen.Controller mainScreen=loader.getController();
             mainScreen.setPlayer(playerData);
 
+
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
+            stage.setResizable(false);
             stage.show();
 
             beforeScreen.getScene().getWindow().hide();
