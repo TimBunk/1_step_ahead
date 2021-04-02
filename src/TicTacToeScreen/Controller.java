@@ -4,6 +4,7 @@ import BKE.BKEboard;
 import BKE.BKEcomputer;
 import BKE.BKEplayer;
 import Game.PlayerData;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -169,10 +170,11 @@ public class Controller {
         }
 
         if (Char == 'X'){
-            image = new ImageView(new Image("File:resources/x.png"));
+            image = new ImageView(new Image("File:resources/kruisje.png"));
+            System.out.println(image.getX());
         }
         else {
-            image = new ImageView(new Image("File:resources/o.png"));
+            image = new ImageView(new Image("File:resources/rondje.png"));
         }
         TicTacToeGridPane.add(image, column, row);
     }
@@ -206,5 +208,6 @@ public class Controller {
         catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

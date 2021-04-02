@@ -112,11 +112,11 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Button layoutX="472.0" layoutY="17.0" minWidth="33.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                  <Button  layoutX="472.0" layoutY="17.0" minWidth="33.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../AI_Afbeeldingen/back.png" />
+                              <Image url="@../MainScreen/Afbeeldingen/exit.png" />
                            </image>
                         </ImageView>
                      </graphic>
