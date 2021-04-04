@@ -1,9 +1,9 @@
 package BKE;
 
 import Shared.AbstractBoard;
-import Shared.AbstractComputer;
+import Shared.AbstractPlayer;
 
-public class BKEcomputer extends AbstractComputer {
+public class BKEcomputer extends AbstractPlayer {
 
     /**
      * @param board The board on which the move is placed

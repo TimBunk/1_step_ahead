@@ -1,13 +1,13 @@
 package Othello;
 
 import Shared.AbstractBoard;
-import Shared.AbstractComputer;
+import Shared.AbstractPlayer;
 import Shared.Pair;
 
 import java.util.*;
 import java.util.concurrent.*;
 
-public abstract class OthelloComputer extends AbstractComputer {
+public abstract class OthelloComputer extends AbstractPlayer {
 
     private ExecutorService executorService;
     private int depth;
