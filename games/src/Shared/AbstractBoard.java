@@ -3,12 +3,25 @@ package Shared;
 public abstract class AbstractBoard {
 
     protected char[] board = null;
+    private int turnCount = 1;
 
     /**
      * @param size The desired size of the board. This should usually be a square.
      */
     public void initializeBoard(int size) {
         board = new char[size];
+    }
+
+    /**
+     * @return Gives a integer that represent the current turn
+     */
+    public int getTurnCount() { return turnCount; }
+
+    /**
+     * Increases the turnCount by 1
+     */
+    public void increaseTurnCount() {
+        turnCount++;
     }
 
     /**

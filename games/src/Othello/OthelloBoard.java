@@ -77,11 +77,13 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+     * This function allow you to place a stone on the board and increases the turn count by 1
      * @param move Where we want to place the move
      * @param c The character we want to place
      */
     @Override
     public void placeMove(int move, char c) {
+        increaseTurnCount();
         board[move] = c;
         turnStones(move, c);
     }

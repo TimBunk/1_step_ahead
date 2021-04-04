@@ -90,6 +90,7 @@ public class BKEboard extends AbstractBoard {
      */
     @Override
     public void placeMove(int move, char c) {
+        increaseTurnCount();
         board[move] = c;
     }
 

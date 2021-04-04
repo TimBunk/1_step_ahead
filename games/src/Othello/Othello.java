@@ -42,7 +42,6 @@ public class Othello {
         //speler met Zwarte stenen begint
         boolean player1Turn = (player1.getCharacter()=='Z');
 
-        int turnCount = 1;
         boolean gameOver = false;
         boolean player1Passed = false;
         boolean player2Passed = false;
@@ -55,7 +54,7 @@ public class Othello {
             //if the other player makes a move, set the variable back to false
 
             board.printBoard();
-            System.out.println("Ronde: " + turnCount);
+            System.out.println("Ronde: " + board.getTurnCount());
 
             if (player1Turn) {
                 if(board.findValidMoves(player1.getCharacter()).length != 0){
@@ -66,6 +65,7 @@ public class Othello {
                 else{
                     System.out.println("Player1 passed");
                     player1Passed = true;
+                    board.increaseTurnCount(); // Als de speler past dan moeten we ook de turn count omhoog doen
                 }
             } else {
                 if(board.findValidMoves(player2.getCharacter()).length != 0){
@@ -76,12 +76,11 @@ public class Othello {
                 else{
                     System.out.println("Player2 passed");
                     player2Passed = true;
+                    board.increaseTurnCount(); // Als de speler past dan moeten we ook de turn count omhoog doen
                 }
             }
 
             player1Turn = !player1Turn;
-
-            turnCount++;
 
             gameOver = board.isGameOver();
         }

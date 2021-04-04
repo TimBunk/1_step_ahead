@@ -44,12 +44,11 @@ public class BoterKaasEieren {
         // speler heeft gewonnen -1, computer heeft gewonnen 1
         // Als niemand nog heeft gewonnen krijg je 0
         int gameState = 0;
-        int turnCount = 0;
         do {
             // Laat het board zien
             board.printBoard();
             // Print uit de ronde nummer
-            System.out.println("Ronde: " + (turnCount+1));
+            System.out.println("Ronde: " + board.getTurnCount());
             // Laat de speler of de computer zijn beurt spelen
             if (playersTurn) {
                 int move = player.doMove(board);
@@ -61,10 +60,8 @@ public class BoterKaasEieren {
             }
             // Verander wie er aan de beurt is
             playersTurn = !playersTurn;
-            // Increment de turnCount
-            turnCount++;
             // Check of er iemand heeft gewonnen of dat het maximaal aantal turns zijn bereikt
-        } while ((gameState = evaluation(playersTurn)) == 0 && turnCount < board.length());
+        } while ((gameState = evaluation(playersTurn)) == 0 && board.getTurnCount() <= board.length());
         // Print nogmaals het bord om het eind resultaat te laten zien
         board.printBoard();
         // Print de status van de game
