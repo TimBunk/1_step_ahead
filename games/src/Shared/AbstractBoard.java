@@ -66,9 +66,12 @@ public abstract class AbstractBoard {
     /**
      * @param move The position of the move whose validity should be checked
      * @param c The character for which we want to check the move's validity
-     * @return Whether the move is allowed by the rules of Othello
+     * @return Whether the move is allowed by the rules
      */
-    public abstract boolean isMoveValid(int move, char c);
+    public boolean isMoveValid(int move, char c) {
+        // By default wordt isMoveValid(int move) gebruikt
+        return isMoveValid(move);
+    }
 
     /**
      * @param c The character we want to check

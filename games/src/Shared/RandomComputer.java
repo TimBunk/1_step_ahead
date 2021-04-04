@@ -1,11 +1,8 @@
-package Othello;
-
-import Shared.AbstractBoard;
-import Shared.AbstractComputer;
+package Shared;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class OthelloComputer0 extends AbstractComputer {
+public class RandomComputer extends AbstractPlayer {
 
     /**
      * @param board The board on which a move is placed

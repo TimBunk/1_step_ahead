@@ -1,13 +1,14 @@
 package Othello;
 
 import Shared.AbstractPlayer;
+import Shared.RandomComputer;
 
 import java.util.Random;
 
 public class Othello {
 
     public static void main(String[] args) {
-        Othello othello = new Othello(new OthelloComputer0(), new OthelloComputer1(8, 9500));
+        Othello othello = new Othello(new RandomComputer(), new OthelloComputer1(8, 9500));
         othello.start();
     }
 

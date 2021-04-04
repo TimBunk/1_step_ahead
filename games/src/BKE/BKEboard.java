@@ -3,6 +3,8 @@ package BKE;
 import Othello.OthelloBoard;
 import Shared.AbstractBoard;
 
+import java.util.ArrayList;
+
 public class BKEboard extends AbstractBoard {
 
     /**
@@ -41,29 +43,17 @@ public class BKEboard extends AbstractBoard {
     }
 
     /**
-     * @param move The move whose validity should be checked
-     * @param c The character for which we want to check the move's validity
-     * @return Whether the move is valid
-     * Validity is independent of character for Tic-Tac-Toe, so isMoveValid(int move) should be use instead.
-     */
-    @Override
-    public boolean isMoveValid(int move, char c) {
-        // Of een move valid is hangt niet af van het character dat je wilt plaatsen
-        return isMoveValid(move);
-    }
-
-    /**
-     * @return If there are no free places on the board, the game is over
+     * @return If there are no free places on the board then return true
      */
     @Override
     public boolean isGameOver() {
         // Zolang er nog '#' op het board staat is het board nog niet leeg
         for (char c : board) {
             if (c == '#') {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
@@ -95,11 +85,18 @@ public class BKEboard extends AbstractBoard {
     }
 
     /**
-     * Not supported for Tic-Tac-Toe
+     * @param c Check for all valid moves of a given character
+     * @return Returns a int[] of all the valid moves
      */
     @Override
     public int[] findValidMoves(char c) {
-        return new int[0];
+        ArrayList<Integer> validMoves = new ArrayList<>();
+        for (int i = 0; i < board.length; i++) {
+            if (board[i] == '#') {
+                validMoves.add(i);
+            }
+        }
+        return validMoves.stream().mapToInt(Integer::intValue).toArray();
     }
 
     /**
