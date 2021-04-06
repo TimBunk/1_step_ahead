@@ -101,8 +101,6 @@ public class Controller implements Initializable {
             Game.NetwerkConnection netwerkConnection = new NetwerkConnection();
             netwerkConnection.startConnection(player.getIpadres(), player.getPortnumber());
             netwerkConnection.sendMessage("Login " + player.getUsername());
-
-
             Parent root;
             try {
                 FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));

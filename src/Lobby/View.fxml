@@ -85,7 +85,7 @@
                         </ImageView>
                   <Pane layoutY="62.0" prefHeight="336.0" prefWidth="405.0">
                      <children>
-                        <ListView layoutX="31.0" layoutY="54.0" prefHeight="200.0" prefWidth="343.0" />
+                        <ListView fx:id="playersListView" layoutX="31.0" layoutY="54.0" prefHeight="200.0" prefWidth="343.0" />
                         <Button layoutX="330.0" layoutY="63.0" minWidth="33.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: darkgrey;">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">

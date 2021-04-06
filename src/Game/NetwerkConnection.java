@@ -29,8 +29,6 @@ public class NetwerkConnection {
     }
 
     public String getMessage() throws IOException {
-        String message = in.readLine();
-        return message;
+       return in.readLine();
     }
-
 }
