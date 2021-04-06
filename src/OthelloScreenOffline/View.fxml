@@ -1,66 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="TicTacToeScreen" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OthelloScreenOffline.Controller">
-   <children>
-      <Line endX="793.0" layoutX="107.0" layoutY="72.0" startX="-106.99999237060547" />
-      <Line endX="-4.0999755859375" endY="41.5" layoutX="450.0" layoutY="30.0" startX="-4.0999755859375" startY="-29.999996185302734" />
-      <Label fx:id="usernameLabel" layoutX="30.0" layoutY="27.0" text="Gebruikersnaam" />
-      <Label fx:id="turnLabel" alignment="CENTER" layoutX="178.0" layoutY="72.0" prefHeight="18.0" prefWidth="536.0" textAlignment="CENTER">
-         <font>
-            <Font size="37.0" />
-         </font>
-      </Label>
-      <GridPane fx:id="TicTacToeGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="225.0" layoutY="126.0" prefHeight="450.0" prefWidth="450.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-            <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-         </children>
-      </GridPane>
-      <Label layoutX="350.0" layoutY="16.0" text="Othello">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="difficultyLabel" layoutX="450.0" layoutY="16.0" text="Computer moeilijk">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-   </children>
+    <children>
+        <Label fx:id="turnLabel" alignment="CENTER" layoutX="178.0" layoutY="72.0" prefHeight="18.0" prefWidth="536.0" textAlignment="CENTER">
+            <font>
+                <Font size="37.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="452.0" fitWidth="468.0" layoutX="227.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../MainScreen/Afbeeldingen/speelbord.jpeg" />
+            </image>
+        </ImageView>
+        <GridPane fx:id="TicTacToeGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="228.0" layoutY="127.0" opacity="0.7" prefHeight="450.0" prefWidth="450.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                <Pane prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+            </children>
+        </GridPane>
+        <Label layoutX="254.0" layoutY="14.0" text="Othello">
+            <font>
+                <Font name="Verdana" size="33.0" />
+            </font>
+        </Label>
+        <Label fx:id="difficultyLabel" layoutX="400.0" layoutY="19.0" text="Computer moeilijk">
+            <font>
+                <Font name="Verdana" size="27.0" />
+            </font>
+        </Label>
+        <Line endX="798.0" endY="7.62939453125E-6" layoutX="102.0" layoutY="70.0" startX="-100.0" stroke="#6d6d6d" strokeWidth="3.0" />
+        <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="24.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../MainScreen/Afbeeldingen/profile-user.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="usernameLabel" layoutX="63.0" layoutY="29.0" text="Gebruikersnaam" />
+        <Button layoutX="824.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+            <graphic>
+                <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../MainScreen/Afbeeldingen/exit.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Line endX="-11.000030517578125" endY="-29.954147338867188" layoutX="394.0" layoutY="90.0" startX="-11.0" startY="-78.57147216796875" stroke="#a9a9a9" strokeWidth="2.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="53.0" layoutX="24.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+        <Label layoutX="30.0" layoutY="132.0" text="Punten tegenstander:">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Label layoutX="30.0" layoutY="153.0" text="Punten speler:">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Label fx:id="puntenOpponent" layoutX="180.0" layoutY="134.0" />
+        <Label fx:id="puntenPlayer" layoutX="180.0" layoutY="155.0" />
+    </children>
 </AnchorPane>

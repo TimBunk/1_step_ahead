@@ -18,23 +18,6 @@
             <items>
                 <AnchorPane fx:id="LobbyScreen" minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="598.0">
                     <children>
-                        <Button layoutX="512.0" layoutY="17.0" minWidth="33.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
-                            <graphic>
-                                <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../MainScreen/Afbeeldingen/sound.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Button layoutX="552.0" layoutY="17.0" mnemonicParsing="false" onAction="#naarNetwerk" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
-                            <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../MainScreen/Afbeeldingen/vraag.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic></Button>
                         <Label fx:id="usernameLabel" layoutX="53.0" layoutY="25.0" text="Gebruikersnaam" />
                         <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -86,7 +69,7 @@
                   <Pane layoutY="62.0" prefHeight="336.0" prefWidth="405.0">
                      <children>
                         <ListView fx:id="playersListView" layoutX="31.0" layoutY="54.0" prefHeight="200.0" prefWidth="343.0" />
-                        <Button layoutX="330.0" layoutY="63.0" minWidth="33.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: darkgrey;">
+                        <Button layoutX="310.0" layoutY="63.0" minWidth="33.0" mnemonicParsing="false" onAction="#refresh" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: darkgrey;">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -112,7 +95,7 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Button  layoutX="472.0" layoutY="17.0" minWidth="33.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                        <Button layoutX="530.0" layoutY="17.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" onAction="#exit" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -6,10 +6,16 @@ import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,11 +75,27 @@ public class Controller extends Thread{
 
     }
 
-
-
     @FXML
-    void naarNetwerk(ActionEvent event) {
+    void exit(ActionEvent event) {
+        System.out.println("Terug naar main screen");
+        Parent root;
+        try {
+            FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
+            root = (Parent) loader.load();
+            MainScreen.Controller mainScreen=loader.getController();
+            mainScreen.setPlayer(playerData);
 
+
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
+
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
