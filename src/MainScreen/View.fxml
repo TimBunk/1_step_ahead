@@ -22,15 +22,6 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="598.0">
                     <children>
-                        <Button layoutX="470.0" layoutY="17.0" minWidth="41.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
-                            <graphic>
-                                <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@Afbeeldingen/sound.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
                         <Button layoutX="531.0" layoutY="17.0" mnemonicParsing="false" onAction="#naarNetwerk" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
                             <graphic>
                                 <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">

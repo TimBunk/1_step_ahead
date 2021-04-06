@@ -24,7 +24,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Controller {
+public class Controller extends Thread{
     private PlayerData player;
     private TicTacToeScreen.Model model = new Model();
     private int Difficulty;
@@ -43,6 +43,7 @@ public class Controller {
     int turnCount;
     @FXML
     private AnchorPane TicTacToeScreen;
+
 
     @FXML
     public void start() {
@@ -193,6 +194,8 @@ public class Controller {
         TicTacToeGridPane.add(image, column, row);
     }
 
+
+
     public void endScreen(){
         String tittle = switch (gameState) {
             // speler heeft gewonnen
@@ -223,5 +226,30 @@ public class Controller {
             e.printStackTrace();
         }
 
+
+
+    }
+
+    @FXML
+    void exit(ActionEvent event) {
+        System.out.println("Terug naar main screen");
+        Parent root;
+        try {
+            FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
+            root = (Parent) loader.load();
+            MainScreen.Controller mainScreen=loader.getController();
+            mainScreen.setPlayer(player);
+
+
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
+
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
