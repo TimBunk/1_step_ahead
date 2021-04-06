@@ -77,7 +77,7 @@ public class Controller extends Thread{
             if(buttonType == ButtonType.OK){
                 System.out.println("Uitdaging aangegaan");
             }else {
-                System.out.println("Uitdaging Niet aangegaan");
+                System.out.println("Uitdaging niet aangegaan");
             }
         });
     }
