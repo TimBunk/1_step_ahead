@@ -7,16 +7,15 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.jar.JarOutputStream;
 
 public class Controller extends Thread{
@@ -59,14 +58,36 @@ public class Controller extends Thread{
         }
     }
 
+    public void getChallenge(String challenge){
+        System.out.println(challenge);
+        List<String> inputlist = Arrays.asList(challenge.substring(19).replaceAll("\\{|\\}| ","").split(","));
+        Map map=new HashMap();
+        for (String text: inputlist){
+            System.out.println(text);
+            map.put(text.replaceAll(" ", "").split(":")[0], text.replaceAll("\"", "").split(":")[1]);
+        }
+        Alert a = new Alert(Alert.AlertType.NONE, "Je bent uitgenodigd door: " + map.get("CHALLENGER") + ". Om een potje " + map.get("GAMETYPE") + " te spelen.", ButtonType.OK, ButtonType.NO);
+        a.showAndWait().ifPresent(buttonType -> {
+            if(buttonType == ButtonType.OK){
+                System.out.println("Uitdaging aangegaan");
+            }else {
+                System.out.println("Uitdaging Niet aangegaan");
+            }
+        });
+    }
+
     @FXML
     void automatic(ActionEvent event) {
 
     }
 
     @FXML
-    void challange(ActionEvent event) {
-
+    void challange(ActionEvent event) throws IOException {
+        System.out.println(playersListView.getSelectionModel().getSelectedItem());
+        String opponent = playersListView.getSelectionModel().getSelectedItem();
+        if (opponent != null){
+            netwerkConnection.sendMessage("challenge \"" + opponent + "\" \"Reversi\"");
+        }
     }
 
 
@@ -106,8 +127,16 @@ public class Controller extends Thread{
                         case "GAME" :
                             switch (reveived.split(" ")[2]){
                                 case "CHALLENGE" :
+
+
                                     System.out.println("je bent uitgenodigd");
                                     System.out.println(reveived);
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            getChallenge(reveived);
+                                        }
+                                    });
                             }
 
                     }

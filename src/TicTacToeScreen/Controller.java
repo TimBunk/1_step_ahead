@@ -4,6 +4,8 @@ import BKE.BKEboard;
 import BKE.BKEcomputer;
 import BKE.BKEplayer;
 import Game.PlayerData;
+import Shared.AbstractPlayer;
+import Shared.RandomComputer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,12 +31,15 @@ public class Controller {
 
     //van AI team
     private BKEboard board;
+    private AbstractPlayer player1;
+    private AbstractPlayer player2;
+
+
+
     private BKEplayer bkEplayer;
-    private BKEcomputer computer;
-    public static char PLAYERS_CHAR = 'O';
-    public static char COMPUTERS_CHAR = 'X';
+    private AbstractPlayer computer;
     int gameState;
-    boolean playersTurn;
+    boolean player1Turn;
     int turnCount;
     @FXML
     private AnchorPane TicTacToeScreen;
@@ -43,38 +48,47 @@ public class Controller {
     public void start() {
         System.out.println("start...");
         board = new BKEboard();
+
         board.initializeBoard(9);
+
+
+        if (Difficulty == 1){
+            computer = new BKEcomputer();
+        }
+        else{
+            computer = new RandomComputer();
+        }
         bkEplayer = new BKEplayer();
-        computer = new BKEcomputer();
-        computer.setDifficulty(Difficulty);
+        player1 = bkEplayer;
+        player1.setCharacter('X');
+        player2 = computer;
+        player2.setCharacter('O');
+
         // Kies wie er eerst gaat
-        playersTurn = false;
+        player1Turn = true;
         // Genereer een random nummer vanaf 0 tot en met 1
         // Als het nummer 0 is dan mag de speler beginnen anders de computer
         if (ThreadLocalRandom.current().nextInt(0, 2) == 0) {
-            playersTurn = true;
+            player1Turn = false;
             // Ruil X en O om want X mag altijd beginnen
-            PLAYERS_CHAR = 'X';
-            COMPUTERS_CHAR = 'O';
-            turnLabel.setText("Aan zet: jij " + PLAYERS_CHAR);
+            player1.setCharacter('O');
+            player2.setCharacter('X');
+            turnLabel.setText("Aan zet: Computer " + player2.getCharacter());
+            zetComputer();
+            turnLabel.setText("Aan zet: jij " + player1.getCharacter());
         }else {
-            turnLabel.setText("Aan zet: Computer " + COMPUTERS_CHAR);
+            turnLabel.setText("Aan zet: jij " + player1.getCharacter());
         }
         // De gameState geeft of iemand heeft gewonnen
         // speler heeft gewonnen -1, computer heeft gewonnen 1
         // Als niemand nog heeft gewonnen krijg je 0
         gameState = 0;
         turnCount = 0;
-        //Computer begint met eerste zet als hij aan de beurt is
-        if (!playersTurn) {
-            zetComputer();
-        }
-        turnLabel.setText("Aan zet: jij " + PLAYERS_CHAR);
     }
 
     private int evaluation(boolean isComputer) {
         // Pak de juiste character om te evaluaren op het board
-        char c = isComputer ? COMPUTERS_CHAR : PLAYERS_CHAR;
+        char c = isComputer ? player2.getCharacter() : player1.getCharacter();
         // Check of die character kan heeft gewonnen
         if (board.doesCharacterWin(c)) {
             return isComputer ? 1 : -1; // Return -1 als de speler wint en 1 als de computer wint
@@ -89,16 +103,16 @@ public class Controller {
                 board.printBoard();
 
                 // Print uit de ronde nummer
-                placeCharacter(zet, PLAYERS_CHAR);
-                board.placeMove(zet, PLAYERS_CHAR);
+                placeCharacter(zet, player1.getCharacter());
+                board.placeMove(zet, player1.getCharacter());
 
-                turnLabel.setText("Aan zet: computer " + COMPUTERS_CHAR);
+                turnLabel.setText("Aan zet: computer " + player2.getCharacter());
                 turnCount++;
                 board.printBoard();
-                playersTurn = false;
+                player1Turn = false;
             }
-        gameState = evaluation(playersTurn);
-        if (gameState != 0 || turnCount >= board.length()){
+        gameState = evaluation(player1Turn);
+        if (gameState != 0 || board.getTurnCount() > board.length()){
             endScreen();
         }
         else {
@@ -109,14 +123,14 @@ public class Controller {
 
     public void zetComputer() {
         int move = computer.doMove(board);
-        board.placeMove(move, COMPUTERS_CHAR);
-        placeCharacter(move, COMPUTERS_CHAR);
+        board.placeMove(move, player2.getCharacter());
+        placeCharacter(move, player2.getCharacter());
         board.printBoard();
         turnCount++;
-        turnLabel.setText("Aan zet: jij " + PLAYERS_CHAR);
-        playersTurn = true;
-        gameState = evaluation(playersTurn);
-        if (gameState != 0 || turnCount >= board.length()){
+        turnLabel.setText("Aan zet: jij " + player1.getCharacter());
+        player1Turn = true;
+        gameState = evaluation(player1Turn);
+        if (gameState != 0 || board.getTurnCount() > board.length()){
             endScreen();
         }
     }
