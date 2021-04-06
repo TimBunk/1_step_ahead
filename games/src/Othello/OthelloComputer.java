@@ -94,5 +94,5 @@ public abstract class OthelloComputer extends AbstractPlayer {
      * @param board The board to be evaluated
      * @return How good the board is, evaluated as how many stones more are controlled than by the opponent
      */
-    public abstract int eval(AbstractBoard board);
+    protected abstract int eval(AbstractBoard board);
 }
