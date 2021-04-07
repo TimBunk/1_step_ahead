@@ -90,6 +90,7 @@ public class Controller implements Initializable {
 
                 Stage stage=new Stage();
                 stage.setScene(new Scene(root));
+                stage.setResizable(false);
                 stage.show();
                 ((Node)(event.getSource())).getScene().getWindow().hide();
             }
@@ -108,6 +109,7 @@ public class Controller implements Initializable {
                 Stage stage=new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
+                stage.setResizable(false);
                 ((Node)(event.getSource())).getScene().getWindow().hide();
             }
             catch (IOException e) {

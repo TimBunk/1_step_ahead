@@ -6,17 +6,23 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BeginScreen.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.0" prefWidth="213.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BeginScreen.Controller">
    <children>
-      <Button layoutX="66.0" layoutY="212.0" mnemonicParsing="false" onAction="#next" text="Doorgaan" />
+      <Button layoutX="71.0" layoutY="238.0" mnemonicParsing="false" onAction="#next" text="Doorgaan" />
       <TextField fx:id="usernameField" alignment="CENTER" layoutX="26.0" layoutY="137.0" promptText="Gebruikersnaam" />
-      <Label layoutX="55.0" layoutY="95.0" text="Wat is uw naam?" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="16.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="171.0" />
-      <Label layoutX="16.0" layoutY="29.0" prefHeight="43.0" prefWidth="171.0" text="1 Step Ahead">
+      <Label layoutX="41.0" layoutY="110.0" text="Wat is uw naam?">
          <font>
-            <Font size="28.0" />
+            <Font name="Verdana" size="15.0" />
          </font>
       </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="38.0" layoutX="10.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="194.0" />
+      <ImageView fitHeight="24.0" fitWidth="182.0" layoutX="17.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../MainScreen/Afbeeldingen/logoTransparant.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

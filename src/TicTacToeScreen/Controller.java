@@ -219,6 +219,7 @@ public class Controller extends Thread{
             endScreen.setGame("TicTacToe");
 
             Stage stage=new Stage();
+            stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.show();
         }
