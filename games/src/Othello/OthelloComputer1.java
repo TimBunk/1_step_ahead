@@ -9,7 +9,7 @@ public class OthelloComputer1 extends OthelloComputer {
     }
 
     @Override
-    public int eval(AbstractBoard board) {
+    protected int eval(AbstractBoard board) {
         int computerPoints = board.count(getCharacter());
         int emptyPlaces = board.count('.');
         int playerPoint = board.length() - emptyPlaces - computerPoints;
