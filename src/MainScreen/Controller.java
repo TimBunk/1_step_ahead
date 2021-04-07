@@ -40,7 +40,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Main scherm geladen");
-        OthelloDifficulty.getItems().addAll("Makkelijk", "Gemiddeld", "Moeilijk");
+        OthelloDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
         OthelloDifficulty.getSelectionModel().select("Gemiddeld");
         TicTacToeDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
         TicTacToeDifficulty.getSelectionModel().select("Gemiddeld");
@@ -84,9 +84,8 @@ public class Controller implements Initializable {
                 FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOffline/View.fxml"));
                 root = (Parent) loader.load();
 
-                //TicTacToeScreen.Controller ticTacToeScreen=loader.getController();
-                //ticTacToeScreen.setPlayer(player);
-                //ticTacToeScreen.setdifficulty(TicTacToeDifficulty.getValue());
+                OthelloScreenOffline.Controller othelloScreenOffline=loader.getController();
+                othelloScreenOffline.setDifficulty(OthelloDifficulty.getValue());
 
                 Stage stage=new Stage();
                 stage.setScene(new Scene(root));
