@@ -201,7 +201,7 @@ public class Controller extends Thread{
             // speler heeft gewonnen
             case -1 -> "Gefeliciteerd " + player.getUsername() + ", je hebt gewonnen!";
             // computer heeft gewonnen
-            case 1 -> "Jammer " + player.getUsername() + ", de computer heeft gewonnen.";
+            case 1 -> player.getUsername() + ", de computer heeft gewonnen.";
             // gelijkspel
             case 0 -> player.getUsername() + ", je hebt gelijk gespeeld.";
             default -> throw new IllegalStateException("Unexpected value: " + gameState);
@@ -219,6 +219,7 @@ public class Controller extends Thread{
             endScreen.setGame("TicTacToe");
 
             Stage stage=new Stage();
+            stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.show();
         }
