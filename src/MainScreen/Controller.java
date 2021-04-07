@@ -98,18 +98,13 @@ public class Controller implements Initializable {
             }
         }
         else{
-            Game.NetwerkConnection netwerkConnection = new NetwerkConnection();
+            Game.NetwerkConnection netwerkConnection = NetwerkConnection.getInstance();
             netwerkConnection.startConnection(player.getIpadres(), player.getPortnumber());
             netwerkConnection.sendMessage("Login " + player.getUsername());
             Parent root;
             try {
                 FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));
                 root = (Parent) loader.load();
-
-                Lobby.Controller lobby=loader.getController();
-                lobby.setPlayerData(player);
-                lobby.setNetwerkConnection(netwerkConnection);
-
                 Stage stage=new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();

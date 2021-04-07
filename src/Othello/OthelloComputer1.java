@@ -4,7 +4,7 @@ import Shared.AbstractBoard;
 
 public class OthelloComputer1 extends OthelloComputer {
 
-    OthelloComputer1(int depth, long maxTimeInMilliseconds) {
+    public OthelloComputer1(int depth, long maxTimeInMilliseconds) {
         super(depth, maxTimeInMilliseconds);
     }
 

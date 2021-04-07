@@ -10,6 +10,17 @@ public class NetwerkConnection {
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
+    private static volatile NetwerkConnection netwerkConnection;
+    private NetwerkConnection(){}
+
+    public static NetwerkConnection getInstance(){
+    if (netwerkConnection == null){
+        synchronized (NetwerkConnection.class){
+            netwerkConnection = new NetwerkConnection();
+        }
+    }
+    return netwerkConnection;
+    }
 
     public void startConnection(String ip, int port) throws IOException {
         clientSocket = new Socket(ip, port);

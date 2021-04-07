@@ -13,23 +13,15 @@ import java.io.IOException;
 
 public class Controller {
     private Model model = new Model();
-    private String username;
 
     @FXML
     private TextField usernameField;
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @FXML
     void next(ActionEvent event) throws IOException {
         System.out.println("gelikt op doorgaan...");
-        PlayerData player = new PlayerData(usernameField.getText());
+        PlayerData player = PlayerData.getInstance();
+        player.setUsername(usernameField.getText());
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
@@ -47,8 +39,6 @@ public class Controller {
         catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
 }

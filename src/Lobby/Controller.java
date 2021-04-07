@@ -22,11 +22,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.jar.JarOutputStream;
 
-public class Controller extends Thread{
+public class Controller extends Thread implements Initializable{
     private PlayerData playerData;
     private NetwerkConnection netwerkConnection;
+    private Thread t;
+    private final AtomicBoolean running = new AtomicBoolean(false);
 
     @FXML
     private ListView<String> playersListView;
@@ -36,18 +39,6 @@ public class Controller extends Thread{
 
     @FXML
     private Label usernameLabel;
-
-    public void setPlayerData(PlayerData playerData) {
-        this.playerData = playerData;
-        usernameLabel.setText(playerData.getUsername());
-    }
-
-    public void setNetwerkConnection(NetwerkConnection netwerkConnection) throws IOException {
-        this.netwerkConnection = netwerkConnection;
-        netwerkConnection.sendMessage("get playerlist");
-        Thread t = new Thread(this);
-        t.start();
-    }
 
     public void setPlayersListView(String playerlist){
         playersListView.getItems().clear();
@@ -76,14 +67,21 @@ public class Controller extends Thread{
         a.showAndWait().ifPresent(buttonType -> {
             if(buttonType == ButtonType.OK){
                 System.out.println("Uitdaging aangegaan");
+                try {
+                    netwerkConnection.sendMessage("challenge accept "+ map.get("CHALLENGENUMBER"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }else {
                 System.out.println("Uitdaging niet aangegaan");
+
             }
         });
     }
 
     @FXML
-    void automatic(ActionEvent event) {
+    void automatic(ActionEvent event) throws IOException {
+        netwerkConnection.sendMessage("subscribe Reversi");
 
     }
 
@@ -99,6 +97,7 @@ public class Controller extends Thread{
     @FXML
     void exit(ActionEvent event) {
         System.out.println("Terug naar main screen");
+
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
@@ -124,10 +123,14 @@ public class Controller extends Thread{
         netwerkConnection.sendMessage("get playerlist");
     }
 
+    public void stopThread() {
+        running.set(false);
+    }
+
     @Override
     public void run() {
-        System.out.println("okioki");
-        while (true){
+        running.set(true);
+        while (running.get()){
             try {
                 String reveived = netwerkConnection.getMessage();
                 if (!reveived.equals("OK")){
@@ -149,8 +152,6 @@ public class Controller extends Thread{
                         case "GAME" :
                             switch (reveived.split(" ")[2]){
                                 case "CHALLENGE" :
-
-
                                     System.out.println("je bent uitgenodigd");
                                     System.out.println(reveived);
                                     Platform.runLater(new Runnable() {
@@ -159,6 +160,45 @@ public class Controller extends Thread{
                                             getChallenge(reveived);
                                         }
                                     });
+                                    break;
+                                case "MATCH" :
+                                    stopThread();
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Parent root;
+                                            try {
+                                                FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOnline/View.fxml"));
+                                                root = (Parent) loader.load();
+
+                                                Stage stage=new Stage();
+                                                stage.setScene(new Scene(root));
+                                                stage.setResizable(false);
+                                                stage.show();
+
+                                                // ((Node)(event.getSource())).getScene().getWindow().hide();
+                                            }
+                                            catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                    break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             }
 
                     }
@@ -172,4 +212,17 @@ public class Controller extends Thread{
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        playerData = PlayerData.getInstance();
+        netwerkConnection = NetwerkConnection.getInstance();
+        usernameLabel.setText(playerData.getUsername());
+        try {
+            netwerkConnection.sendMessage("get playerlist");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        t = new Thread(this);
+        t.start();
+    }
 }
