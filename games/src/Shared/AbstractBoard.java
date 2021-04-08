@@ -100,4 +100,10 @@ public abstract class AbstractBoard {
      * @return An array of the positions of the valid moves
      */
     public abstract int[] findValidMoves(char c);
+
+    /**
+     * @param c The character for which valid moves should be counted
+     * @return An int of the amount of valid moves for that charactee
+     */
+    public abstract int validMoveCount(char c);
 }

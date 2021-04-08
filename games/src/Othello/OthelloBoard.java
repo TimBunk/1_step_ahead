@@ -3,6 +3,8 @@ package Othello;
 import Shared.AbstractBoard;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class OthelloBoard extends AbstractBoard {
 
@@ -114,6 +116,17 @@ public class OthelloBoard extends AbstractBoard {
             }
         }
         return validMoves;
+    }
+
+    @Override
+    public int validMoveCount(char c) {
+        int validMovesCount = 0;
+        for(int i = 0; i < board.length; i++){
+            if(isMoveValid(i, c)){
+                validMovesCount++;
+            }
+        }
+        return validMovesCount;
     }
 
     /**
@@ -430,5 +443,30 @@ public class OthelloBoard extends AbstractBoard {
         for(int i = position + 9; board[i] != charToPlace; i+=9){
             board[i] = charToPlace;
         }
+    }
+
+    public int getStableStoneCount(char c) {
+        HashSet<Integer> uniqueStableStones = new HashSet<>();
+        GetStableStonesFromTopLeft(c, uniqueStableStones);
+        GetStableStonesFromBottomLeft(c, uniqueStableStones);
+        GetStableStonesFromTopRight(c, uniqueStableStones);
+        GetStableStonesFromBottomRight(c, uniqueStableStones);
+        return uniqueStableStones.size();
+    }
+
+    private void GetStableStonesFromTopLeft(char c, HashSet<Integer> stones) {
+
+    }
+
+    private void GetStableStonesFromBottomLeft(char c, HashSet<Integer> stones) {
+
+    }
+
+    private void GetStableStonesFromTopRight(char c, HashSet<Integer> stones) {
+
+    }
+
+    private void GetStableStonesFromBottomRight(char c, HashSet<Integer> stones) {
+
     }
 }
