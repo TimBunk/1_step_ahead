@@ -13,18 +13,20 @@ public class OthelloTest {
         int player1Wins = 0;
         int player2Wins = 0;
         int draws = 0;
-        AbstractPlayer player1 = new RandomComputer();
-        AbstractPlayer player2 = new RandomComputer();
-        //AbstractPlayer player2 = new OthelloComputer1(8, 9500);
-        while (i < 2) {
+        AbstractPlayer player1 = new OthelloComputer2(8, 9500, 1, 5, 3);
+        AbstractPlayer player2 = new OthelloComputer1(8, 9500);
+        while (i < 10) {
             Othello othello = new Othello(player1, player2, false);
             switch (othello.start()) {
                 case 1:
                     player1Wins++;
+                    break;
                 case -1:
                     player2Wins++;
+                    break;
                 case 0:
                     draws++;
+                    break;
             }
             i++;
         }

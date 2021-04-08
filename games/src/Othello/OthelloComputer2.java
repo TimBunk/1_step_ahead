@@ -4,12 +4,15 @@ import Shared.AbstractBoard;
 
 public class OthelloComputer2 extends OthelloComputer {
 
-    private final int SINGLE_STONE = 1;
-    private final int STABLE_STONE = 5;
-    private final int MOBILITY = 3;
+    private int single_stone;
+    private int stable_stone;
+    private int mobility;
 
-    public OthelloComputer2(int depth, long maxTimeInMilliseconds) {
+    public OthelloComputer2(int depth, long maxTimeInMilliseconds, int single_stone, int stable_stone, int mobility) {
         super(depth, maxTimeInMilliseconds);
+        this.single_stone = single_stone;
+        this.stable_stone = stable_stone;
+        this.mobility = mobility;
     }
 
     @Override
@@ -19,16 +22,16 @@ public class OthelloComputer2 extends OthelloComputer {
 
         int computerPoints = board.count(getCharacter());
         int playerPoint = board.count(playerChar);
-        int single_stones_score = (computerPoints - playerPoint) * SINGLE_STONE;
+        int single_stones_score = (computerPoints - playerPoint) * single_stone;
 
         int computerMobility = board.validMoveCount(getCharacter());
         int playerMobility = board.validMoveCount(playerChar);
-        int mobility_score = (computerMobility - playerMobility) * MOBILITY;
+        int mobility_score = (computerMobility - playerMobility) * mobility;
 
         OthelloBoard oBoard = (OthelloBoard)board;
         int computerStableStones = oBoard.getStableStoneCount(getCharacter());
         int playerStableStones = oBoard.getStableStoneCount(playerChar);
-        int stable_stones_score = (computerStableStones - playerStableStones) * STABLE_STONE;
+        int stable_stones_score = (computerStableStones - playerStableStones) * stable_stone;
 
         return single_stones_score + mobility_score + stable_stones_score;
     }
