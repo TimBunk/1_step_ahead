@@ -67,9 +67,27 @@ public class Controller implements Initializable {
     private Label puntenPlayer;
 
     @FXML
-    void Exit() {
+    void exit(ActionEvent event) {
+        System.out.println("Terug naar main screen");
+
+        Parent root;
+        try {
+            FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
+            root = (Parent) loader.load();
+            MainScreen.Controller mainScreen=loader.getController();
+            mainScreen.setPlayer(playerData);
 
 
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
+
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setDifficulty(String difficulty){
