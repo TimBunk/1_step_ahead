@@ -35,22 +35,19 @@ public class Controller implements Initializable {
     @FXML
     private ChoiceBox<String> TicTacToeDifficulty;
 
-    private PlayerData player;
+    private PlayerData playerData;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Main scherm geladen");
+        playerData = PlayerData.getInstance();
+        usernameLabel.setText(playerData.getUsername());
         OthelloDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
         OthelloDifficulty.getSelectionModel().select("Gemiddeld");
         TicTacToeDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
         TicTacToeDifficulty.getSelectionModel().select("Gemiddeld");
         OthelloOpponent.getItems().addAll("Tegen de computer", "Tegen iemand anders (Online)");
         OthelloOpponent.getSelectionModel().select("Tegen de computer");
-    }
-
-    public void setPlayer(PlayerData player){
-        this.player = player;
-        usernameLabel.setText(player.getUsername());
     }
 
     @FXML
@@ -62,7 +59,7 @@ public class Controller implements Initializable {
             root = (Parent) loader.load();
 
             TicTacToeScreen.Controller ticTacToeScreen=loader.getController();
-            ticTacToeScreen.setPlayer(player);
+            ticTacToeScreen.setPlayer(playerData);
             ticTacToeScreen.setdifficulty(TicTacToeDifficulty.getValue());
 
             Stage stage=new Stage();
@@ -99,8 +96,8 @@ public class Controller implements Initializable {
         }
         else{
             Game.NetwerkConnection netwerkConnection = NetwerkConnection.getInstance();
-            netwerkConnection.startConnection(player.getIpadres(), player.getPortnumber());
-            netwerkConnection.sendMessage("Login " + player.getUsername());
+            netwerkConnection.startConnection(playerData.getIpadres(), playerData.getPortnumber());
+            netwerkConnection.sendMessage("Login " + playerData.getUsername());
             Parent root;
             try {
                 FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));
@@ -115,7 +112,6 @@ public class Controller implements Initializable {
                 e.printStackTrace();
             }
         }
-
     }
 
 
@@ -127,9 +123,6 @@ public class Controller implements Initializable {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Netwerkinstellingen/View.fxml"));
             root = (Parent) loader.load();
-            Netwerkinstellingen.Controller netwerkinstellingen=loader.getController();
-            netwerkinstellingen.setPlayerData(player);
-
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
@@ -138,6 +131,5 @@ public class Controller implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

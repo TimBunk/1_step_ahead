@@ -33,9 +33,6 @@ public class Controller extends Thread{
     private BKEboard board;
     private AbstractPlayer player1;
     private AbstractPlayer player2;
-
-
-
     private BKEplayer bkEplayer;
     private AbstractPlayer computer;
     int gameState;
@@ -213,7 +210,6 @@ public class Controller extends Thread{
             root = (Parent) loader.load();
 
             EndScreen.Controller endScreen=loader.getController();
-            endScreen.setPlayerData(player);
             endScreen.setBeforeScreen(TicTacToeScreen);
             endScreen.setText(tittle);
             endScreen.setGame("TicTacToe");
@@ -226,9 +222,6 @@ public class Controller extends Thread{
         catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     @FXML
@@ -238,10 +231,6 @@ public class Controller extends Thread{
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
             root = (Parent) loader.load();
-            MainScreen.Controller mainScreen=loader.getController();
-            mainScreen.setPlayer(player);
-
-
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);

@@ -1,12 +1,10 @@
 package OthelloScreenOffline;
 
-import Game.NetwerkConnection;
 import Game.PlayerData;
 import Othello.OthelloBoard;
 import Othello.OthelloComputer1;
 import Othello.OthelloPlayer;
 import Shared.AbstractPlayer;
-import TicTacToeScreen.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +24,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Controller implements Initializable {
     PlayerData playerData;
@@ -74,10 +71,6 @@ public class Controller implements Initializable {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
             root = (Parent) loader.load();
-            MainScreen.Controller mainScreen=loader.getController();
-            mainScreen.setPlayer(playerData);
-
-
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);

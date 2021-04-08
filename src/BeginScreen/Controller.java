@@ -19,17 +19,12 @@ public class Controller {
 
     @FXML
     void next(ActionEvent event) throws IOException {
-        System.out.println("gelikt op doorgaan...");
         PlayerData player = PlayerData.getInstance();
         player.setUsername(usernameField.getText());
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
             root = (Parent) loader.load();
-
-            MainScreen.Controller mainScreenController=loader.getController();
-            mainScreenController.setPlayer(player);
-
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);

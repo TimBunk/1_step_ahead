@@ -12,10 +12,15 @@ public class OthelloBoard extends AbstractBoard {
     public void initializeBoard(int size) {
         super.initializeBoard(size);
         Arrays.fill(board, '.');
-        board[27] = 'Z';
-        board[28] = 'W';
-        board[35] = 'W';
-        board[36] = 'Z';
+        //board[27] = 'Z';
+        //board[28] = 'W';
+        //board[35] = 'W';
+        //board[36] = 'Z';
+
+        board[27] = 'W';
+        board[28] = 'Z';
+        board[35] = 'Z';
+        board[36] = 'W';
     }
 
     /**

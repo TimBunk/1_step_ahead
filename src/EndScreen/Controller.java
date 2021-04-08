@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller{
+public class Controller implements Initializable{
     @FXML
     private Label statusLabel;
 
@@ -27,10 +27,6 @@ public class Controller{
     private PlayerData playerData;
     private AnchorPane beforeScreen;
     private String game;
-
-    public void setPlayerData(PlayerData playerData) {
-        this.playerData = playerData;
-    }
 
     public void setBeforeScreen(AnchorPane beforeScreen){
         this.beforeScreen = beforeScreen;
@@ -66,7 +62,6 @@ public class Controller{
         catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
@@ -76,10 +71,6 @@ public class Controller{
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
             root = (Parent) loader.load();
-            MainScreen.Controller mainScreen=loader.getController();
-            mainScreen.setPlayer(playerData);
-
-
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
@@ -96,5 +87,10 @@ public class Controller{
     public void setGameDifficultyChoiceBox(){
         gameDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
         gameDifficulty.getSelectionModel().select("Gemiddeld");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        playerData = PlayerData.getInstance();
     }
 }

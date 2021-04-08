@@ -25,12 +25,6 @@ public class Controller implements Initializable {
     @FXML
     private TextField Portinvoer;
 
-    public void setPlayerData(PlayerData playerData) {
-        this.playerData = playerData;
-        IPinvoer.setText(playerData.getIpadres());
-        Portinvoer.setText(String.valueOf(playerData.getPortnumber()));
-    }
-
     @FXML
     public void naarMain(ActionEvent event) {
         playerData.setIpadres(IPinvoer.getText());
@@ -40,6 +34,8 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        playerData = PlayerData.getInstance();
+        IPinvoer.setText(playerData.getIpadres());
+        Portinvoer.setText(String.valueOf(playerData.getPortnumber()));
     }
 }

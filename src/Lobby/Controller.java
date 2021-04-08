@@ -2,7 +2,6 @@ package Lobby;
 
 import Game.NetwerkConnection;
 import Game.PlayerData;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -23,7 +21,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.jar.JarOutputStream;
 
 public class Controller extends Thread implements Initializable{
     private PlayerData playerData;
@@ -66,6 +63,7 @@ public class Controller extends Thread implements Initializable{
         Alert a = new Alert(Alert.AlertType.NONE, "Je bent uitgenodigd door: " + map.get("CHALLENGER") + ". Om een potje " + map.get("GAMETYPE") + " te spelen.", ButtonType.OK, ButtonType.NO);
         a.showAndWait().ifPresent(buttonType -> {
             if(buttonType == ButtonType.OK){
+                stopThread();
                 System.out.println("Uitdaging aangegaan");
                 try {
                     netwerkConnection.sendMessage("challenge accept "+ map.get("CHALLENGENUMBER"));
@@ -74,7 +72,6 @@ public class Controller extends Thread implements Initializable{
                 }
             }else {
                 System.out.println("Uitdaging niet aangegaan");
-
             }
         });
     }
@@ -82,7 +79,6 @@ public class Controller extends Thread implements Initializable{
     @FXML
     void automatic(ActionEvent event) throws IOException {
         netwerkConnection.sendMessage("subscribe Reversi");
-
     }
 
     @FXML
@@ -96,16 +92,10 @@ public class Controller extends Thread implements Initializable{
 
     @FXML
     void exit(ActionEvent event) {
-        System.out.println("Terug naar main screen");
-
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
             root = (Parent) loader.load();
-            MainScreen.Controller mainScreen=loader.getController();
-            mainScreen.setPlayer(playerData);
-
-
             Stage stage=new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);
@@ -130,90 +120,73 @@ public class Controller extends Thread implements Initializable{
     @Override
     public void run() {
         running.set(true);
-        while (running.get()){
-            try {
-                String reveived = netwerkConnection.getMessage();
-                if (!reveived.equals("OK")){
-                    System.out.println("data binnen: " +reveived);
-                    String firstWord = reveived.split(" ")[1];
-                    System.out.println("Eerst woord is: " +firstWord);
-                    System.out.println("test...");
-                    switch (firstWord){
-                        case "PLAYERLIST" :
-                            System.out.println("jij wilt dit: " + reveived);
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    setPlayersListView(reveived);
+        synchronized (netwerkConnection){
+            while (running.get()){
+                try {
+                    String reveived = netwerkConnection.getMessage();
+                    if (!reveived.equals("OK")){
+                        System.out.println("data binnen: " +reveived);
+                        String firstWord = reveived.split(" ")[1];
+                        switch (firstWord){
+                            case "PLAYERLIST" :
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        setPlayersListView(reveived);
+                                    }
+                                });
+                                break;
+                            case "GAME" :
+                                switch (reveived.split(" ")[2]){
+                                    case "CHALLENGE" :
+                                        System.out.println(reveived);
+                                        Platform.runLater(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                getChallenge(reveived);
+                                            }
+                                        });
+                                        break;
+                                    case "MATCH" :
+                                        stopThread();
+                                        String startPlayer = reveived.split(" ")[4].replaceAll("\"|\\,", "");
+                                        Platform.runLater(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Parent root;
+                                                try {
+                                                    FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOnline/View.fxml"));
+                                                    root = (Parent) loader.load();
+                                                    OthelloScreenOnline.Controller othelloScreenOnline=loader.getController();
+                                                    othelloScreenOnline.setStartPlayer(startPlayer);
+
+                                                    Stage stage=new Stage();
+                                                    stage.setScene(new Scene(root));
+                                                    stage.setResizable(false);
+                                                    stage.show();
+                                                    LobbyScreen.getScene().getWindow().hide();
+                                                }
+                                                catch (IOException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        });
+                                        break;
                                 }
-                            });
-
-                            break;
-                        case "GAME" :
-                            switch (reveived.split(" ")[2]){
-                                case "CHALLENGE" :
-                                    System.out.println("je bent uitgenodigd");
-                                    System.out.println(reveived);
-                                    Platform.runLater(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            getChallenge(reveived);
-                                        }
-                                    });
-                                    break;
-                                case "MATCH" :
-                                    stopThread();
-                                    Platform.runLater(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Parent root;
-                                            try {
-                                                FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOnline/View.fxml"));
-                                                root = (Parent) loader.load();
-
-                                                Stage stage=new Stage();
-                                                stage.setScene(new Scene(root));
-                                                stage.setResizable(false);
-                                                stage.show();
-
-                                                // ((Node)(event.getSource())).getScene().getWindow().hide();
-                                            }
-                                            catch (IOException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    });
-                                    break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            }
-
+                        }
                     }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
         }
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        start();
         playerData = PlayerData.getInstance();
         netwerkConnection = NetwerkConnection.getInstance();
         usernameLabel.setText(playerData.getUsername());
