@@ -447,26 +447,154 @@ public class OthelloBoard extends AbstractBoard {
 
     public int getStableStoneCount(char c) {
         HashSet<Integer> uniqueStableStones = new HashSet<>();
+        GetStableStonesFromBottomRight(c, uniqueStableStones);
+        GetStableStonesFromTopRight(c, uniqueStableStones);
         GetStableStonesFromTopLeft(c, uniqueStableStones);
         GetStableStonesFromBottomLeft(c, uniqueStableStones);
-        GetStableStonesFromTopRight(c, uniqueStableStones);
-        GetStableStonesFromBottomRight(c, uniqueStableStones);
         return uniqueStableStones.size();
     }
 
     private void GetStableStonesFromTopLeft(char c, HashSet<Integer> stones) {
+        int maxSteps1 = 8;
+        int maxSteps2 = 8;
+        for (int i=0;i<8;i++) {
+            // Check van links beneden naar rechts boven
+            int pos = i*8;
+            int steps = 0;
+            do {
+                if (steps < maxSteps1 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps1 = steps;
+                    break;
+                }
+                pos -= 7;
+            } while (pos > 0);
+            // Check van rechts boven naar links beneden
+            pos = i;
+            steps = 0;
+            do {
+                if (steps < maxSteps2 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps2 = steps;
+                    break;
+                }
 
+                pos += 7;
+            } while (pos <= i*8);
+        }
     }
 
     private void GetStableStonesFromBottomLeft(char c, HashSet<Integer> stones) {
+        int maxSteps1 = 8;
+        int maxSteps2 = 8;
+        for (int i=0;i<8;i++) {
+            // Check van links boven naar rechts beneden
+            int pos = 56 - (i*8);
+            int steps = 0;
+            do {
+                if (steps < maxSteps1 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps1 = steps;
+                    break;
+                }
+                pos += 9;
+            } while (pos < 64);
+            // Check van rechts benden naar links boven
+            pos = 56 + i;
+            steps = 0;
+            do {
+                if (steps < maxSteps2 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps2 = steps;
+                    break;
+                }
 
+                pos -= 9;
+            } while (pos >= (56-(i*8)));
+        }
     }
 
     private void GetStableStonesFromTopRight(char c, HashSet<Integer> stones) {
+        int maxSteps1 = 8;
+        int maxSteps2 = 8;
+        for (int i=0;i<8;i++) {
+            // Check van links boven naar rechts onder
+            int pos = 7-i;
+            int steps = 0;
+            do {
+                if (steps < maxSteps1 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps1 = steps;
+                    break;
+                }
+                pos += 9;
+            } while (pos < 8+(i*8));
+            // Check van rechts onder naar links boven
+            pos = 7+(i*8);
+            steps = 0;
+            do {
+                if (steps < maxSteps2 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps2 = steps;
+                    break;
+                }
 
+                pos -= 9;
+            } while (pos >= 0);
+        }
     }
 
     private void GetStableStonesFromBottomRight(char c, HashSet<Integer> stones) {
+        int maxSteps1 = 8;
+        int maxSteps2 = 8;
+        for (int i=0;i<8;i++) {
+            // Check van links onder naar rechts boven
+            int pos = 63-i;
+            int steps = 0;
+            do {
+                if (steps < maxSteps1 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps1 = steps;
+                    break;
+                }
+                pos -= 7;
+            } while (pos >= 63-(i*8));
+            // Check van rechts boven naar links onder
+            pos = 63-(i*8);
+            steps = 0;
+            do {
+                if (steps < maxSteps2 && board[pos] == c) {
+                    steps++;
+                    stones.add(pos);
+                }
+                else {
+                    maxSteps2 = steps;
+                    break;
+                }
 
+                pos += 7;
+            } while (pos < 64);
+        }
     }
 }
