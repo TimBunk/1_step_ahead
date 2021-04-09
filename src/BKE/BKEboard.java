@@ -99,6 +99,11 @@ public class BKEboard extends AbstractBoard {
         return validMoves.stream().mapToInt(Integer::intValue).toArray();
     }
 
+    @Override
+    public int validMoveCount(char c) {
+        return length() - count('#');
+    }
+
     /**
      * @param c The character to be checked
      * @return Whether the player using that character has won
