@@ -14,6 +14,10 @@ public class ValidMovesTest {
     @BeforeEach
     void setup(){
         board.initializeBoard(64);
+    }
+
+    @Test
+    void isMoveValidTest1(){
         //A series of moves that led to an illegal move at position 56
         board.placeMove(19, 'Z');
         board.placeMove(18,'W');
@@ -66,10 +70,9 @@ public class ValidMovesTest {
         board.placeMove(63, 'Z');
         board.placeMove(52,'W');
         board.placeMove(60, 'Z');
-    }
 
-    @Test
-    void isMoveValidTest(){
+        board.printBoard();
+
         assertEquals(false, board.isMoveValidLeft(56, 'W'));
         assertEquals(false, board.isMoveValidRight(56, 'W'));
         assertEquals(false, board.isMoveValidDown(56, 'W'));
@@ -78,5 +81,51 @@ public class ValidMovesTest {
         assertEquals(false, board.isMoveValidRightUp(56, 'W'));
         assertEquals(false, board.isMoveValidLeftDown(56, 'W'));
         assertEquals(false, board.isMoveValidRightDown(56, 'W'));
+    }
+
+    @Test
+    void isMoveValidTest2(){
+        //A series of moves that led to stones not being flipped in a certain direction
+        board.placeMove(19, 'Z');
+        board.placeMove(18,'W');
+        board.placeMove(37, 'Z');
+        board.placeMove(20,'W');
+        board.placeMove(26, 'Z');
+        board.placeMove(34,'W');
+        board.placeMove(17, 'Z');
+        board.placeMove(29,'W');
+        board.placeMove(10, 'Z');
+        board.placeMove(44,'W');
+        board.placeMove(30, 'Z');
+        board.placeMove(9,'W');
+        board.placeMove(43, 'Z');
+        board.placeMove(45,'W');
+        board.placeMove(52, 'Z');
+        board.placeMove(60,'W');
+        board.placeMove(53, 'Z');
+        board.placeMove(11,'W');
+        board.placeMove(0, 'Z');
+        board.placeMove(8,'W');
+        board.placeMove(1, 'Z');
+        board.placeMove(16,'W');
+        board.placeMove(2, 'Z');
+        board.placeMove(51,'W');
+        board.placeMove(12, 'Z');
+        board.placeMove(25,'W');
+        board.placeMove(42, 'Z');
+        board.placeMove(33,'W');
+        board.placeMove(58, 'Z');
+        board.placeMove(5,'W');
+
+        board.printBoard();
+
+        assertEquals(false, board.isMoveValidLeft(24, 'Z'));
+        assertEquals(true, board.isMoveValidRight(24, 'Z'));
+        assertEquals(false, board.isMoveValidDown(24, 'Z'));
+        assertEquals(true, board.isMoveValidUp(24, 'Z'));
+        assertEquals(false, board.isMoveValidLeftUp(24, 'Z'));
+        assertEquals(true, board.isMoveValidRightUp(24, 'Z'));
+        assertEquals(false, board.isMoveValidLeftDown(24, 'Z'));
+        assertEquals(true, board.isMoveValidRightDown(24, 'Z'));
     }
 }

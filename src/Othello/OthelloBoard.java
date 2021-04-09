@@ -204,7 +204,7 @@ public class OthelloBoard extends AbstractBoard {
     protected boolean isMoveValidUp(int position, char characterToMove){
         if(position > 15){
             if(board[position-8] != characterToMove && board[position-8] != '.'){
-                for(int i = position - 16; i > 0; i-=8){
+                for(int i = position - 16; i >= 0; i-=8){
                     if(board[i] == '.'){
                         break;
                     }
@@ -246,7 +246,7 @@ public class OthelloBoard extends AbstractBoard {
     protected boolean isMoveValidLeftUp(int position, char characterToMove){
         if(position > 15 && position % 8 > 1){
             if(board[position-9] != characterToMove && board[position-9] != '.'){
-                for(int i = position - 18; i > 0; i-=9){
+                for(int i = position - 18; i >= 0; i-=9){
                     if(board[i] == '.'){
                         break;
                     }
@@ -270,7 +270,7 @@ public class OthelloBoard extends AbstractBoard {
     protected boolean isMoveValidRightUp(int position, char characterToMove){
         if(position % 8 < 6 && position > 15){
             if(board[position-7] != characterToMove && board[position-7] != '.'){
-                for(int i = position - 14; i > 0; i-=7){
+                for(int i = position - 14; i >= 0; i-=7){
                     if(board[i] == '.'){
                         break;
                     }
