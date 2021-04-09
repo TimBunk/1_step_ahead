@@ -138,7 +138,8 @@
                 </ImageView>
             </graphic>
         </Button>
-    <Line endX="-11.000030517578125" endY="-29.954147338867188" layoutX="405.0" layoutY="89.0" startX="-11.0" startY="-78.57147216796875" stroke="#a9a9a9" strokeWidth="2.0" />    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="53.0" layoutX="17.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+    <Line endX="-11.000030517578125" endY="-29.954147338867188" layoutX="405.0" layoutY="89.0" startX="-11.0" startY="-78.57147216796875" stroke="#a9a9a9" strokeWidth="2.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="53.0" layoutX="17.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
     <Label layoutX="23.0" layoutY="123.0" text="Punten tegenstander:">
         <font>
             <Font size="15.0" />

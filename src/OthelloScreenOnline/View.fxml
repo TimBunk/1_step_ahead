@@ -20,9 +20,9 @@
                 <Font size="37.0" />
             </font>
         </Label>
-        <ImageView fitHeight="452.0" fitWidth="468.0" layoutX="227.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="468.0" fitWidth="475.0" layoutX="219.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../MainScreen/Afbeeldingen/speelbord.jpeg" />
+                <Image url="@../MainScreen/Afbeeldingen/speelbord2.png" />
             </image>
         </ImageView>
         <GridPane fx:id="TicTacToeGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="228.0" layoutY="127.0" opacity="0.7" prefHeight="450.0" prefWidth="450.0">
@@ -113,12 +113,12 @@
                 <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
             </children>
         </GridPane>
-        <Label layoutX="254.0" layoutY="14.0" text="Othello">
+        <Label layoutX="257.0" layoutY="19.0" text="Othello">
             <font>
-                <Font name="Verdana" size="33.0" />
+                <Font name="Verdana" size="27.0" />
             </font>
         </Label>
-        <Label fx:id="difficultyLabel" layoutX="400.0" layoutY="19.0" text="Computer moeilijk">
+        <Label fx:id="difficultyLabel" layoutX="433.0" layoutY="19.0" text="Computer moeilijk">
             <font>
                 <Font name="Verdana" size="27.0" />
             </font>
@@ -139,19 +139,19 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Line endX="-11.000030517578125" endY="-29.954147338867188" layoutX="394.0" layoutY="90.0" startX="-11.0" startY="-78.57147216796875" stroke="#a9a9a9" strokeWidth="2.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="53.0" layoutX="24.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
-        <Label layoutX="30.0" layoutY="132.0" text="Punten tegenstander:">
+        <Line endX="-11.000030517578125" endY="-29.954147338867188" layoutX="405.0" layoutY="89.0" startX="-11.0" startY="-78.57147216796875" stroke="#a9a9a9" strokeWidth="2.0" />    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="53.0" layoutX="17.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdfdfd" height="53.0" layoutX="17.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="184.0" />
+        <Label layoutX="23.0" layoutY="123.0" text="Punten tegenstander:">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label layoutX="30.0" layoutY="153.0" text="Punten speler:">
+        <Label layoutX="23.0" layoutY="144.0" text="Punten speler:">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label fx:id="puntenOpponent" layoutX="180.0" layoutY="134.0" />
-        <Label fx:id="puntenPlayer" layoutX="180.0" layoutY="155.0" />
+        <Label fx:id="puntenOpponent" layoutX="173.0" layoutY="125.0" />
+        <Label fx:id="puntenPlayer" layoutX="173.0" layoutY="146.0" />
     </children>
 </AnchorPane>
