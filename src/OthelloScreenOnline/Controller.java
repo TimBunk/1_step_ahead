@@ -4,6 +4,7 @@ import Game.NetwerkConnection;
 import Game.PlayerData;
 import Othello.OthelloBoard;
 import Othello.OthelloComputer1;
+import Othello.OthelloComputer2;
 import Othello.OthelloPlayer;
 import Shared.AbstractPlayer;
 import javafx.application.Platform;
@@ -77,7 +78,7 @@ public class Controller extends Thread implements Initializable {
     }
 
     public void start(){
-        player1 = new OthelloComputer1(8, 9500);
+        player1 = new OthelloComputer2(8, 9500,1, 5, 3);
 
         //dit is de online tegenstander.
         player2 = new OthelloPlayer();
@@ -197,16 +198,19 @@ public class Controller extends Thread implements Initializable {
                                     break;
                                 case "WIN":
                                     stopThread();
+                                    netwerkConnection.stopConnection();
                                     System.out.println("Je hebt gewonnen!!");
                                     showEndScreen("Je hebt gewonnen!");
                                     break;
                                 case "LOSS":
                                     stopThread();
+                                    netwerkConnection.stopConnection();
                                     System.out.println("Je hebt verloren!!");
                                     showEndScreen("Je hebt verloren!");
                                     break;
                                 case "DRAWW":
                                     stopThread();
+                                    netwerkConnection.stopConnection();
                                     System.out.println("je hebt gelijk gespeeld.");
                                     showEndScreen("Gelijkspel");
                                     break;
