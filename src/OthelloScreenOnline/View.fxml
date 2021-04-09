@@ -151,6 +151,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
+
         <Label fx:id="puntenOpponent" layoutX="173.0" layoutY="125.0" />
         <Label fx:id="puntenPlayer" layoutX="173.0" layoutY="146.0" />
     </children>
