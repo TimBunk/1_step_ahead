@@ -8,7 +8,7 @@ import java.util.Random;
 public class Othello {
 
     public static void main(String[] args) {
-        Othello othello = new Othello(new RandomComputer(), new OthelloComputer1(8, 9500));
+        Othello othello = new Othello(new RandomComputer(), new OthelloComputer1(8, 9500), true);
         othello.start();
     }
 
@@ -19,8 +19,9 @@ public class Othello {
     /**
      * @param player1 The first player
      * @param player2 The second player
+     * @param randomTurn choose at random who goes first if true otherwise player1 starts
      */
-    public Othello(AbstractPlayer player1, AbstractPlayer player2) {
+    public Othello(AbstractPlayer player1, AbstractPlayer player2, boolean randomTurn) {
         // Initialiseer waardes
         board = new OthelloBoard();
         board.initializeBoard(64);
@@ -29,17 +30,20 @@ public class Othello {
         this.player2 = player2;
 
         //Bepaal wie Witte en Zwarte stenen krijgt
-        if (new Random().nextInt(2) == 0) {
-            player1.setCharacter('W');
-            player2.setCharacter('Z');
-        }
-        else {
+        if (new Random().nextInt(2) == 0 || randomTurn == false) {
             player1.setCharacter('Z');
             player2.setCharacter('W');
         }
+        else {
+            player1.setCharacter('W');
+            player2.setCharacter('Z');
+        }
     }
 
-    public void start() {
+    /**
+     * @return returns 0 if draw, 1 if player1 won, -1 if player2 won
+     */
+    public int start() {
         //speler met Zwarte stenen begint
         boolean player1Turn = (player1.getCharacter()=='Z');
 
@@ -94,12 +98,15 @@ public class Othello {
 
         if(player1Points > player2Points){
             System.out.println("Player1 wint met " + player1Points + " tegen " + player2Points);
+            return 1;
         }
         else if(player2Points > player1Points){
             System.out.println("Player2 wint met " + player2Points + " tegen " + player1Points);
+            return -1;
         }
         else {
             System.out.println("Gelijkspel met een score van " + player1Points);
+            return 0;
         }
     }
 }
