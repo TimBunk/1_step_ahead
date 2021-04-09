@@ -159,7 +159,7 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the left
      */
-    private boolean isMoveValidLeft(int position, char characterToMove){
+    protected boolean isMoveValidLeft(int position, char characterToMove){
         if(position % 8 > 1){
             if(board[position-1] != characterToMove && board[position-1] != '.'){
                 for(int i = position - 2; i >= position / 8 * 8; i--){
@@ -180,7 +180,7 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the right
      */
-    private boolean isMoveValidRight(int position, char characterToMove){
+    protected boolean isMoveValidRight(int position, char characterToMove){
         if(position % 8 < 6){
             if(board[position+1] != characterToMove && board[position+1] != '.'){
                 for(int i = position + 2; i < ((position/8)+1)*8; i++){
@@ -201,7 +201,7 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the top
      */
-    private boolean isMoveValidUp(int position, char characterToMove){
+    protected boolean isMoveValidUp(int position, char characterToMove){
         if(position > 15){
             if(board[position-8] != characterToMove && board[position-8] != '.'){
                 for(int i = position - 16; i > 0; i-=8){
@@ -222,7 +222,7 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the bottom
      */
-    private boolean isMoveValidDown(int position, char characterToMove){
+    protected boolean isMoveValidDown(int position, char characterToMove){
         if(position < 48){
             if(board[position+8] != characterToMove && board[position+8] != '.'){
                 for(int i = position + 16; i < 64; i+=8){
@@ -243,8 +243,8 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the upper left
      */
-    private boolean isMoveValidLeftUp(int position, char characterToMove){
-        if(position > 17){
+    protected boolean isMoveValidLeftUp(int position, char characterToMove){
+        if(position > 15 && position % 8 > 1){
             if(board[position-9] != characterToMove && board[position-9] != '.'){
                 for(int i = position - 18; i > 0; i-=9){
                     if(board[i] == '.'){
@@ -267,7 +267,7 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the upper right
      */
-    private boolean isMoveValidRightUp(int position, char characterToMove){
+    protected boolean isMoveValidRightUp(int position, char characterToMove){
         if(position % 8 < 6 && position > 15){
             if(board[position-7] != characterToMove && board[position-7] != '.'){
                 for(int i = position - 14; i > 0; i-=7){
@@ -291,7 +291,7 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the bottom left
      */
-    private boolean isMoveValidLeftDown(int position, char characterToMove){
+    protected boolean isMoveValidLeftDown(int position, char characterToMove){
         if(position % 8 > 1 && position < 48){
             if(board[position+7] != characterToMove && board[position+7] != '.'){
                 for(int i = position + 14; i < 64; i+=7){
@@ -315,7 +315,7 @@ public class OthelloBoard extends AbstractBoard {
      * @param characterToMove The character for which we want to check the move's validity
      * @return Whether the move is valid because it flips stones to the bottom right
      */
-    private boolean isMoveValidRightDown(int position, char characterToMove){
+    protected boolean isMoveValidRightDown(int position, char characterToMove){
         if(position % 8 < 6 && position < 48){
             if (board[position+9] != characterToMove && board[position+9] != '.'){
                 for(int i = position + 18; i < 64; i+=9){
