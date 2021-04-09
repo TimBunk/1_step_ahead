@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainScreen.Controller">
+    <children>
+        <SplitPane layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="142.0" prefWidth="598.0">
+                    <children>
+                        <Button layoutX="531.0" layoutY="17.0" mnemonicParsing="false" onAction="#naarNetwerk" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+                            <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Afbeeldingen/vraag.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic></Button>
+                        <Label fx:id="usernameLabel" layoutX="53.0" layoutY="25.0" text="Gebruikersnaam" />
+                        <ImageView fitHeight="33.0" fitWidth="51.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Afbeeldingen/profile-user.png" />
+                            </image>
+                        </ImageView>
+                        <Pane layoutY="73.0" prefHeight="325.0" prefWidth="303.0">
+                            <children>
+                                <Label layoutX="23.0" layoutY="80.0" text="Tegenstander">
+                                    <font>
+                                        <Font size="12.0" />
+                                    </font>
+                                </Label>
+                                <Label layoutX="22.0" layoutY="110.0" text="Moeilijkheidsgraad">
+                                    <font>
+                                        <Font size="12.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="OthelloOpponent" layoutX="173.0" layoutY="75.0" prefHeight="4.0" prefWidth="104.0" />
+                                <ChoiceBox fx:id="OthelloDifficulty" layoutX="173.0" layoutY="105.0" prefHeight="4.0" prefWidth="104.0" />
+                                <Button layoutX="114.0" layoutY="280.0" mnemonicParsing="false" onAction="#OthelloStart" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;" text="Start" />
+                                <TextArea editable="false" layoutX="16.0" layoutY="151.0" prefHeight="107.0" prefWidth="258.0" text="Het doel van het spel is om meer schijven in&#10;jouw kleur te hebben dan je tegenstander aan&#10;het einde van het spel. Het bord bestaat uit&#10;8x8 vakjes. De opstelling van het bord heeft 2&#10;zwarte en 2 witte schijven in het midden.&#10;De stenen van dezelfde kleur bevinden zich op&#10;een diagonale lijn. Eén speler speelt met zwarte&#10;schijven en de ander speelt met witte. De speler&#10;met de zwarte schijven plaatst als eerste&#10;een schijf. Wanneer een speler een schijf&#10;plaatst, dan worden alle schijven van de&#10;tegenstander die horizontaal, verticaal of&#10;diagonaal tussen de geplaatste schijf en een&#10;andere schijf van de kleur van de speler liggen&#10;veranderd naar schijven van de kleur van de&#10;speler. Een speler mag alleen een schijf plaatsen&#10;naast een schijf die al op het bord ligt.&#10;Daarnaast mag een speler alleen een schijf&#10;plaatsen op zo'n manier dat minstens één schijf&#10;van de tegenstander van kleur verandert. Als&#10;een speler geen schijf kan plaatsen, gaat de&#10;beurt terug naar de andere speler.&#10;&#10;Het spel is afgelopen wanneer beide spelers&#10;geen geldige zetten meer kunnen doen of&#10;wanneer het bord vol is. De speler met&#10;de meeste schijven in zijn/haar kleur wint. ">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </TextArea>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" height="56.0" layoutX="15.0" stroke="BLACK" strokeType="INSIDE" width="267.0">
+                                    <fill>
+                                        <LinearGradient endX="1.0" endY="1.0">
+                                            <stops>
+                                                <Stop>
+                                                    <color>
+                                                        <Color red="0.250980406999588" green="0.6392157077789307" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                    <color>
+                                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                            </stops>
+                                        </LinearGradient>
+                                    </fill>
+                                </Rectangle>
+                                <ImageView fitHeight="48.0" fitWidth="65.0" layoutX="19.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Afbeeldingen/reversi.png" />
+                                    </image>
+                                </ImageView>
+                                <Label layoutX="112.0" layoutY="14.0" text="Othello">
+                                    <font>
+                                        <Font name="Verdana" size="22.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="295.0" layoutY="73.0" prefHeight="325.0" prefWidth="303.0">
+                            <children>
+                                <Label layoutX="22.0" layoutY="96.0" text="Moeilijkheidsgraad">
+                                    <font>
+                                        <Font size="12.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="TicTacToeDifficulty" layoutX="188.0" layoutY="91.0" prefHeight="4.0" prefWidth="104.0" />
+                                <Button fx:id="startTTT" layoutX="139.0" layoutY="280.0" mnemonicParsing="false" onAction="#TicTacToeStart" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;" text="Start" />
+                                <Line endX="-11.0" endY="-11.957550048828125" layoutX="16.0" layoutY="326.0" startX="-11.0" startY="-326.0" stroke="#a9a9a9" strokeWidth="2.0" />
+                                <TextArea editable="false" layoutX="28.0" layoutY="152.0" prefHeight="107.0" prefWidth="258.0" text="Boter-kaas-en-eieren wordt gespeeld op 3 bij 3 &#10;velden. Bij het begin zijn alle velden leeg. De ene &#10;speler zet een 'kruis' en de andere speler een &#10;'rondje'. Degene die drie van zijn eigen tekens op &#10;een rij heeft, dat mag diagonaal, verticaal of &#10;horizontaal zijn, heeft gewonnen.">
+                                    <font>
+                                        <Font size="11.0" />
+                                    </font>
+                                </TextArea>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" height="56.0" layoutX="23.0" stroke="BLACK" strokeType="INSIDE" width="267.0">
+                                    <fill>
+                                        <LinearGradient endX="1.0" endY="1.0">
+                                            <stops>
+                                                <Stop>
+                                                    <color>
+                                                        <Color red="0.250980406999588" green="0.6392157077789307" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                    <color>
+                                                        <Color red="1.0" green="1.0" blue="1.0" />
+                                                    </color>
+                                                </Stop>
+                                            </stops>
+                                        </LinearGradient>
+                                    </fill>
+                                </Rectangle>
+                                <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="24.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@Afbeeldingen/tictactoe.png" />
+                                    </image>
+                                </ImageView>
+                                <Label layoutX="82.0" layoutY="14.0" text="Boter-Kaas-Eieren">
+                                    <font>
+                                        <Font name="Verdana" size="22.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                        <Line endX="505.0" layoutX="92.0" layoutY="60.0" startX="-100.0" stroke="#6d6d6d" strokeWidth="3.0" />
+                        <ImageView fitHeight="45.0" fitWidth="236.0" layoutX="183.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Afbeeldingen/logoTransparant.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</Pane>

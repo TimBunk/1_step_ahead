@@ -4,7 +4,7 @@ import Shared.AbstractPlayer;
 import Shared.RandomComputer;
 import java.util.Date;
 
-public class OthelloTest {
+class OthelloTest {
 
     public static void main(String[] args) {
         long startTime = new Date().getTime();
