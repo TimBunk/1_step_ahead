@@ -1,5 +1,6 @@
 package BeginScreen;
 
+import Game.PlayerData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,15 +9,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import Game.PlayerData;
+
 import java.io.IOException;
 
 public class Controller {
-    private Model model = new Model();
 
     @FXML
     private TextField usernameField;
 
+
+    /**
+     *The user clicks on the next button, username will be saved and the user goes to the main screen.
+     */
     @FXML
     void next(ActionEvent event) throws IOException {
         PlayerData player = PlayerData.getInstance();
@@ -35,5 +39,4 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
 }
