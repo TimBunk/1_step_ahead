@@ -106,4 +106,8 @@ public abstract class AbstractBoard {
      * @return An int of the amount of valid moves for that charactee
      */
     public abstract int validMoveCount(char c);
+
+    public int getStableStoneCount(char c) {
+        return 0;
+    }
 }
