@@ -39,7 +39,7 @@ public class OthelloBoard extends AbstractBoard {
     public boolean isMoveValid(int move) {
         // De move is valid wanneer die op een lege plaats wordt gedaan
         // Daarnaast moet er door de move minstens 1 steen worden omgedraaid
-        if (move >= 0 && move < board.length && board[move] == '.') {
+        if (board[move] == '.') {
             return true;
         }
         return false;
