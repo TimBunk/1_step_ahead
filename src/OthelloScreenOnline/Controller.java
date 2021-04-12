@@ -175,6 +175,8 @@ public class Controller extends Thread implements Initializable {
                     try {
                         FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));
                         root = (Parent) loader.load();
+                        Lobby.Controller lobby=loader.getController();
+                        lobby.setDifficultyAI(model.CalculateStringDifficulty(DifficultyAI));
                         Stage stage=new Stage();
                         stage.setScene(new Scene(root));
                         stage.setResizable(false);
