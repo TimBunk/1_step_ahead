@@ -1,6 +1,5 @@
 package BKE;
 
-import Othello.OthelloBoard;
 import Shared.AbstractBoard;
 
 import java.util.ArrayList;
