@@ -9,4 +9,12 @@ public class Model {
             return 1;
         }
     }
+
+    public String CalculateStringDifficulty(int dif){
+        if (dif == 0){
+            return "Gemiddeld";
+        }else {
+            return "Moeilijk";
+        }
+    }
 }
