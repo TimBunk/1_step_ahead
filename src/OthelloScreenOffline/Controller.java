@@ -42,6 +42,9 @@ public class Controller extends Thread implements Initializable {
     private boolean player2Passed;
     private boolean player1Turn;
 
+    /**
+     * Initializes Othello screen...
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playerData = PlayerData.getInstance();
@@ -69,6 +72,9 @@ public class Controller extends Thread implements Initializable {
     @FXML
     private Label puntenPlayer;
 
+    /**
+     * Exit button is pressed, user gets redirected to main screen...
+     */
     @FXML
     void exit(ActionEvent event) {
         stopThread();
@@ -88,6 +94,10 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * @param event mouse clicked.
+     * Makes a move if the mouseplacement is correct on the othello board.
+     */
     @FXML
     void pressedMouseOnBord(MouseEvent event) {
         Node node = (Node) event.getTarget();
@@ -100,12 +110,20 @@ public class Controller extends Thread implements Initializable {
         });
     }
 
+    /**
+     * @param difficulty diffuculty of the computer
+     * Sets difficulty of the computer and starts game.
+     */
     public void setDifficulty(String difficulty){
         this.difficulty = model.CalculateDifficulty(difficulty);
         difficultyLabel.setText("Computer " + difficulty);
         start();
     }
 
+
+    /**
+     * Othello game start against computer...
+     */
     public void start(){
         player1 = new OthelloPlayer();
         if (difficulty == 1){
@@ -143,6 +161,9 @@ public class Controller extends Thread implements Initializable {
         thread.start();
     }
 
+    /**
+     * Keeps updating the Othello board.
+     */
     public void updateBoard(){
         for (int i = 0; i < board.length(); i++){
             if (board.getBoard()[i] != '.'){
@@ -153,6 +174,11 @@ public class Controller extends Thread implements Initializable {
         puntenPlayer.setText("" + board.count(player1.getCharacter()));
     }
 
+    /**
+     * @param Place which place on the board.
+     * @param C white/black circle.
+     * Image of black/white circle gets added on the board
+     */
     public void placeOnScreen(int Place, char C){
         int row = 0;
         ImageView image;
@@ -171,6 +197,10 @@ public class Controller extends Thread implements Initializable {
         OthelloGridPane.add(image, column, row);
     }
 
+    /**
+     * @param zet place on the board.
+     * if place on the board is viable, do move.
+     */
     public void zet(int zet){
         if (player1Turn){
             if(board.findValidMoves(player1.getCharacter()).length != 0){
@@ -194,6 +224,9 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * Computer makes move, board gets updated.
+     */
     public void zetComputer() {
         if (!player1Turn){
             System.out.println("De computer mag");
@@ -239,6 +272,9 @@ public class Controller extends Thread implements Initializable {
         running.set(false);
     }
 
+    /**
+     * Compares points and decides a winner...
+     */
     public void winnaar(){
         int player1Points = board.count(player1.getCharacter());
         int player2Points = board.count(player2.getCharacter());
@@ -273,6 +309,9 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * Runs game and checks if game is still running...
+     */
     @Override
     public void run() {
         running.set(true);

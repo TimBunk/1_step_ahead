@@ -47,12 +47,19 @@ public class Controller extends Thread implements Initializable {
     @FXML
     private AnchorPane TicTacToeScreen;
 
+    /**
+     * The tictactoe board screen gets initialized...
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playerData = PlayerData.getInstance();
         usernameLabel.setText(playerData.getUsername());
     }
 
+    /**
+     * The tictactoe game starts... if the game state is -1, the player won. if the game state
+     * is 1 the computer won. When the game state is 0 it is a tie.
+     */
     @FXML
     public void start() {
         board = new BKEboard();
@@ -89,6 +96,9 @@ public class Controller extends Thread implements Initializable {
         gameState = 0;
     }
 
+    /**
+     * The plater exits tictactoe and gets redirected to the main screen...
+     */
     @FXML
     void exit(ActionEvent event) {
         Parent root;
@@ -106,6 +116,10 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * @param event mouse clicked.
+     * Makes a move if the mouseplacement is correct on the tictactoe board.
+     */
     @FXML
     void pressedMouseOnBord(MouseEvent event) {
         Node node = (Node) event.getTarget();
@@ -127,6 +141,10 @@ public class Controller extends Thread implements Initializable {
         return 0;
     }
 
+    /**
+     * @param zet
+     * Looks who has to place a X or O.
+     */
     public void zet(int zet) {
         if (gameState == 0) {
             // Print uit de ronde nummer
@@ -144,6 +162,9 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * The computer has to do a move...
+     */
     public void zetComputer() {
         int move = player2.doMove(board);
         board.placeMove(move, player2.getCharacter());
@@ -156,12 +177,21 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * @param difficulty difficulty of the computer.
+     * Difficulty is set and game starts.
+     */
     public void setdifficulty(String difficulty){
         difficultyLabel.setText("Computer " + difficulty);
         this.Difficulty = model.CalculateDifficulty(difficulty);
         start();
     }
 
+    /**
+     * @param Cell which cell the character has to be placed.
+     * @param Char X or O.
+     * X / O are placed on the board.
+     */
     public void placeCharacter(int Cell, char Char){
         int row;
         int column;
@@ -188,6 +218,9 @@ public class Controller extends Thread implements Initializable {
         TicTacToeGridPane.add(image, column, row);
     }
 
+    /**
+     * End screen of tictactoe...
+     */
     public void endScreen(){
         String tittle = switch (gameState) {
             // speler heeft gewonnen

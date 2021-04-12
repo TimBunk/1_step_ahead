@@ -58,6 +58,9 @@ public class Controller extends Thread implements Initializable {
         netwerkConnection.sendMessage("subscribe Reversi");
     }
 
+    /**
+     * Challenge a opponent in the lobby.
+     */
     @FXML
     void challange() throws IOException {
         String opponent = playersListView.getSelectionModel().getSelectedItem();
@@ -66,6 +69,9 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * User leaves lobby and will be redirected to mainscreen.
+     */
     @FXML
     void exit(ActionEvent event) throws IOException {
         stopThread();
@@ -87,11 +93,17 @@ public class Controller extends Thread implements Initializable {
         }
     }
 
+    /**
+     * User refreshes lobby, lobby refreshes available playerlist.
+     */
     @FXML
     void refresh(ActionEvent event) throws IOException {
         netwerkConnection.sendMessage("get playerlist");
     }
 
+    /**
+     * Makes a list of the players and displays them in lobby.
+     */
     public void setPlayersListView(String playerlist) {
         playersListView.getItems().clear();
         String usersString = playerlist.substring(15).replaceAll("\\[|\\]", "");
@@ -107,6 +119,10 @@ public class Controller extends Thread implements Initializable {
 
     public void setDifficultyAI(String difficultyAI) { this.DifficultyAI = difficultyAI;}
 
+    /**
+     * @param challenge challange from opponent.
+     * Gets challenge which the user is able to accept.
+     */
     public void getChallenge(String challenge) {
         List<String> inputlist = Arrays.asList(challenge.substring(19).replaceAll("\\{|\\}| ", "").split(","));
         Map map = new HashMap();
@@ -130,6 +146,9 @@ public class Controller extends Thread implements Initializable {
         running.set(false);
     }
 
+    /**
+     * Run game.
+     */
     @Override
     public void run() {
         running.set(true);

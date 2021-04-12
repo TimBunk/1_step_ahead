@@ -37,6 +37,9 @@ public class Controller implements Initializable {
     @FXML
     private ChoiceBox<String> TicTacToeDifficulty;
 
+    /**
+     *The main screen gets initialized...
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playerData = PlayerData.getInstance();
@@ -49,6 +52,9 @@ public class Controller implements Initializable {
         OthelloOpponent.getSelectionModel().select("Tegen de computer");
     }
 
+    /**
+     *The user clicks on the tictactoe start button, Tictactoe wil start...
+     */
     @FXML
     void TicTacToeStart(ActionEvent event) {
         Parent root;
@@ -70,6 +76,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     *The user clicks on the othello start button, othello wil start...
+     */
     @FXML
     void OthelloStart(ActionEvent event) throws IOException {
         if(OthelloOpponent.getValue().equals("Tegen de computer")){
@@ -115,6 +124,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     *The user clicks on the ? button, the user will be redirected to the network settings...
+     */
     @FXML
     public void naarNetwerk(ActionEvent event) {
         Parent root;

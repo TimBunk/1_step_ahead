@@ -13,6 +13,9 @@ public class NetwerkConnection {
     private static volatile NetwerkConnection netwerkConnection;
     private NetwerkConnection(){}
 
+    /**
+     * @return netwerkConnection.
+     */
     public static NetwerkConnection getInstance(){
     if (netwerkConnection == null){
         synchronized (NetwerkConnection.class){
@@ -22,22 +25,35 @@ public class NetwerkConnection {
     return netwerkConnection;
     }
 
+    /**
+     * @param ip ip address.
+     * @param port port adress.
+     */
     public void startConnection(String ip, int port) throws IOException {
         clientSocket = new Socket(ip, port);
         out = new PrintWriter(clientSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
     }
 
+    /**
+     * @param msg message.
+     */
     public void sendMessage(String msg) throws IOException {
         out.println(msg);
     }
 
+    /**
+     * Stops the connection.
+     */
     public void stopConnection() throws IOException {
         in.close();
         out.close();
         clientSocket.close();
     }
 
+    /**
+     * Reads the message.
+     */
     public String getMessage() throws IOException {
        return in.readLine();
     }

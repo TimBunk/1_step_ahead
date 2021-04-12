@@ -59,6 +59,9 @@ public class Controller extends Thread implements Initializable {
     @FXML
     private Label puntenPlayer;
 
+    /**
+     * Initializes Othello screen...
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         netwerkConnection = NetwerkConnection.getInstance();
@@ -66,6 +69,9 @@ public class Controller extends Thread implements Initializable {
         usernameLabel.setText(playerData.getUsername());
     }
 
+    /**
+     * Exit button is pressed, user gets redirected to main screen...
+     */
     @FXML
     void exit(ActionEvent event) throws IOException {
         netwerkConnection.sendMessage("forfeit");
@@ -83,6 +89,9 @@ public class Controller extends Thread implements Initializable {
         thread.start();
     }
 
+    /**
+     * Othello game start against opponent...
+     */
     public void start(){
         if (DifficultyAI == 0){
             //Gemiddeld
@@ -113,6 +122,11 @@ public class Controller extends Thread implements Initializable {
         updateBoard();
     }
 
+    /**
+     * @param Place which place on the board.
+     * @param C white/black circle.
+     * Image of black/white circle gets added on the board
+     */
     public void placeOnScreen(int Place, char C){
         int row = 0;
         ImageView image;
@@ -131,6 +145,9 @@ public class Controller extends Thread implements Initializable {
         OthelloGridPane.add(image, column, row);
     }
 
+    /**
+     * Keeps updating the Othello board.
+     */
     public void updateBoard(){
         for (int i = 0; i < board.length(); i++){
             if (board.getBoard()[i] != '.'){
@@ -141,6 +158,9 @@ public class Controller extends Thread implements Initializable {
         puntenPlayer.setText("" + board.count(player1.getCharacter()));
     }
 
+    /**
+     * if place on the board is viable, do move.
+     */
     public void zet() throws IOException {
         int move = player1.doMove(board);
         System.out.println("De zet is: " +move);
@@ -150,12 +170,20 @@ public class Controller extends Thread implements Initializable {
         updateBoard();
     }
 
+    /**
+     * @param move place on the board.
+     * Opponent makes move, board gets updated.
+     */
     public void zetOpenent(int move){
         board.placeMove(move, player2.getCharacter());
         turnLabel.setText("Jij bent aan zet");
         updateBoard();
     }
 
+    /**
+     * @param text player.
+     * Endscreen.
+     */
     public void showEndScreen(String text){
         Platform.runLater(new Runnable() {
             @Override
@@ -187,6 +215,9 @@ public class Controller extends Thread implements Initializable {
         running.set(false);
     }
 
+    /**
+     * Runs game and checks if game is still running, decides a winner...
+     */
     @Override
     public void run() {
         running.set(true);

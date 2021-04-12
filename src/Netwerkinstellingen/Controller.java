@@ -22,6 +22,9 @@ public class Controller implements Initializable {
     @FXML
     private TextField TimeOutinvoer;
 
+    /**
+     *The network settings screen gets initialized...
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playerData = PlayerData.getInstance();
@@ -30,6 +33,9 @@ public class Controller implements Initializable {
         Portinvoer.setText(String.valueOf(playerData.getPortnumber()));
     }
 
+    /**
+     *The user saves the network settings...
+     */
     @FXML
     public void naarMain(ActionEvent event) {
         playerData.setIpadres(IPinvoer.getText());

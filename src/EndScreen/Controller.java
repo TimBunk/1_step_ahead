@@ -27,6 +27,9 @@ public class Controller implements Initializable{
     private AnchorPane beforeScreen;
     private String game;
 
+    /**
+     *The user clicks on the again button, game played at the moment will restart...
+     */
     @FXML
     void again(ActionEvent event) {
         Parent root;
@@ -57,6 +60,9 @@ public class Controller implements Initializable{
         }
     }
 
+    /**
+     *The user clicks on the end/leave button, user will be redirected to mainscreen...
+     */
     @FXML
     void stop(ActionEvent event) {
         Parent root;
