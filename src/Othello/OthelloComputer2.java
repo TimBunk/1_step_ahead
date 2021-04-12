@@ -28,9 +28,8 @@ public class OthelloComputer2 extends OthelloComputer {
         int playerMobility = board.validMoveCount(playerChar);
         int mobility_score = (computerMobility - playerMobility) * mobility;
 
-        OthelloBoard oBoard = (OthelloBoard)board;
-        int computerStableStones = oBoard.getStableStoneCount(getCharacter());
-        int playerStableStones = oBoard.getStableStoneCount(playerChar);
+        int computerStableStones = board.getStableStoneCount(getCharacter());
+        int playerStableStones = board.getStableStoneCount(playerChar);
         int stable_stones_score = (computerStableStones - playerStableStones) * stable_stone;
 
         return single_stones_score + mobility_score + stable_stones_score;
