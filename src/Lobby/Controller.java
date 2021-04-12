@@ -91,7 +91,10 @@ public class Controller extends Thread implements Initializable{
     }
 
     @FXML
-    void exit(ActionEvent event) {
+    void exit(ActionEvent event) throws IOException {
+        stopThread();
+        netwerkConnection.sendMessage("logout");
+        netwerkConnection.stopConnection();
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));

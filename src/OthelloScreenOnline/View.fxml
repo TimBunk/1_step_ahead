@@ -118,7 +118,7 @@
                 <Font name="Verdana" size="27.0" />
             </font>
         </Label>
-        <Label fx:id="difficultyLabel" layoutX="433.0" layoutY="19.0" text="Computer moeilijk">
+        <Label fx:id="difficultyLabel" layoutX="433.0" layoutY="19.0" text="Online">
             <font>
                 <Font name="Verdana" size="27.0" />
             </font>
@@ -130,7 +130,7 @@
             </image>
         </ImageView>
         <Label fx:id="usernameLabel" layoutX="63.0" layoutY="29.0" text="Gebruikersnaam" />
-        <Button layoutX="824.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
+        <Button layoutX="824.0" layoutY="22.0" mnemonicParsing="false" onAction="#exit" prefHeight="26.0" prefWidth="54.0" style="-fx-background-radius: 8px; -fx-background-color: #40a3ff#40a3ff;">
             <graphic>
                 <ImageView fitHeight="15.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                     <image>

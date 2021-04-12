@@ -70,6 +70,11 @@ public class Controller extends Thread implements Initializable {
         usernameLabel.setText(playerData.getUsername());
     }
 
+    @FXML
+    void exit(ActionEvent event) throws IOException {
+        netwerkConnection.sendMessage("forfeit");
+    }
+
     public void setStartPlayer(String startPlayer){
         this.startPlayer = startPlayer;
         start();
@@ -133,11 +138,13 @@ public class Controller extends Thread implements Initializable {
         System.out.println("De zet is: " +move);
         netwerkConnection.sendMessage("move " + move);
         board.placeMove(move, player1.getCharacter());
+        turnLabel.setText("De ander is aan zet");
         updateBoard();
     }
 
     public void zetOpenent(int move){
         board.placeMove(move, player2.getCharacter());
+        turnLabel.setText("Jij bent aan zet");
         updateBoard();
     }
 
@@ -151,7 +158,7 @@ public class Controller extends Thread implements Initializable {
                     TicTacToeGridPane.getScene().getWindow().hide();
                     Parent root;
                     try {
-                        FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
+                        FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));
                         root = (Parent) loader.load();
                         Stage stage=new Stage();
                         stage.setScene(new Scene(root));
@@ -198,19 +205,16 @@ public class Controller extends Thread implements Initializable {
                                     break;
                                 case "WIN":
                                     stopThread();
-                                    netwerkConnection.stopConnection();
                                     System.out.println("Je hebt gewonnen!!");
                                     showEndScreen("Je hebt gewonnen!");
                                     break;
                                 case "LOSS":
                                     stopThread();
-                                    netwerkConnection.stopConnection();
                                     System.out.println("Je hebt verloren!!");
                                     showEndScreen("Je hebt verloren!");
                                     break;
                                 case "DRAWW":
                                     stopThread();
-                                    netwerkConnection.stopConnection();
                                     System.out.println("je hebt gelijk gespeeld.");
                                     showEndScreen("Gelijkspel");
                                     break;
