@@ -26,9 +26,13 @@ public class Controller implements Initializable {
     private TextField Portinvoer;
 
     @FXML
+    private TextField TimeOutinvoer;
+
+    @FXML
     public void naarMain(ActionEvent event) {
         playerData.setIpadres(IPinvoer.getText());
         playerData.setPortnumber(Integer.parseInt(Portinvoer.getText()));
+        playerData.setTimeOutTime(Integer.parseInt(TimeOutinvoer.getText()));
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
@@ -36,6 +40,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playerData = PlayerData.getInstance();
         IPinvoer.setText(playerData.getIpadres());
+        TimeOutinvoer.setText(String.valueOf(playerData.getTimeOutTime()));
         Portinvoer.setText(String.valueOf(playerData.getPortnumber()));
     }
 }

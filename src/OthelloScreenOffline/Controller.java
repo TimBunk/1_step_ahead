@@ -94,11 +94,11 @@ public class Controller implements Initializable {
         player1 = new OthelloPlayer();
         if (difficulty == 1){
             //moeilijk
-            player2 = new OthelloComputer2(8, 9500,1, 5, 3);
+            player2 = new OthelloComputer2(8, playerData.getTimeOutTime(),1, 5, 3);
 
         }else {
             //gemiddeld
-            player2 = new OthelloComputer1(8, 9500);
+            player2 = new OthelloComputer1(8, playerData.getTimeOutTime());
         }
 
         board = new OthelloBoard();

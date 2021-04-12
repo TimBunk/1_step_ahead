@@ -83,7 +83,7 @@ public class Controller extends Thread implements Initializable {
     }
 
     public void start(){
-        player1 = new OthelloComputer2(8, 9500,1, 5, 3);
+        player1 = new OthelloComputer2(8, playerData.getTimeOutTime(),1, 5, 3);
 
         //dit is de online tegenstander.
         player2 = new OthelloPlayer();
