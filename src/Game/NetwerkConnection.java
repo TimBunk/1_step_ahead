@@ -26,7 +26,6 @@ public class NetwerkConnection {
         clientSocket = new Socket(ip, port);
         out = new PrintWriter(clientSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        System.out.println("Connectie gemaakt!");
     }
 
     public void sendMessage(String msg) throws IOException {

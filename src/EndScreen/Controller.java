@@ -22,34 +22,27 @@ public class Controller implements Initializable{
     private Label statusLabel;
 
     @FXML
-    private ChoiceBox<String> gameDifficulty;
+    private ChoiceBox<String> gameDifficultyChoiceBox;
 
-    private PlayerData playerData;
     private AnchorPane beforeScreen;
     private String game;
-
-    public void setBeforeScreen(AnchorPane beforeScreen){
-        this.beforeScreen = beforeScreen;
-    }
-
-    public void setText(String text){
-        statusLabel.setText(text);
-    }
-
-    public void setGame(String game){
-        this.game = game;
-        setGameDifficultyChoiceBox();
-    }
 
     @FXML
     void again(ActionEvent event) {
         Parent root;
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("TicTacToeScreen/View.fxml"));
-            root = (Parent) loader.load();
-            TicTacToeScreen.Controller ticTacToeScreen=loader.getController();
-            ticTacToeScreen.setPlayer(playerData);
-            ticTacToeScreen.setdifficulty(gameDifficulty.getValue());
+            if (game.equals("TicTacToe")){
+                FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("TicTacToeScreen/View.fxml"));
+                root = (Parent) loader.load();
+                TicTacToeScreen.Controller ticTacToeScreen=loader.getController();
+                ticTacToeScreen.setdifficulty(gameDifficultyChoiceBox.getValue());
+            }else {
+                FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOffline/View.fxml"));
+                root = (Parent) loader.load();
+                OthelloScreenOffline.Controller othelloScreenOffline=loader.getController();
+                othelloScreenOffline.setDifficulty(gameDifficultyChoiceBox.getValue());
+            }
+
 
             Stage stage=new Stage();
             stage.setResizable(false);
@@ -66,7 +59,6 @@ public class Controller implements Initializable{
 
     @FXML
     void stop(ActionEvent event) {
-
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("MainScreen/View.fxml"));
@@ -75,7 +67,6 @@ public class Controller implements Initializable{
             stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.show();
-
             beforeScreen.getScene().getWindow().hide();
             ((Node)(event.getSource())).getScene().getWindow().hide();
         }
@@ -84,13 +75,21 @@ public class Controller implements Initializable{
         }
     }
 
-    public void setGameDifficultyChoiceBox(){
-        gameDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
-        gameDifficulty.getSelectionModel().select("Gemiddeld");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        playerData = PlayerData.getInstance();
+        gameDifficultyChoiceBox.getItems().addAll("Gemiddeld", "Moeilijk");
+        gameDifficultyChoiceBox.getSelectionModel().select("Gemiddeld");
+    }
+
+    public void setBeforeScreen(AnchorPane beforeScreen){
+        this.beforeScreen = beforeScreen;
+    }
+
+    public void setText(String text){
+        statusLabel.setText(text);
+    }
+
+    public void setGame(String game) {
+        this.game = game;
     }
 }

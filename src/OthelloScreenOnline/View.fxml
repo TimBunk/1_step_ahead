@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="TicTacToeScreen" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OthelloScreenOnline.Controller">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OthelloScreenOnline.Controller">
     <children>
         <Label fx:id="turnLabel" alignment="CENTER" layoutX="178.0" layoutY="72.0" prefHeight="18.0" prefWidth="536.0" textAlignment="CENTER">
             <font>
@@ -25,7 +25,7 @@
                 <Image url="@../MainScreen/Afbeeldingen/speelbord2.png" />
             </image>
         </ImageView>
-        <GridPane fx:id="TicTacToeGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="228.0" layoutY="127.0" opacity="0.7" prefHeight="450.0" prefWidth="450.0">
+        <GridPane fx:id="OthelloGridPane" alignment="CENTER" gridLinesVisible="true" layoutX="228.0" layoutY="127.0" opacity="0.7" prefHeight="450.0" prefWidth="450.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

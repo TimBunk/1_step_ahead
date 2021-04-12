@@ -12,7 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -34,7 +33,7 @@ public class Controller extends Thread implements Initializable {
     NetwerkConnection netwerkConnection;
     PlayerData playerData;
     private final AtomicBoolean running = new AtomicBoolean(false);
-    private Thread t;
+    private Thread thread;
     private OthelloBoard board;
     private AbstractPlayer player1;
     private AbstractPlayer player2;
@@ -43,13 +42,10 @@ public class Controller extends Thread implements Initializable {
     private int DifficultyAI;
 
     @FXML
-    private AnchorPane TicTacToeScreen;
-
-    @FXML
     private Label turnLabel;
 
     @FXML
-    private GridPane TicTacToeGridPane;
+    private GridPane OthelloGridPane;
 
     @FXML
     private Label difficultyLabel;
@@ -65,7 +61,6 @@ public class Controller extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Othelle screen geladen");
         netwerkConnection = NetwerkConnection.getInstance();
         playerData = PlayerData.getInstance();
         usernameLabel.setText(playerData.getUsername());
@@ -84,8 +79,8 @@ public class Controller extends Thread implements Initializable {
         difficultyLabel.setText(difficultyAI);
         this.DifficultyAI = model.CalculateDifficulty(difficultyAI);
         start();
-        t = new Thread(this);
-        t.start();
+        thread = new Thread(this);
+        thread.start();
     }
 
     public void start(){
@@ -111,7 +106,7 @@ public class Controller extends Thread implements Initializable {
             player2.setCharacter('W');
         }
         else{
-            System.out.println("de ander mag beginnen");
+            System.out.println("de tegenstander mag beginnen");
             player1.setCharacter('W');
             player2.setCharacter('Z');
         }
@@ -133,8 +128,7 @@ public class Controller extends Thread implements Initializable {
         else{
             image = new ImageView(new Image("File:resources/white.png"));
         }
-
-        TicTacToeGridPane.add(image, column, row);
+        OthelloGridPane.add(image, column, row);
     }
 
     public void updateBoard(){
@@ -148,7 +142,6 @@ public class Controller extends Thread implements Initializable {
     }
 
     public void zet() throws IOException {
-        System.out.println("De zet gaat nu");
         int move = player1.doMove(board);
         System.out.println("De zet is: " +move);
         netwerkConnection.sendMessage("move " + move);
@@ -170,7 +163,7 @@ public class Controller extends Thread implements Initializable {
                 Alert a1 = new Alert(Alert.AlertType.NONE,
                         text, ButtonType.APPLY);
                 a1.showAndWait().ifPresent(buttonType -> {
-                    TicTacToeGridPane.getScene().getWindow().hide();
+                    OthelloGridPane.getScene().getWindow().hide();
                     Parent root;
                     try {
                         FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));
@@ -222,17 +215,14 @@ public class Controller extends Thread implements Initializable {
                                     break;
                                 case "WIN":
                                     stopThread();
-                                    System.out.println("Je hebt gewonnen!!");
                                     showEndScreen("Je hebt gewonnen!");
                                     break;
                                 case "LOSS":
                                     stopThread();
-                                    System.out.println("Je hebt verloren!!");
                                     showEndScreen("Je hebt verloren!");
                                     break;
                                 case "DRAW":
                                     stopThread();
-                                    System.out.println("je hebt gelijk gespeeld.");
                                     showEndScreen("Gelijkspel");
                                     break;
                                 case "MOVE":
@@ -252,7 +242,6 @@ public class Controller extends Thread implements Initializable {
                             }
                     }
                 }
-
                     } catch (IOException e) {
                     e.printStackTrace();
                 }

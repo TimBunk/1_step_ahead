@@ -1,9 +1,5 @@
 package Game;
 
-import javafx.scene.control.TextField;
-
-import javax.sound.sampled.Port;
-
 public class PlayerData {
 
     private int Portnumber;
@@ -11,7 +7,6 @@ public class PlayerData {
     private String username;
     private int timeOutTime;
     private static volatile PlayerData playerData;
-
 
     private PlayerData() {
         this.Ipadres = "145.33.225.170";

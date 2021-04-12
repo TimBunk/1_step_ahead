@@ -23,6 +23,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+    private PlayerData playerData;
+
     @FXML
     private Label usernameLabel;
 
@@ -35,11 +37,8 @@ public class Controller implements Initializable {
     @FXML
     private ChoiceBox<String> TicTacToeDifficulty;
 
-    private PlayerData playerData;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Main scherm geladen");
         playerData = PlayerData.getInstance();
         usernameLabel.setText(playerData.getUsername());
         OthelloDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
@@ -52,14 +51,12 @@ public class Controller implements Initializable {
 
     @FXML
     void TicTacToeStart(ActionEvent event) {
-        System.out.println("TicTacToe gestart");
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("TicTacToeScreen/View.fxml"));
             root = (Parent) loader.load();
 
             TicTacToeScreen.Controller ticTacToeScreen=loader.getController();
-            ticTacToeScreen.setPlayer(playerData);
             ticTacToeScreen.setdifficulty(TicTacToeDifficulty.getValue());
 
             Stage stage=new Stage();
@@ -118,11 +115,8 @@ public class Controller implements Initializable {
         }
     }
 
-
-
     @FXML
     public void naarNetwerk(ActionEvent event) {
-        System.out.println("Naar netwerkinstellingen...");
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Netwerkinstellingen/View.fxml"));
