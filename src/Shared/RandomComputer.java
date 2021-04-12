@@ -11,7 +11,6 @@ public class RandomComputer extends AbstractPlayer {
     @Override
     public int doMove(AbstractBoard board) {
         int[] validMoves = board.findValidMoves(getCharacter());
-        int rndmMove = validMoves[ThreadLocalRandom.current().nextInt(0, validMoves.length)];
-        return rndmMove;
+        return validMoves[ThreadLocalRandom.current().nextInt(0, validMoves.length)];
     }
 }

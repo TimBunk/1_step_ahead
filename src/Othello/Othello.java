@@ -30,7 +30,7 @@ public class Othello {
         this.player2 = player2;
 
         //Bepaal wie Witte en Zwarte stenen krijgt
-        if (new Random().nextInt(2) == 0 || randomTurn == false) {
+        if (new Random().nextInt(2) == 0 || !randomTurn) {
             player1.setCharacter('Z');
             player2.setCharacter('W');
         }

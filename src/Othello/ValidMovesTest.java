@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidMovesTest {
 
@@ -73,14 +73,14 @@ public class ValidMovesTest {
 
         board.printBoard();
 
-        assertEquals(false, board.isMoveValidLeft(56, 'W'));
-        assertEquals(false, board.isMoveValidRight(56, 'W'));
-        assertEquals(false, board.isMoveValidDown(56, 'W'));
-        assertEquals(false, board.isMoveValidUp(56, 'W'));
-        assertEquals(false, board.isMoveValidLeftUp(56, 'W'));
-        assertEquals(false, board.isMoveValidRightUp(56, 'W'));
-        assertEquals(false, board.isMoveValidLeftDown(56, 'W'));
-        assertEquals(false, board.isMoveValidRightDown(56, 'W'));
+        assertFalse(board.isMoveValidLeft(56, 'W'));
+        assertFalse(board.isMoveValidRight(56, 'W'));
+        assertFalse(board.isMoveValidDown(56, 'W'));
+        assertFalse(board.isMoveValidUp(56, 'W'));
+        assertFalse(board.isMoveValidLeftUp(56, 'W'));
+        assertFalse(board.isMoveValidRightUp(56, 'W'));
+        assertFalse(board.isMoveValidLeftDown(56, 'W'));
+        assertFalse(board.isMoveValidRightDown(56, 'W'));
     }
 
     @Test
@@ -119,13 +119,13 @@ public class ValidMovesTest {
 
         board.printBoard();
 
-        assertEquals(false, board.isMoveValidLeft(24, 'Z'));
-        assertEquals(true, board.isMoveValidRight(24, 'Z'));
-        assertEquals(false, board.isMoveValidDown(24, 'Z'));
-        assertEquals(true, board.isMoveValidUp(24, 'Z'));
-        assertEquals(false, board.isMoveValidLeftUp(24, 'Z'));
-        assertEquals(true, board.isMoveValidRightUp(24, 'Z'));
-        assertEquals(false, board.isMoveValidLeftDown(24, 'Z'));
-        assertEquals(true, board.isMoveValidRightDown(24, 'Z'));
+        assertFalse(board.isMoveValidLeft(24, 'Z'));
+        assertTrue(board.isMoveValidRight(24, 'Z'));
+        assertFalse(board.isMoveValidDown(24, 'Z'));
+        assertTrue(board.isMoveValidUp(24, 'Z'));
+        assertFalse(board.isMoveValidLeftUp(24, 'Z'));
+        assertTrue(board.isMoveValidRightUp(24, 'Z'));
+        assertFalse(board.isMoveValidLeftDown(24, 'Z'));
+        assertTrue(board.isMoveValidRightDown(24, 'Z'));
     }
 }

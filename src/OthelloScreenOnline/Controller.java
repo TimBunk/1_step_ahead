@@ -65,7 +65,7 @@ public class Controller extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Othelle screen geladen");
+        System.out.println("Othello screen geladen");
         netwerkConnection = NetwerkConnection.getInstance();
         playerData = PlayerData.getInstance();
         usernameLabel.setText(playerData.getUsername());
@@ -96,7 +96,7 @@ public class Controller extends Thread implements Initializable {
 
         }else {
             //Moeilijk
-            System.out.println("De AI staat op moelijk");
+            System.out.println("De AI staat op moeilijk");
             player1 = new OthelloComputer2(8, playerData.getTimeOutTime(),1, 5, 3);
         }
 
@@ -106,12 +106,12 @@ public class Controller extends Thread implements Initializable {
         board.initializeBoard(64);
 
         if (startPlayer.equals(playerData.getUsername())){
-            System.out.println("jij mag beginnen");
+            System.out.println("Jij mag beginnen");
             player1.setCharacter('Z');
             player2.setCharacter('W');
         }
         else{
-            System.out.println("de ander mag beginnen");
+            System.out.println("De ander mag beginnen");
             player1.setCharacter('W');
             player2.setCharacter('Z');
         }

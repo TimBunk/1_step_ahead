@@ -59,7 +59,7 @@ public class Controller extends Thread implements Initializable{
 
     public void getChallenge(String challenge){
         System.out.println(challenge);
-        List<String> inputlist = Arrays.asList(challenge.substring(19).replaceAll("\\{|\\}| ","").split(","));
+        String[] inputlist = challenge.substring(19).replaceAll("\\{|\\}| ","").split(",");
         Map map=new HashMap();
         for (String text: inputlist){
             System.out.println(text);
