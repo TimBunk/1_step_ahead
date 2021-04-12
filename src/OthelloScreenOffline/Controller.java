@@ -3,6 +3,7 @@ package OthelloScreenOffline;
 import Game.PlayerData;
 import Othello.OthelloBoard;
 import Othello.OthelloComputer1;
+import Othello.OthelloComputer2;
 import Othello.OthelloPlayer;
 import Shared.AbstractPlayer;
 import javafx.event.ActionEvent;
@@ -91,7 +92,15 @@ public class Controller implements Initializable {
 
     public void start(){
         player1 = new OthelloPlayer();
-        player2 = new OthelloComputer1(8, 9500);
+        if (difficulty == 1){
+            //moeilijk
+            player2 = new OthelloComputer2(8, 9500,1, 5, 3);
+
+        }else {
+            //gemiddeld
+            player2 = new OthelloComputer1(8, 9500);
+        }
+
         board = new OthelloBoard();
         board.initializeBoard(64);
 
