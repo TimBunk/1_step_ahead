@@ -9,6 +9,7 @@ public class OthelloMinimaxWorker implements Callable<Integer> {
     private OthelloComputer computer;
     private int depth;
     private AbstractBoard board;
+    private boolean shouldStop;
 
     /**
      * Constructor
@@ -20,6 +21,11 @@ public class OthelloMinimaxWorker implements Callable<Integer> {
         this.computer = computer;
         this.depth = depth;
         this.board = board;
+        shouldStop = false;
+    }
+
+    public void stop() {
+        shouldStop = true;
     }
 
     /**
@@ -31,6 +37,10 @@ public class OthelloMinimaxWorker implements Callable<Integer> {
      * @return The evaluation of the moves used
      */
     protected int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta) {
+        if (shouldStop) {
+            if (maximizing) { return Integer.MAX_VALUE; }
+            return Integer.MIN_VALUE;
+        }
         // Pak de juiste character
         char c = computer.getCharacter();
         if (!maximizing) {
