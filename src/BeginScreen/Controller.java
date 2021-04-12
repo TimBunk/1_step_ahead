@@ -19,7 +19,7 @@ public class Controller {
 
 
     /**
-     *The user clicks on the next button, username will be saved and the user goes to the main screen.
+     *The user clicks on the next button, username will be saved and the user goes to the main screen..
      */
     @FXML
     void next(ActionEvent event) throws IOException {
