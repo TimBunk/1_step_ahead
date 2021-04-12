@@ -8,6 +8,13 @@ public class OthelloComputer2 extends OthelloComputer {
     private int stable_stone;
     private int mobility;
 
+    /**
+     * @param depth                 The depth used for the minimax algorithm
+     * @param maxTimeInMilliseconds The amount of time allowed to calculate the best possible move
+     * @param single_stone          The value given to any stone
+     * @param stable_stone          The value given to stable stones, i.e. stones that can't be flipped by the opponent
+     * @param mobility              The value given to mobility, i.e. how many moves are possible
+     */
     public OthelloComputer2(int depth, long maxTimeInMilliseconds, int single_stone, int stable_stone, int mobility) {
         super(depth, maxTimeInMilliseconds);
         this.single_stone = single_stone;
@@ -15,6 +22,11 @@ public class OthelloComputer2 extends OthelloComputer {
         this.mobility = mobility;
     }
 
+    /**
+     * @param board The board to be evaluated
+     * @return      How good the board is, evaluated based on the number of stones, the number of stable stones,
+     *              and the number of valid moves left
+     */
     @Override
     protected int eval(AbstractBoard board) {
 

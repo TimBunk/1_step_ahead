@@ -16,8 +16,8 @@ public abstract class OthelloComputer extends AbstractPlayer {
 
     /**
      * Constructor
-     * @param depth The depth is used for the minimax algorithm
-     * @param maxTimeInMilliseconds The amount of time we have to calculate the best possible move
+     * @param depth The depth used for the minimax algorithm
+     * @param maxTimeInMilliseconds The amount of time allowed to calculate the best possible move
      */
     OthelloComputer(int depth, long maxTimeInMilliseconds) {
         executorService = Executors.newFixedThreadPool(32);
@@ -90,7 +90,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
 
     /**
      * @param board The board to be evaluated
-     * @return How good the board is, evaluated as how many stones more are controlled than by the opponent
+     * @return How good the board is
      */
     protected abstract int eval(AbstractBoard board);
 }

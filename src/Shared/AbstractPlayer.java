@@ -6,7 +6,7 @@ public abstract class AbstractPlayer {
 
     /**
      * @param board The board on which the move is placed
-     * @return The place on the board where we want to do a move
+     * @return      The place on the board where we want to do a move
      */
     public abstract int doMove(AbstractBoard board);
 
