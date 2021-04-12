@@ -43,7 +43,7 @@ public class Controller implements Initializable {
         playerData = PlayerData.getInstance();
         usernameLabel.setText(playerData.getUsername());
         OthelloDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
-        OthelloDifficulty.getSelectionModel().select("Gemiddeld");
+        OthelloDifficulty.getSelectionModel().select("Moeilijk");
         TicTacToeDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
         TicTacToeDifficulty.getSelectionModel().select("Gemiddeld");
         OthelloOpponent.getItems().addAll("Tegen de computer", "Tegen iemand anders (Online)");
@@ -102,6 +102,10 @@ public class Controller implements Initializable {
             try {
                 FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Lobby/View.fxml"));
                 root = (Parent) loader.load();
+
+                Lobby.Controller lobby=loader.getController();
+                lobby.setDifficultyAI(OthelloDifficulty.getValue());
+
                 Stage stage=new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();

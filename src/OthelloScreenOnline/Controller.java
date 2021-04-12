@@ -40,6 +40,7 @@ public class Controller extends Thread implements Initializable {
     private AbstractPlayer player2;
     private String startPlayer;
     private OthelloScreenOnline.Model model = new OthelloScreenOnline.Model();
+    private int DifficultyAI;
 
     @FXML
     private AnchorPane TicTacToeScreen;
@@ -77,13 +78,27 @@ public class Controller extends Thread implements Initializable {
 
     public void setStartPlayer(String startPlayer){
         this.startPlayer = startPlayer;
+    }
+
+    public void setDifficultyAI(String difficultyAI){
+        difficultyLabel.setText(difficultyAI);
+        this.DifficultyAI = model.CalculateDifficulty(difficultyAI);
         start();
         t = new Thread(this);
         t.start();
     }
 
     public void start(){
-        player1 = new OthelloComputer2(8, playerData.getTimeOutTime(),1, 5, 3);
+        if (DifficultyAI == 0){
+            //Gemiddeld
+            System.out.println("De AI staat op gemiddeld");
+            player1 = new OthelloComputer1(8, playerData.getTimeOutTime());
+
+        }else {
+            //Moeilijk
+            System.out.println("De AI staat op moelijk");
+            player1 = new OthelloComputer2(8, playerData.getTimeOutTime(),1, 5, 3);
+        }
 
         //dit is de online tegenstander.
         player2 = new OthelloPlayer();
@@ -213,7 +228,7 @@ public class Controller extends Thread implements Initializable {
                                     System.out.println("Je hebt verloren!!");
                                     showEndScreen("Je hebt verloren!");
                                     break;
-                                case "DRAWW":
+                                case "DRAW":
                                     stopThread();
                                     System.out.println("je hebt gelijk gespeeld.");
                                     showEndScreen("Gelijkspel");

@@ -27,6 +27,7 @@ public class Controller extends Thread implements Initializable{
     private NetwerkConnection netwerkConnection;
     private Thread t;
     private final AtomicBoolean running = new AtomicBoolean(false);
+    private String DifficultyAI;
 
     @FXML
     private ListView<String> playersListView;
@@ -50,6 +51,10 @@ public class Controller extends Thread implements Initializable{
                 playersListView.getItems().add(usernameGood);
             }
         }
+    }
+
+    public void setDifficultyAI(String difficultyAI){
+       this.DifficultyAI = difficultyAI;
     }
 
     public void getChallenge(String challenge){
@@ -162,6 +167,7 @@ public class Controller extends Thread implements Initializable{
                                                     root = (Parent) loader.load();
                                                     OthelloScreenOnline.Controller othelloScreenOnline=loader.getController();
                                                     othelloScreenOnline.setStartPlayer(startPlayer);
+                                                    othelloScreenOnline.setDifficultyAI(DifficultyAI);
 
                                                     Stage stage=new Stage();
                                                     stage.setScene(new Scene(root));
