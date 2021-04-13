@@ -15,6 +15,11 @@ public abstract class OthelloComputer extends AbstractPlayer {
     private final long biasMaxTimeInMilliseconds = 100;
     private final long overTimeInMilliseconds = 50;
 
+    private int totalCompletedWorkers = 0;
+    private int totalCompletedWorkersOverTime = 0;
+    private int totalThreads = 0;
+
+
     /**
      * Constructor
      * @param depth The depth used for the minimax algorithm
@@ -24,6 +29,18 @@ public abstract class OthelloComputer extends AbstractPlayer {
         executorService = Executors.newFixedThreadPool(32);
         this.depth = depth;
         this.maxTimeInMilliseconds = maxTimeInMilliseconds;
+    }
+
+    public int getTotalCompletedWorkers(){
+        return totalCompletedWorkers;
+    }
+
+    public int getTotalCompletedWorkersOverTime(){
+        return totalCompletedWorkersOverTime;
+    }
+
+    public int getTotalThreads(){
+        return totalThreads;
     }
 
     /**
@@ -52,8 +69,8 @@ public abstract class OthelloComputer extends AbstractPlayer {
         int bestMove = validMoves[0];
         // Loop met een interator door alle futures heen
         Iterator<Pair<Integer, Pair<OthelloMinimaxWorker, Future<Integer>>>> it = futures.iterator();
-        int completedWokers = 0;
-        int completedWokersOverTime = 0;
+        int completedWorkers = 0;
+        int completedWorkersOverTime = 0;
         while (it.hasNext()) {
             // Extract het eerste element
             Pair<Integer, Pair<OthelloMinimaxWorker, Future<Integer>>> pair = it.next();
@@ -69,7 +86,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
                     // Kan berekene wat de evaluatie is voor die move dan skippen we de move en gaan we door met de volgende
                     int evaluation = f.get(maxTimeInMilliseconds - biasMaxTimeInMilliseconds - elapsedTime, TimeUnit.MILLISECONDS);
                     // De code wordt alleen uitgevoerd als de future op tijd klaar is anders krijg je een TimeoutException
-                    completedWokers++;
+                    completedWorkers++;
                     // Bekijk of deze move beter is dan de vorige moves
                     if (evaluation > bestEvaluation) {
                         bestMove = move;
@@ -85,8 +102,8 @@ public abstract class OthelloComputer extends AbstractPlayer {
                     try {
                         evaluation = f.get(maxTimeInMilliseconds - overTimeInMilliseconds - elapsedTime, TimeUnit.MILLISECONDS);
                         // De code wordt alleen uitgevoerd als de future op tijd klaar is anders krijg je een TimeoutException
-                        completedWokers++;
-                        completedWokersOverTime++;
+                        completedWorkers++;
+                        completedWorkersOverTime++;
                         // Bekijk of deze move beter is dan de vorige moves
                         if (evaluation > bestEvaluation) {
                             bestMove = move;
@@ -112,8 +129,11 @@ public abstract class OthelloComputer extends AbstractPlayer {
             }
         }
         // Print uit hoeveel workers er op tijd klaar waren
-        System.out.println("" + completedWokers + " van de " + validMoves.length + " workers zijn binnen de tijd klaar.");
-        System.out.println("" + completedWokersOverTime + " hier van moesten vroegtijdig stoppen.");
+        System.out.println("" + completedWorkers + " van de " + validMoves.length + " workers zijn binnen de tijd klaar.");
+        totalCompletedWorkers+= completedWorkers;
+        totalThreads += validMoves.length;
+        System.out.println("" + completedWorkersOverTime + " hier van moesten vroegtijdig stoppen.");
+        totalCompletedWorkersOverTime += completedWorkersOverTime;
         // Geef een goede move terug
         return bestMove;
     }

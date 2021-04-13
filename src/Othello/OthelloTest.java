@@ -17,11 +17,11 @@ public class OthelloTest {
 
 
         // 10*10 = 100 keere doorlopen
-        //for (int i=10;i<=15;i+=5) { Tim
-        //for (int i=20;i<=25;i+=5) { Ids
-        //for (int i=30;i<=35;i+=5) { Anton
-        //for (int i=40;i<=45;i+=5) { Arjan
-        //for (int i=50;i<=55;i+=5) { Bjorn
+        //for (int i=10;i<=15;i+=5) { //Tim
+        //for (int i=20;i<=25;i+=5) { //Ids
+        //for (int i=30;i<=35;i+=5) { //Anton
+        //for (int i=40;i<=45;i+=5) { //Arjan
+        //for (int i=50;i<=55;i+=5) { //Bjorn
             for (int j=10;j<=55;j+=5) {
                 OthelloComputer2 player1 = new OthelloComputer2(7, 30000, 1, i, j);
 
