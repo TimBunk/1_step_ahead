@@ -19,7 +19,7 @@ public class Othello {
     /**
      * @param player1 The first player
      * @param player2 The second player
-     * @param randomTurn choose at random who goes first if true otherwise player1 starts
+     * @param randomTurn choose at random who goes first if true player1 starts
      */
     public Othello(AbstractPlayer player1, AbstractPlayer player2, boolean randomTurn) {
         // Initialiseer waardes

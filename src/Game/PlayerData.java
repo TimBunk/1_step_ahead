@@ -1,9 +1,5 @@
 package Game;
 
-import javafx.scene.control.TextField;
-
-import javax.sound.sampled.Port;
-
 public class PlayerData {
 
     private int Portnumber;
@@ -11,7 +7,6 @@ public class PlayerData {
     private String username;
     private int timeOutTime;
     private static volatile PlayerData playerData;
-
 
     private PlayerData() {
         this.Ipadres = "145.33.225.170";
@@ -28,26 +23,44 @@ public class PlayerData {
         return playerData;
     }
 
+    /**
+     * @param portnumber portnumber with which to establish a connection
+     */
     public void setPortnumber(int portnumber) {
         Portnumber = portnumber;
     }
 
+    /**
+     * @param ipadres ipadres with which to establish a connection
+     */
     public void setIpadres(String ipadres) {
         Ipadres = ipadres;
     }
 
+    /**
+     * @return the username entered by the client.
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * @return the ipAdres entered by the client.
+     */
     public String getIpadres()  {
         return Ipadres;
     }
 
+    /**
+     * @return the portNumber entered by the client.
+     */
     public int getPortnumber()  {
         return Portnumber;
     }
 
+    /**
+     * @param username username which the client enters.
+     */
     public void setUsername(String username) {
         this.username = username;
     }
@@ -56,6 +69,9 @@ public class PlayerData {
         return timeOutTime;
     }
 
+    /**
+     * @param timeOutTime time the users wants to have a timeout.
+     */
     public void setTimeOutTime(int timeOutTime) {
         this.timeOutTime = timeOutTime;
     }

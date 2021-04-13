@@ -92,9 +92,9 @@ public class BKEcomputer extends AbstractPlayer {
     /**
      * @param board The board to be evaluated
      * @param maximizingChar The maximizngCharacter
-     * @param minimizingChar Whether we are evaluating the maximizng player or not
+     * @param minimizingChar The minimizingCharacter
      * @param depth the current depth
-     * @return How good the board is, evaluated as 1 + depth if the maximizng player win, -1-depth if the minizingCharacter wins, 0 otherwise.
+     * @return How good the board is, evaluated as 1 + depth if the maximizng player wins, -1-depth if the minizingCharacter wins, 0 otherwise.
      */
     private int evaluation(AbstractBoard board, char maximizingChar, char minimizingChar, int depth) {
         // Als de maximizngChar wint return 1 + de depth

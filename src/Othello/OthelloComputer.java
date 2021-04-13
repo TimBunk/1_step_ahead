@@ -13,6 +13,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
     private int depth;
     private long maxTimeInMilliseconds;
     private final long biasMaxTimeInMilliseconds = 100;
+    private final long overTimeInMilliseconds = 50;
 
     /**
      * Constructor
@@ -26,6 +27,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
     }
 
     /**
+     * This function uses OthelloMinimaxWorkers to find the best possible move on the board that it can find in the given time
      * @param board The board on which the move is placed
      * @return The place on the board where we want to do a move
      */
@@ -35,29 +37,33 @@ public abstract class OthelloComputer extends AbstractPlayer {
         long startTime = System.currentTimeMillis();
         // Loop door alle tiles van het bord
         int[] validMoves = board.findValidMoves(getCharacter());
-        LinkedList<Pair<Integer, Future<Integer>>> futures = new LinkedList<>();
+        LinkedList<Pair<Integer, Pair<OthelloMinimaxWorker, Future<Integer>>>> futures = new LinkedList<>();
         for (int validMove : validMoves) {
             // Maak een clone van het board en plaats de move erin
             AbstractBoard cloneOfBoard = board.clone();
             cloneOfBoard.placeMove(validMove, getCharacter());
             // Maak een minimaxworker om te berekenen hoe goed de move was
-            futures.add(new Pair(validMove, executorService.submit(new OthelloMinimaxWorker(this, depth, cloneOfBoard))));
+            OthelloMinimaxWorker omw = new OthelloMinimaxWorker(this, depth, cloneOfBoard);
+            futures.add(new Pair(validMove, new Pair(omw, executorService.submit(omw))));
         }
 
         // bestEvaluation en bestMove houden bij welke move de best evalutie heeft
         int bestEvaluation = Integer.MIN_VALUE;
         int bestMove = validMoves[0];
         // Loop met een interator door alle futures heen
-        Iterator<Pair<Integer, Future<Integer>>> it = futures.iterator();
+        Iterator<Pair<Integer, Pair<OthelloMinimaxWorker, Future<Integer>>>> it = futures.iterator();
         int completedWokers = 0;
+        int completedWokersOverTime = 0;
         while (it.hasNext()) {
             // Extract het eerste element
-            Pair<Integer, Future<Integer>> pair = it.next();
+            Pair<Integer, Pair<OthelloMinimaxWorker, Future<Integer>>> pair = it.next();
             int move = pair.getElement0();
-            Future<Integer> f = pair.getElement1();
+            Pair<OthelloMinimaxWorker, Future<Integer>> pair2 = pair.getElement1();
+            OthelloMinimaxWorker omw = pair2.getElement0();
+            Future<Integer> f = pair2.getElement1();
             // Check of de tijd nog niet verstreken is die we hebben
             long elapsedTime = System.currentTimeMillis() - startTime;
-            if (elapsedTime < maxTimeInMilliseconds) {
+            if (elapsedTime <= maxTimeInMilliseconds) {
                 try {
                     // Pak de evaluatie voor de move uit de future. De future is wel tijdsgebonden dus als die niet op tijd
                     // Kan berekene wat de evaluatie is voor die move dan skippen we de move en gaan we door met de volgende
@@ -72,9 +78,32 @@ public abstract class OthelloComputer extends AbstractPlayer {
                 } catch (TimeoutException e) {
                     // Deze exception treed op wanneer de future niet op tijd klaar was
                     e.printStackTrace();
-                    // Cancel de future want die is niet meer nodig
-                    f.cancel(true);
-                } catch (InterruptedException | ExecutionException e) {
+                    // Stop de OthelloMinimaxWorker en probeer nogmaals de waarde te pakken als dat lukt binnen de overTime
+                    omw.stop();
+                    int evaluation = 0;
+                    elapsedTime = System.currentTimeMillis() - startTime;
+                    try {
+                        evaluation = f.get(maxTimeInMilliseconds - overTimeInMilliseconds - elapsedTime, TimeUnit.MILLISECONDS);
+                        // De code wordt alleen uitgevoerd als de future op tijd klaar is anders krijg je een TimeoutException
+                        completedWokers++;
+                        completedWokersOverTime++;
+                        // Bekijk of deze move beter is dan de vorige moves
+                        if (evaluation > bestEvaluation) {
+                            bestMove = move;
+                            bestEvaluation = evaluation;
+                        }
+                    } catch (InterruptedException interruptedException) {
+                        interruptedException.printStackTrace();
+                    } catch (ExecutionException executionException) {
+                        executionException.printStackTrace();
+                    } catch (TimeoutException timeoutException) {
+                        timeoutException.printStackTrace();
+                        System.out.println("Timeout in overtime");
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
                     e.printStackTrace();
                 } finally {
                     // Verwijder het element uit de linkedlist
@@ -84,6 +113,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
         }
         // Print uit hoeveel workers er op tijd klaar waren
         System.out.println("" + completedWokers + " van de " + validMoves.length + " workers zijn binnen de tijd klaar.");
+        System.out.println("" + completedWokersOverTime + " hier van moesten vroegtijdig stoppen.");
         // Geef een goede move terug
         return bestMove;
     }

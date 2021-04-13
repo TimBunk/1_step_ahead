@@ -23,6 +23,8 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+    private PlayerData playerData;
+
     @FXML
     private Label usernameLabel;
 
@@ -35,11 +37,11 @@ public class Controller implements Initializable {
     @FXML
     private ChoiceBox<String> TicTacToeDifficulty;
 
-    private PlayerData playerData;
-
+    /**
+     *The main screen gets initialized...
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Main scherm geladen");
         playerData = PlayerData.getInstance();
         usernameLabel.setText(playerData.getUsername());
         OthelloDifficulty.getItems().addAll("Gemiddeld", "Moeilijk");
@@ -50,16 +52,17 @@ public class Controller implements Initializable {
         OthelloOpponent.getSelectionModel().select("Tegen de computer");
     }
 
+    /**
+     *The user clicks on the tictactoe start button, Tictactoe wil start...
+     */
     @FXML
     void TicTacToeStart(ActionEvent event) {
-        System.out.println("TicTacToe gestart");
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("TicTacToeScreen/View.fxml"));
             root = (Parent) loader.load();
 
             TicTacToeScreen.Controller ticTacToeScreen=loader.getController();
-            ticTacToeScreen.setPlayer(playerData);
             ticTacToeScreen.setdifficulty(TicTacToeDifficulty.getValue());
 
             Stage stage=new Stage();
@@ -73,6 +76,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     *The user clicks on the othello start button, othello wil start...
+     */
     @FXML
     void OthelloStart(ActionEvent event) throws IOException {
         if(OthelloOpponent.getValue().equals("Tegen de computer")){
@@ -118,11 +124,11 @@ public class Controller implements Initializable {
         }
     }
 
-
-
+    /**
+     *The user clicks on the ? button, the user will be redirected to the network settings...
+     */
     @FXML
     public void naarNetwerk(ActionEvent event) {
-        System.out.println("Naar netwerkinstellingen...");
         Parent root;
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getClassLoader().getResource("Netwerkinstellingen/View.fxml"));

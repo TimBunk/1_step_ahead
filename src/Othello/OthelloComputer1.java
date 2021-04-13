@@ -5,6 +5,7 @@ import Shared.AbstractBoard;
 public class OthelloComputer1 extends OthelloComputer {
 
     /**
+     * Constructor
      * @param depth                 The depth used for the minimax algorithm
      * @param maxTimeInMilliseconds The amount of time allowed to calculate the best possible move
      */

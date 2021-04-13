@@ -119,7 +119,11 @@ public class OthelloBoard extends AbstractBoard {
 
     /**
      * @param c The character for which valid moves should be counted
+<<<<<<< HEAD
      * @return  How many valid moves there are for that character
+=======
+     * @return The amount of valid moves available right now
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     @Override
     public int validMoveCount(char c) {
@@ -449,8 +453,13 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
      * @param c The character for which stable stones should be counted
      * @return  The number of stable stones, i.e. stones that can't be flipped by the opponent
+=======
+     * @param c The character to count the stables stones for
+     * @return The amount of stable stones that the character has on the board
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     public int getStableStoneCount(char c) {
         HashSet<Integer> uniqueStableStones = new HashSet<>();
@@ -462,8 +471,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
      * @param c         The character for which stable stones should be counted
      * @param stones    A HashSet that the stable stones will be added to
+=======
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromTopLeft(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
@@ -502,8 +517,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
      * @param c         The character for which stable stones should be counted
      * @param stones    A HashSet that the stable stones will be added to
+=======
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromBottomLeft(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
@@ -542,8 +563,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
      * @param c         The character for which stable stones should be counted
      * @param stones    A HashSet that the stable stones will be added to
+=======
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromTopRight(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
@@ -582,8 +609,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
      * @param c         The character for which stable stones should be counted
      * @param stones    A HashSet that the stable stones will be added to
+=======
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromBottomRight(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;

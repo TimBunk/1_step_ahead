@@ -14,7 +14,7 @@
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Label>
-      <ChoiceBox fx:id="gameDifficulty" layoutX="74.0" layoutY="59.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="gameDifficultyChoiceBox" layoutX="74.0" layoutY="59.0" prefWidth="150.0" />
       <Button layoutX="103.0" layoutY="115.0" mnemonicParsing="false" onAction="#stop">
          <graphic>
             <ImageView fitHeight="19.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
