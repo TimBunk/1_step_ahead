@@ -27,6 +27,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
     }
 
     /**
+     * This function uses OthelloMinimaxWorkers to find the best possible move on the board that it can find in the given time
      * @param board The board on which the move is placed
      * @return The place on the board where we want to do a move
      */
@@ -119,7 +120,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
 
     /**
      * @param board The board to be evaluated
-     * @return How good the board is, evaluated as how many stones more are controlled than by the opponent
+     * @return Returns a integer that represents how good or bad the board is for a player
      */
     protected abstract int eval(AbstractBoard board);
 }

@@ -24,6 +24,9 @@ public class OthelloMinimaxWorker implements Callable<Integer> {
         shouldStop = false;
     }
 
+    /**
+     * If this object is running as a thread then this function will cause the thread to stop but it will not stop it instantly
+     */
     public void stop() {
         shouldStop = true;
     }

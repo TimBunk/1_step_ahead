@@ -117,6 +117,10 @@ public class OthelloBoard extends AbstractBoard {
         return validMoves;
     }
 
+    /**
+     * @param c The character for which valid moves should be counted
+     * @return The amount of valid moves available right now
+     */
     @Override
     public int validMoveCount(char c) {
         int validMovesCount = 0;
@@ -444,6 +448,10 @@ public class OthelloBoard extends AbstractBoard {
         }
     }
 
+    /**
+     * @param c The character to count the stables stones for
+     * @return The amount of stable stones that the character has on the board
+     */
     public int getStableStoneCount(char c) {
         HashSet<Integer> uniqueStableStones = new HashSet<>();
         GetStableStonesFromBottomRight(c, uniqueStableStones);
@@ -453,6 +461,11 @@ public class OthelloBoard extends AbstractBoard {
         return uniqueStableStones.size();
     }
 
+    /**
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+     */
     private void GetStableStonesFromTopLeft(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
         int maxSteps2 = 8;
@@ -489,6 +502,11 @@ public class OthelloBoard extends AbstractBoard {
         }
     }
 
+    /**
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+     */
     private void GetStableStonesFromBottomLeft(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
         int maxSteps2 = 8;
@@ -525,6 +543,11 @@ public class OthelloBoard extends AbstractBoard {
         }
     }
 
+    /**
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+     */
     private void GetStableStonesFromTopRight(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
         int maxSteps2 = 8;
@@ -561,6 +584,11 @@ public class OthelloBoard extends AbstractBoard {
         }
     }
 
+    /**
+     * Helper function for the getStableStoneCount(char c)
+     * @param c The character to count the stables stones for
+     * @param stones A Hashset<Integer> to put the stable stone positions in
+     */
     private void GetStableStonesFromBottomRight(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
         int maxSteps2 = 8;
