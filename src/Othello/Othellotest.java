@@ -1,42 +1,58 @@
 package Othello;
 
 import Shared.AbstractPlayer;
+import Shared.RandomComputer;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 
-public class OthelloTest {
+public class Othellotest {
 
     public static void main(String[] args) throws IOException {
 
         long startTime = new Date().getTime();
         BufferedWriter myWriter = new BufferedWriter(new FileWriter("computer2_DATA.txt"));
 
-        AbstractPlayer player1 = null;
-        AbstractPlayer player2 = null;
-        for (int i=0;i<2;i++) { // 1
-        // for (int i=2;i<4;i++) { // 2
-        // for (int i=4;i<6;i++) { // 3
-        // for (int i=6;i<7;i++) { // 4
-        // for (int i=7;i<8;i++) { // 5
-            for (int j=0;j<8;j++) {
-                player1 = new OthelloComputer2(7, 29500, 1, i, j);
+        int[][] bestComputers = {
+                {6, 6, 63},
+                {6, 5, 61 },
+                {5, 4, 60 },
+                {5, 5, 56},
+                {4, 3, 52},
+                {4, 5, 44},
+                {4, 5, 44},
+                {5, 7, 43},
+                {4, 7, 43},
+                {5, 6, 41}
+        };
+
+
+        //for (int i=10;i<15;i+=5) { // 1 Tim
+        //for (int i=15;i<20;i+=5) { // 2 Anton
+        //for (int i=20;i<25;i+=5) { // 3 Arjan
+        //for (int i=25;i<25;i+=5) { // 4 Ids
+        //for (int i=30;i<35;i+=5) { // 5 Bjorn
+            for (int j=10;j<=30;j+=5) {
+                OthelloComputer2 player1 = new OthelloComputer2(7, 10000, 1, i, j);
+
                 int score = 0;
-                for (int k=0;k<8;k++) {
-                    for (int l=0;l<8;l++) {
-                        player2 = new OthelloComputer2(7, 29500, 1, k, l);
-                        Othello othello = new Othello(player1, player2, false);
-                        score += othello.start();
-                        othello = new Othello(player2, player1, false);
-                        score += (-1 * othello.start());
-                    }
+                for (int k=0;k<bestComputers.length;k++) {
+                    OthelloComputer2 player2 = new OthelloComputer2(7, 10000, 1, bestComputers[k][0], bestComputers[k][1]);
+
+                    Othello othello = new Othello(player1, player2, false);
+                    score += othello.start();
+                    othello = new Othello(player2, player1, false);
+                    score += (-1 * othello.start());
+
                 }
+
                 myWriter.write("" + i + " " + j + " " + score + "\n");
                 myWriter.flush();
+
             }
         }
+
+
         long endTime = new Date().getTime();
         long timeElapsed = endTime - startTime;
 
