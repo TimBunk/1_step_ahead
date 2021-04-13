@@ -82,7 +82,7 @@ public class Controller extends Thread implements Initializable {
     }
 
     public void setDifficultyAI(String difficultyAI){
-        difficultyLabel.setText("Online - Moelijkheid AI: " + difficultyAI);
+        difficultyLabel.setText("Online - AI: " + difficultyAI);
         this.DifficultyAI = model.CalculateDifficulty(difficultyAI);
         start();
         thread = new Thread(this);
@@ -100,9 +100,10 @@ public class Controller extends Thread implements Initializable {
 
         }else {
             //Moeilijk
-            System.out.println("De AI staat op moeilijk");
+            System.out.println("AI staat op moeilijk");
             player1 = new OthelloComputer2(playerData.getDepthAI(), playerData.getTimeOutTime(),1, 5, 3);
         }
+        System.out.println(playerData.getDepthAI());
 
         //dit is de online tegenstander.
         player2 = new OthelloPlayer();
