@@ -16,6 +16,10 @@ public class BoterKaasEieren {
     private AbstractPlayer player1;
     private AbstractPlayer player2;
 
+    /**
+     * @param player1 a player/computer that will play Tic-tac-toe
+     * @param player2 a player/computer that will play Tic-tac-toe
+     */
     BoterKaasEieren(AbstractPlayer player1, AbstractPlayer player2) {
         // Initialiseer alle waardes
         board = new BKEboard();
