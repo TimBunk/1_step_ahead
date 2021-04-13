@@ -6,8 +6,8 @@ public class OthelloComputer1 extends OthelloComputer {
 
     /**
      * Constructor
-     * @param depth The depth is used for the minimax algorithm
-     * @param maxTimeInMilliseconds The amount of time we have to calculate the best possible move
+     * @param depth                 The depth used for the minimax algorithm
+     * @param maxTimeInMilliseconds The amount of time allowed to calculate the best possible move
      */
     public OthelloComputer1(int depth, long maxTimeInMilliseconds) {
         super(depth, maxTimeInMilliseconds);
@@ -15,7 +15,7 @@ public class OthelloComputer1 extends OthelloComputer {
 
     /**
      * @param board The board to be evaluated
-     * @return Returns the amount of stones player1 has minus the amount of stones player2 has
+     * @return      How good the board is, evaluated as how many stones more are controlled than by the opponent
      */
     @Override
     protected int eval(AbstractBoard board) {

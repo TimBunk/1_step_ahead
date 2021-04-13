@@ -1,9 +1,10 @@
 package Othello;
 
 import Shared.AbstractPlayer;
-import Shared.RandomComputer;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 public class OthelloTest {
@@ -48,7 +49,6 @@ public class OthelloTest {
 
                 myWriter.write("" + i + " " + j + " " + score + "\n");
                 myWriter.flush();
-
             }
         }
 

@@ -31,8 +31,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param move The move whose validity should be checked
-     * @return Whether the move is valid
+     * @param move  The move whose validity should be checked
+     * @return      Whether the move is valid
      */
     @Override
     public boolean isMoveValid(int move) {
@@ -79,8 +79,8 @@ public class OthelloBoard extends AbstractBoard {
 
     /**
      * This function allow you to place a stone on the board and increases the turn count by 1
-     * @param move Where we want to place the move
-     * @param c The character we want to place
+     * @param move  Where we want to place the move
+     * @param c     The character we want to place
      */
     @Override
     public void placeMove(int move, char c) {
@@ -90,8 +90,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param characterToMove The character for which we want to find valid moves
-     * @return Array of the positions of valid moves
+     * @param characterToMove   The character for which we want to find valid moves
+     * @return                  Array of the positions of valid moves
      */
     @Override
     public int[] findValidMoves(char characterToMove) {
@@ -119,7 +119,11 @@ public class OthelloBoard extends AbstractBoard {
 
     /**
      * @param c The character for which valid moves should be counted
+<<<<<<< HEAD
+     * @return  How many valid moves there are for that character
+=======
      * @return The amount of valid moves available right now
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     @Override
     public int validMoveCount(char c) {
@@ -146,9 +150,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param move The position of the move whose validity should be checked
-     * @param c The character for which we want to check the move's validity
-     * @return Whether the move is allowed by the rules of Othello
+     * @param move  The position of the move whose validity should be checked
+     * @param c     The character for which we want to check the move's validity
+     * @return      Whether the move is allowed by the rules of Othello
      */
     public boolean isMoveValid(int move, char c){
         if(!isMoveValid(move)){
@@ -158,9 +162,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the left
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the left
      */
     protected boolean isMoveValidLeft(int position, char characterToMove){
         if(position % 8 > 1){
@@ -179,9 +183,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the right
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the right
      */
     protected boolean isMoveValidRight(int position, char characterToMove){
         if(position % 8 < 6){
@@ -200,9 +204,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the top
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the top
      */
     protected boolean isMoveValidUp(int position, char characterToMove){
         if(position > 15){
@@ -221,9 +225,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the bottom
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the bottom
      */
     protected boolean isMoveValidDown(int position, char characterToMove){
         if(position < 48){
@@ -242,9 +246,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the upper left
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the upper left
      */
     protected boolean isMoveValidLeftUp(int position, char characterToMove){
         if(position > 15 && position % 8 > 1){
@@ -266,9 +270,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the upper right
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the upper right
      */
     protected boolean isMoveValidRightUp(int position, char characterToMove){
         if(position % 8 < 6 && position > 15){
@@ -290,9 +294,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the bottom left
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the bottom left
      */
     protected boolean isMoveValidLeftDown(int position, char characterToMove){
         if(position % 8 > 1 && position < 48){
@@ -314,9 +318,9 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the move whose validity should be checked
-     * @param characterToMove The character for which we want to check the move's validity
-     * @return Whether the move is valid because it flips stones to the bottom right
+     * @param position          The position of the move whose validity should be checked
+     * @param characterToMove   The character for which we want to check the move's validity
+     * @return                  Whether the move is valid because it flips stones to the bottom right
      */
     protected boolean isMoveValidRightDown(int position, char characterToMove){
         if(position % 8 < 6 && position < 48){
@@ -338,8 +342,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     public void turnStones(int position, char charToPlace){
         if(isMoveValidLeft(position, charToPlace)){
@@ -369,8 +373,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesLeft(int position, char charToPlace){
         for(int i = position - 1; board[i] != charToPlace; i--){
@@ -379,8 +383,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesRight(int position, char charToPlace){
         for(int i = position + 1; board[i] != charToPlace; i++){
@@ -389,8 +393,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesUp(int position, char charToPlace){
         for(int i = position - 8; board[i] != charToPlace; i-=8){
@@ -399,8 +403,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesDown(int position, char charToPlace){
         for(int i = position + 8; board[i] != charToPlace; i+=8){
@@ -409,8 +413,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesLeftUp(int position, char charToPlace){
         for(int i = position - 9; board[i] != charToPlace; i-=9){
@@ -419,8 +423,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesRightUp(int position, char charToPlace){
         for(int i = position - 7; board[i] != charToPlace; i-=7){
@@ -429,8 +433,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesLeftDown(int position, char charToPlace){
         for(int i = position + 7; board[i] != charToPlace; i+=7){
@@ -439,8 +443,8 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
-     * @param position The position of the stone that was placed
-     * @param charToPlace The character that was placed
+     * @param position      The position of the stone that was placed
+     * @param charToPlace   The character that was placed
      */
     private void turnStonesRightDown(int position, char charToPlace){
         for(int i = position + 9; board[i] != charToPlace; i+=9){
@@ -449,8 +453,13 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
+     * @param c The character for which stable stones should be counted
+     * @return  The number of stable stones, i.e. stones that can't be flipped by the opponent
+=======
      * @param c The character to count the stables stones for
      * @return The amount of stable stones that the character has on the board
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     public int getStableStoneCount(char c) {
         HashSet<Integer> uniqueStableStones = new HashSet<>();
@@ -462,9 +471,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
+     * @param c         The character for which stable stones should be counted
+     * @param stones    A HashSet that the stable stones will be added to
+=======
      * Helper function for the getStableStoneCount(char c)
      * @param c The character to count the stables stones for
      * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromTopLeft(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
@@ -503,9 +517,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
+     * @param c         The character for which stable stones should be counted
+     * @param stones    A HashSet that the stable stones will be added to
+=======
      * Helper function for the getStableStoneCount(char c)
      * @param c The character to count the stables stones for
      * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromBottomLeft(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
@@ -544,9 +563,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
+     * @param c         The character for which stable stones should be counted
+     * @param stones    A HashSet that the stable stones will be added to
+=======
      * Helper function for the getStableStoneCount(char c)
      * @param c The character to count the stables stones for
      * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromTopRight(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;
@@ -585,9 +609,14 @@ public class OthelloBoard extends AbstractBoard {
     }
 
     /**
+<<<<<<< HEAD
+     * @param c         The character for which stable stones should be counted
+     * @param stones    A HashSet that the stable stones will be added to
+=======
      * Helper function for the getStableStoneCount(char c)
      * @param c The character to count the stables stones for
      * @param stones A Hashset<Integer> to put the stable stone positions in
+>>>>>>> 3cd975ffbd587f9b076b8c741f34c9d56c27da35
      */
     private void GetStableStonesFromBottomRight(char c, HashSet<Integer> stones) {
         int maxSteps1 = 8;

@@ -17,8 +17,8 @@ public abstract class OthelloComputer extends AbstractPlayer {
 
     /**
      * Constructor
-     * @param depth The depth is used for the minimax algorithm
-     * @param maxTimeInMilliseconds The amount of time we have to calculate the best possible move
+     * @param depth The depth used for the minimax algorithm
+     * @param maxTimeInMilliseconds The amount of time allowed to calculate the best possible move
      */
     OthelloComputer(int depth, long maxTimeInMilliseconds) {
         executorService = Executors.newFixedThreadPool(32);
@@ -38,13 +38,13 @@ public abstract class OthelloComputer extends AbstractPlayer {
         // Loop door alle tiles van het bord
         int[] validMoves = board.findValidMoves(getCharacter());
         LinkedList<Pair<Integer, Pair<OthelloMinimaxWorker, Future<Integer>>>> futures = new LinkedList<>();
-        for (int i = 0; i < validMoves.length; i++) {
+        for (int validMove : validMoves) {
             // Maak een clone van het board en plaats de move erin
             AbstractBoard cloneOfBoard = board.clone();
-            cloneOfBoard.placeMove(validMoves[i], getCharacter());
+            cloneOfBoard.placeMove(validMove, getCharacter());
             // Maak een minimaxworker om te berekenen hoe goed de move was
             OthelloMinimaxWorker omw = new OthelloMinimaxWorker(this, depth, cloneOfBoard);
-            futures.add(new Pair(validMoves[i], new Pair(omw, executorService.submit(omw))));
+            futures.add(new Pair(validMove, new Pair(omw, executorService.submit(omw))));
         }
 
         // bestEvaluation en bestMove houden bij welke move de best evalutie heeft
@@ -120,7 +120,7 @@ public abstract class OthelloComputer extends AbstractPlayer {
 
     /**
      * @param board The board to be evaluated
-     * @return Returns a integer that represents how good or bad the board is for a player
+     * @return How good the board is
      */
     protected abstract int eval(AbstractBoard board);
 }

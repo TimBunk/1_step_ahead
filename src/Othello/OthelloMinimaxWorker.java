@@ -13,9 +13,9 @@ public class OthelloMinimaxWorker implements Callable<Integer> {
 
     /**
      * Constructor
-     * @param computer The computer
-     * @param depth The max depth that the minimax will traverse
-     * @param board The board that is being used to evaluate and place moves on
+     * @param computer  The computer
+     * @param depth     The max depth that the minimax will traverse
+     * @param board     The board that is being used to evaluate and place moves on
      */
     OthelloMinimaxWorker(OthelloComputer computer, int depth, AbstractBoard board) {
         this.computer = computer;
@@ -32,12 +32,12 @@ public class OthelloMinimaxWorker implements Callable<Integer> {
     }
 
     /**
-     * @param board The board the algorithm should consider
-     * @param depth How many iterations the algorithm should look
-     * @param maximizing Whether the player whose move is considered wants a maximal or minimal result
-     * @param alpha Helper argument for pruning
-     * @param beta Helper argument for pruning
-     * @return The evaluation of the moves used
+     * @param board         The board the algorithm should consider
+     * @param depth         How many iterations the algorithm should look
+     * @param maximizing    Whether the player whose move is considered wants a maximal or minimal result
+     * @param alpha         Helper argument for pruning
+     * @param beta          Helper argument for pruning
+     * @return              The evaluation of the moves used
      */
     protected int minimax(AbstractBoard board, int depth, boolean maximizing, int alpha, int beta) {
         if (shouldStop) {

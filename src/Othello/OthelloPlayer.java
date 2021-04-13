@@ -9,7 +9,7 @@ public class OthelloPlayer extends AbstractPlayer {
 
     /**
      * @param board The board on which the move is placed
-     * @return The place on the board where we want to do a move
+     * @return      The place on the board where we want to do a move
      */
     @Override
     public int doMove(AbstractBoard board) {

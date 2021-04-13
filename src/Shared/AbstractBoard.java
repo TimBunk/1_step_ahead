@@ -40,7 +40,7 @@ public abstract class AbstractBoard {
 
     /**
      * @param c The character to be counted
-     * @return How many of those characters there are on the board
+     * @return  How many of those characters there are on the board
      */
     public int count(char c) {
         int counter = 0;
@@ -58,15 +58,15 @@ public abstract class AbstractBoard {
     public abstract AbstractBoard clone();
 
     /**
-     * @param move The move whose validity should be checked
-     * @return Whether the move is valid
+     * @param move  The move whose validity should be checked
+     * @return      Whether the move is valid
      */
     public abstract boolean isMoveValid(int move);
 
     /**
-     * @param move The position of the move whose validity should be checked
-     * @param c The character for which we want to check the move's validity
-     * @return Whether the move is allowed by the rules
+     * @param move  The position of the move whose validity should be checked
+     * @param c     The character for which we want to check the move's validity
+     * @return      Whether the move is allowed by the rules
      */
     public boolean isMoveValid(int move, char c) {
         // By default wordt isMoveValid(int move) gebruikt
@@ -75,7 +75,7 @@ public abstract class AbstractBoard {
 
     /**
      * @param c The character we want to check
-     * @return Whether the player using that character has won
+     * @return  Whether the player using that character has won
      */
     public abstract boolean doesCharacterWin(char c);
 
@@ -90,23 +90,27 @@ public abstract class AbstractBoard {
     public abstract void printBoard();
 
     /**
-     * @param move Where the move is to be placed
-     * @param c The character to be placed
+     * @param move  Where the move is to be placed
+     * @param c     The character to be placed
      */
     public abstract void placeMove(int move, char c);
 
     /**
      * @param c The character for which valid moves should be found
-     * @return An array of the positions of the valid moves
+     * @return  An array of the positions of the valid moves
      */
     public abstract int[] findValidMoves(char c);
 
     /**
      * @param c The character for which valid moves should be counted
-     * @return An int of the amount of valid moves for that charactee
+     * @return  The number of valid moves for that character
      */
     public abstract int validMoveCount(char c);
 
+    /**
+     * @param c The character for which stable stones should be counted
+     * @return  The number of stable stones, i.e. stones that can't be flipped by the opponent
+     */
     public int getStableStoneCount(char c) {
         return 0;
     }
