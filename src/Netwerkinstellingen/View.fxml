@@ -6,20 +6,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Netwerkinstellingen.Controller">
+<?import javafx.scene.shape.Line?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Netwerkinstellingen.Controller">
     <children>
         <Label layoutX="16.0" layoutY="12.0" text="Netwerkinstellingen" underline="true">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="32.0" layoutY="70.0" text="Te verbinden IP adres:" />
-        <Label layoutX="19.0" layoutY="128.0" text="Te verbinden Port nummer:" />
-        <TextField fx:id="IPinvoer" layoutX="24.0" layoutY="96.0" promptText="192.168.0.1" />
-        <TextField fx:id="Portinvoer" layoutX="23.0" layoutY="149.0" promptText="4556" />
-        <Button layoutX="68.0" layoutY="250.0" mnemonicParsing="false" onAction="#naarMain" text="Opslaan" />
-      <Label layoutX="37.0" layoutY="184.0" text="Maximale time-out tijd" />
-      <Label layoutX="50.0" layoutY="201.0" text="in milisecondes:" />
-      <TextField fx:id="TimeOutinvoer" layoutX="23.0" layoutY="218.0" promptText="4556" />
+        <Label layoutX="22.0" layoutY="58.0" text="Te verbinden IP adres:" />
+        <Label layoutX="23.0" layoutY="111.0" text="Te verbinden Port nummer:" />
+        <TextField fx:id="IPinvoer" layoutX="23.0" layoutY="75.0" promptText="192.168.0.1" />
+        <TextField fx:id="Portinvoer" layoutX="22.0" layoutY="128.0" promptText="4556" />
+        <Button layoutX="38.0" layoutY="317.0" mnemonicParsing="false" onAction="#naarMain" text="Instellingen Opslaan" />
+        <Label layoutX="22.0" layoutY="184.0" text="Maximale time-out tijd" />
+        <Label layoutX="22.0" layoutY="201.0" text="in milisecondes:" />
+        <TextField fx:id="TimeOutinvoer" layoutX="22.0" layoutY="218.0" promptText="4556" />
+        <Label layoutX="22.0" layoutY="254.0" text="Diepte instellen:" />
+        <TextField fx:id="Depthinvoer" layoutX="23.0" layoutY="271.0" promptText="8" />
+        <Line endX="77.5" layoutX="112.0" layoutY="173.0" startX="-100.0" />
     </children>
 </Pane>
