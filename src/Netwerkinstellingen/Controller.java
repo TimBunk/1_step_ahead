@@ -22,6 +22,9 @@ public class Controller implements Initializable {
     @FXML
     private TextField TimeOutinvoer;
 
+    @FXML
+    private TextField Depthinvoer;
+
     /**
      *The network settings screen gets initialized...
      */
@@ -31,6 +34,7 @@ public class Controller implements Initializable {
         IPinvoer.setText(playerData.getIpadres());
         TimeOutinvoer.setText(String.valueOf(playerData.getTimeOutTime()));
         Portinvoer.setText(String.valueOf(playerData.getPortnumber()));
+        Depthinvoer.setText(String.valueOf(playerData.getDepthAI()));
     }
 
     /**
@@ -41,6 +45,7 @@ public class Controller implements Initializable {
         playerData.setIpadres(IPinvoer.getText());
         playerData.setPortnumber(Integer.parseInt(Portinvoer.getText()));
         playerData.setTimeOutTime(Integer.parseInt(TimeOutinvoer.getText()));
+        playerData.setDepthAI(Integer.parseInt(Depthinvoer.getText()));
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 }

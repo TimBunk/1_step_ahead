@@ -6,12 +6,15 @@ public class PlayerData {
     private String Ipadres;
     private String username;
     private int timeOutTime;
+    private int depthAI;
     private static volatile PlayerData playerData;
+
 
     private PlayerData() {
         this.Ipadres = "145.33.225.170";
         this.Portnumber = 7789;
         this.timeOutTime = 9500;
+        this.depthAI = 8;
     }
 
     public static PlayerData getInstance(){
@@ -74,5 +77,13 @@ public class PlayerData {
      */
     public void setTimeOutTime(int timeOutTime) {
         this.timeOutTime = timeOutTime;
+    }
+
+    public int getDepthAI() {
+        return depthAI;
+    }
+
+    public void setDepthAI(int depthAI) {
+        this.depthAI = depthAI;
     }
 }

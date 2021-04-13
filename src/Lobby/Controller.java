@@ -156,56 +156,59 @@ public class Controller extends Thread implements Initializable {
             while (running.get()) {
                 try {
                     String reveived = netwerkConnection.getMessage();
-                    if (!reveived.equals("OK")) {
-                        System.out.println("data binnen: " + reveived);
-                        String firstWord = reveived.split(" ")[1];
-                        switch (firstWord) {
-                            case "PLAYERLIST":
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        setPlayersListView(reveived);
-                                    }
-                                });
-                                break;
-                            case "GAME":
-                                switch (reveived.split(" ")[2]) {
-                                    case "CHALLENGE":
-                                        Platform.runLater(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                getChallenge(reveived);
-                                            }
-                                        });
-                                        break;
-                                    case "MATCH":
-                                        stopThread();
-                                        String startPlayer = reveived.split(" ")[4].replaceAll("\"|\\,", "");
-                                        Platform.runLater(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Parent root;
-                                                try {
-                                                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOnline/View.fxml"));
-                                                    root = (Parent) loader.load();
-                                                    OthelloScreenOnline.Controller othelloScreenOnline = loader.getController();
-                                                    othelloScreenOnline.setStartPlayer(startPlayer);
-                                                    othelloScreenOnline.setDifficultyAI(DifficultyAI);
-
-                                                    Stage stage = new Stage();
-                                                    stage.setScene(new Scene(root));
-                                                    stage.setResizable(false);
-                                                    stage.show();
-                                                    LobbyScreen.getScene().getWindow().hide();
-                                                } catch (IOException e) {
-                                                    e.printStackTrace();
+                    if (reveived != null){
+                        if (!reveived.equals("OK")) {
+                            System.out.println("data binnen: " + reveived);
+                            String firstWord = reveived.split(" ")[1];
+                            switch (firstWord) {
+                                case "PLAYERLIST":
+                                    Platform.runLater(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            setPlayersListView(reveived);
+                                        }
+                                    });
+                                    break;
+                                case "GAME":
+                                    switch (reveived.split(" ")[2]) {
+                                        case "CHALLENGE":
+                                            Platform.runLater(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    getChallenge(reveived);
                                                 }
-                                            }
-                                        });
-                                        break;
-                                }
+                                            });
+                                            break;
+                                        case "MATCH":
+                                            stopThread();
+                                            String startPlayer = reveived.split(" ")[4].replaceAll("\"|\\,", "");
+                                            Platform.runLater(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Parent root;
+                                                    try {
+                                                        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("OthelloScreenOnline/View.fxml"));
+                                                        root = (Parent) loader.load();
+                                                        OthelloScreenOnline.Controller othelloScreenOnline = loader.getController();
+                                                        othelloScreenOnline.setStartPlayer(startPlayer);
+                                                        othelloScreenOnline.setDifficultyAI(DifficultyAI);
+
+                                                        Stage stage = new Stage();
+                                                        stage.setScene(new Scene(root));
+                                                        stage.setResizable(false);
+                                                        stage.show();
+                                                        LobbyScreen.getScene().getWindow().hide();
+                                                    } catch (IOException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            });
+                                            break;
+                                    }
+                            }
                         }
                     }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
