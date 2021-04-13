@@ -7,6 +7,7 @@ public class OthelloComputer2 extends OthelloComputer {
     private int single_stone;
     private int stable_stone;
     private int mobility;
+    private final int corner_value = 10000;
 
     /**
      * @param depth                 The depth used for the minimax algorithm
@@ -44,6 +45,53 @@ public class OthelloComputer2 extends OthelloComputer {
         int playerStableStones = board.getStableStoneCount(playerChar);
         int stable_stones_score = (computerStableStones - playerStableStones) * stable_stone;
 
-        return single_stones_score + mobility_score + stable_stones_score;
+        int corner_score = getPointsForCorners(board);
+
+        return single_stones_score + mobility_score + stable_stones_score + corner_score;
+    }
+
+    private int getPointsForCorners(AbstractBoard board) {
+        int points = 0;
+        char upperLeftCorner = board.getCharAtPosition(0);
+        char upperRightCorner = board.getCharAtPosition(7);
+        char lowerLeftCorner = board.getCharAtPosition(56);
+        char lowerRightCorner = board.getCharAtPosition(63);
+        // Check upper left corner
+        if (upperLeftCorner != '.') {
+            if (upperLeftCorner == getCharacter()) {
+                points += corner_value;
+            }
+            else {
+                points -= corner_value;
+            }
+        }
+        // Check upper right corner
+        if (upperRightCorner != '.') {
+            if (upperRightCorner == getCharacter()) {
+                points += corner_value;
+            }
+            else {
+                points -= corner_value;
+            }
+        }
+        // Check lower left corner
+        if (lowerLeftCorner != '.') {
+            if (lowerLeftCorner == getCharacter()) {
+                points += corner_value;
+            }
+            else {
+                points -= corner_value;
+            }
+        }
+        // Check lower right corner
+        if (lowerRightCorner != '.') {
+            if (lowerRightCorner == getCharacter()) {
+                points += corner_value;
+            }
+            else {
+                points -= corner_value;
+            }
+        }
+        return points;
     }
 }

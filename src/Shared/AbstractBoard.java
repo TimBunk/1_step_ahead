@@ -114,4 +114,8 @@ public abstract class AbstractBoard {
     public int getStableStoneCount(char c) {
         return 0;
     }
+
+    public char getCharAtPosition(int position) {
+        return board[position];
+    }
 }
