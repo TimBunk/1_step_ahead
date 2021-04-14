@@ -14,10 +14,19 @@ public class OthelloTest {
         long startTime = new Date().getTime();
         BufferedWriter myWriter = new BufferedWriter(new FileWriter("computer2_DATA.txt"));
 
-
+        int[][] top8 = {
+                {25, 15},
+                {20, 10},
+                {30, 20},
+                {30, 10},
+                {15, 10},
+                {20, 15},
+                {25, 10},
+                {25, 20}
+        };
 
         // 10*10 = 100 keere doorlopen
-        //for (int i=10;i<=15;i+=5) { //Tim
+        for (int i=10;i<=15;i+=5) { //Tim
         //for (int i=20;i<=25;i+=5) { //Ids
         //for (int i=30;i<=35;i+=5) { //Anton
         //for (int i=40;i<=45;i+=5) { //Arjan
@@ -26,8 +35,8 @@ public class OthelloTest {
                 OthelloComputer2 player1 = new OthelloComputer2(7, 30000, 1, i, j);
 
                 int score = 0;
-                // 10*10 = 100 keer doorlopen
-                for (int k=10;k<=55;k+=5) { // Stability
+                // 10*10*2 = 200 keer doorlopen
+                /*for (int k=10;k<=55;k+=5) { // Stability
                     for (int l = 10; l <= 55; l += 5) { // Mobility
                         OthelloComputer2 player2 = new OthelloComputer2(7, 30000, 1, k, l);
 
@@ -36,6 +45,15 @@ public class OthelloTest {
                         othello = new Othello(player2, player1, false);
                         score += (-1 * othello.start());
                     }
+                }*/
+                // 8*2 = 16 keer doorlopen
+                for (int k=0;k<top8.length;k++) { // Stability
+                    OthelloComputer2 player2 = new OthelloComputer2(7, 30000, 1, top8[k][0], top8[k][1]);
+
+                    Othello othello = new Othello(player1, player2, false);
+                    score += othello.start();
+                    othello = new Othello(player2, player1, false);
+                    score += (-1 * othello.start());
                 }
 
                 myWriter.write("" + i + " " + j + " " + score + "\n");
