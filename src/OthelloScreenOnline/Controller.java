@@ -96,7 +96,7 @@ public class Controller extends Thread implements Initializable {
         if (DifficultyAI == 0){
             //Gemiddeld
             System.out.println("De AI staat op gemiddeld");
-            player1 = new OthelloComputer2(playerData.getDepthAI(), playerData.getTimeOutTime(),1, 10, 35);
+            player1 = new OthelloComputer1(playerData.getDepthAI(), playerData.getTimeOutTime());
 
         }else {
             //Moeilijk

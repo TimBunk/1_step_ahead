@@ -1,6 +1,6 @@
 package OthelloTest;
 
-import Othello.OthelloBoard;
+/*import Othello.OthelloBoard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ValidMovesTest {
 
-    /*OthelloBoard board = new OthelloBoard();
+    OthelloBoard board = new OthelloBoard();
 
     @BeforeEach
     void setup(){
@@ -128,5 +128,5 @@ public class ValidMovesTest {
         assertTrue(board.isMoveValidRightUp(24, 'Z'));
         assertFalse(board.isMoveValidLeftDown(24, 'Z'));
         assertTrue(board.isMoveValidRightDown(24, 'Z'));
-    }*/
-}
+    }
+}*/
