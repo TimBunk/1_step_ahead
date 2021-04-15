@@ -1,4 +1,6 @@
-package Othello;
+package OthelloTest;
+
+import Othello.OthelloBoard;
 
 import java.util.ArrayList;
 

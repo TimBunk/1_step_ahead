@@ -1,4 +1,7 @@
-package Othello;
+package OthelloTest;
+
+import Othello.Othello;
+import Othello.OthelloComputer2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

@@ -1,7 +1,8 @@
-package Othello;
+package OthelloTest;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import Othello.Othello;
+import Othello.OthelloComputer2;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
