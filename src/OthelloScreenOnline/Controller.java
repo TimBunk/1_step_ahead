@@ -96,12 +96,12 @@ public class Controller extends Thread implements Initializable {
         if (DifficultyAI == 0){
             //Gemiddeld
             System.out.println("De AI staat op gemiddeld");
-            player1 = new OthelloComputer1(playerData.getDepthAI(), playerData.getTimeOutTime());
+            player1 = new OthelloComputer2(playerData.getDepthAI(), playerData.getTimeOutTime(),1, 10, 35);
 
         }else {
             //Moeilijk
             System.out.println("AI staat op moeilijk");
-            player1 = new OthelloComputer2(playerData.getDepthAI(), playerData.getTimeOutTime(),1, 5, 3);
+            player1 = new OthelloComputer2(playerData.getDepthAI(), playerData.getTimeOutTime(),1, 10, 35);
         }
         System.out.println(playerData.getDepthAI());
 
